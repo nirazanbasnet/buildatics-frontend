@@ -5,7 +5,6 @@ import { ThemeProvider } from "next-themes";
 import GoogleAnalyticsInit from "@/lib/ga";
 import { fontVariables } from "@/lib/fonts";
 import NextTopLoader from "nextjs-toploader";
-import Script from "next/script";
 
 import "@/styles/globals.css";
 
@@ -36,12 +35,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <Script
-          src="https://dashboard.shadcnuikit.com/iframe-listener.js"
-          strategy="afterInteractive"
-        />
-      </head>
       <body
         suppressHydrationWarning
         className={cn("bg-background group/layout font-sans", fontVariables)}
