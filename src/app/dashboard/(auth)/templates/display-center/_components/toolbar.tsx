@@ -1,19 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Check, Home, LayoutGrid, ListFilter, X } from "lucide-react";
+import { Home, LayoutGrid, ListFilter, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
 
+import { FilterSheet } from "./filter-sheet";
+import type { FilterVariantId } from "../../display-center-filter/_components/variants";
 import type { VariantId } from "./variant-layouts";
 
 type Props = {
   activeVariant?: VariantId;
   mode?: "iteration" | "production";
+  /** Only honored when mode === "production". Hides the Filter button until the filter design is promoted. */
+  filterEnabled?: boolean;
+  /** Which filter variant the FilterSheet should render. */
+  filterVariant?: FilterVariantId;
 };
 
 const variantLabels: Record<number, string> = {
@@ -23,10 +30,18 @@ const variantLabels: Record<number, string> = {
   7: "Spec grid"
 };
 
-export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
+export function Toolbar({
+  activeVariant,
+  mode = "iteration",
+  filterEnabled,
+  filterVariant
+}: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const view = searchParams.get("view") === "floor" ? "floor" : "facade";
+  const [filterOpen, setFilterOpen] = useState(false);
+
+  const showFilter = mode === "iteration" || filterEnabled;
 
   function setView(next: string) {
     if (!next) return;
@@ -34,12 +49,6 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
     if (next === "facade") params.delete("view");
     else params.set("view", next);
     router.push(`?${params.toString()}`, { scroll: false });
-  }
-
-  function applyVariant(n: VariantId) {
-    document.cookie = `display_center_variant=${n}; path=/; max-age=31536000; SameSite=Lax`;
-    router.push("/dashboard/display-center");
-    router.refresh();
   }
 
   return (
@@ -56,10 +65,20 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="h-9">
-            <ListFilter className="size-4" />
-            Filter
-          </Button>
+          {showFilter ? (
+            <>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9"
+                onClick={() => setFilterOpen(true)}
+              >
+                <ListFilter className="size-4" />
+                Filter
+              </Button>
+              <FilterSheet open={filterOpen} onOpenChange={setFilterOpen} variant={filterVariant} />
+            </>
+          ) : null}
           <ToggleGroup type="single" value={view} onValueChange={setView} className="h-9">
             <ToggleGroupItem variant="outline" value="facade" className="h-9 px-3">
               <Home className="size-4" />
@@ -89,14 +108,6 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
               </Link>
             </Button>
           ))}
-          {activeVariant !== 7 ? (
-            <div className="ms-auto">
-              <Button size="sm" className="h-7" onClick={() => applyVariant(activeVariant)}>
-                <Check className="size-4" />
-                Use this on Display Center
-              </Button>
-            </div>
-          ) : null}
         </div>
       ) : null}
     </div>
