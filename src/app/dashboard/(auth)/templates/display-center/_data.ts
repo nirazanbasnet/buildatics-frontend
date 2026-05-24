@@ -14,18 +14,16 @@ export type Property = {
   floorPlan: string;
 };
 
-const facade = (id: string) =>
-  `https://images.unsplash.com/${id}?w=900&h=560&fit=crop&auto=format&q=80`;
+const facade = (file: string) => `/images/display-center/facade/${file}`;
 
-const plan = (id: string) =>
-  `https://images.unsplash.com/${id}?w=900&h=560&fit=crop&auto=format&q=80`;
+const plan = (file: string) => `/images/display-center/plans/${file}`;
 
 export const properties: Property[] = [
   {
     id: "hampton-28",
     title: "The Hampton 28",
-    brand: "Metricon",
-    version: "2.4",
+    brand: "ITI",
+    version: "1.0",
     width: 14.0,
     depth: 18.0,
     squareFootage: 28,
@@ -33,14 +31,14 @@ export const properties: Property[] = [
     baths: 2,
     living: 2,
     garage: 2,
-    facade: facade("photo-1600585154340-be6161a56a0c"),
-    floorPlan: plan("photo-1580587771525-78b9dba3b914")
+    facade: facade("RENDER_DF01_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP01_12.5M BY 28M_RIGHT_VN01.png")
   },
   {
     id: "bondi-24",
     title: "The Bondi 24",
-    brand: "Henley Homes",
-    version: "1.8",
+    brand: "ITI",
+    version: "1.0",
     width: 12.5,
     depth: 16.5,
     squareFootage: 24,
@@ -48,14 +46,14 @@ export const properties: Property[] = [
     baths: 2,
     living: 1,
     garage: 2,
-    facade: facade("photo-1568605114967-8130f3a36994"),
-    floorPlan: plan("photo-1503387837-b154d5074bd2")
+    facade: facade("RENDER_DF02_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP02_12.5M BY 28M_RIGHT_VN01.png")
   },
   {
     id: "manhattan-32",
     title: "The Manhattan 32",
-    brand: "Carlisle Homes",
-    version: "3.0",
+    brand: "ITI",
+    version: "1.0",
     width: 16.0,
     depth: 20.0,
     squareFootage: 32,
@@ -63,14 +61,14 @@ export const properties: Property[] = [
     baths: 3,
     living: 2,
     garage: 2,
-    facade: facade("photo-1564013799919-ab600027ffc6"),
-    floorPlan: plan("photo-1503387762-592deb58ef4e")
+    facade: facade("RENDER_DF04_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP03_12.5M BY 28M_RIGHT_VN01.png")
   },
   {
     id: "promenade-25",
     title: "The Promenade 25",
-    brand: "Burbank Homes",
-    version: "2.1",
+    brand: "ITI",
+    version: "1.0",
     width: 13.0,
     depth: 17.5,
     squareFootage: 25,
@@ -78,14 +76,14 @@ export const properties: Property[] = [
     baths: 2,
     living: 1,
     garage: 2,
-    facade: facade("photo-1605276373954-0c4a0dac5b12"),
-    floorPlan: plan("photo-1545324418-cc1a3fa10c00")
+    facade: facade("RENDER_DF01_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP01_12.5M BY 28M_RIGHT_VN01.png")
   },
   {
     id: "vista-22",
     title: "The Vista 22",
-    brand: "Simonds Homes",
-    version: "1.5",
+    brand: "ITI",
+    version: "1.0",
     width: 11.0,
     depth: 16.0,
     squareFootage: 22,
@@ -93,14 +91,14 @@ export const properties: Property[] = [
     baths: 1,
     living: 1,
     garage: 1,
-    facade: facade("photo-1583608205776-bfd35f0d9f83"),
-    floorPlan: plan("photo-1626885930974-4b69aa21bbf9")
+    facade: facade("RENDER_DF02_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP02_12.5M BY 28M_RIGHT_VN01.png")
   },
   {
     id: "riviera-34",
     title: "The Riviera 34",
-    brand: "Mimosa Homes",
-    version: "2.2",
+    brand: "ITI",
+    version: "1.0",
     width: 18.0,
     depth: 22.0,
     squareFootage: 34,
@@ -108,8 +106,8 @@ export const properties: Property[] = [
     baths: 3,
     living: 2,
     garage: 2,
-    facade: facade("photo-1512917774080-9991f1c4c750"),
-    floorPlan: plan("photo-1572120360610-d971b9d7767c")
+    facade: facade("RENDER_DF04_12.5M_RIGHT_VN01.jpg"),
+    floorPlan: plan("PLAN_DP03_12.5M BY 28M_RIGHT_VN01.png")
   }
 ];
 

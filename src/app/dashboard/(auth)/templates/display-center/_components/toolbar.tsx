@@ -18,10 +18,9 @@ type Props = {
 
 const variantLabels: Record<number, string> = {
   1: "3-col grid",
-  2: "2-col grid",
-  3: "Horizontal",
-  4: "Featured",
-  5: "Compact list"
+  5: "Compact list",
+  6: "Showcase",
+  7: "Spec grid"
 };
 
 export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
@@ -37,7 +36,7 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
     router.push(`?${params.toString()}`, { scroll: false });
   }
 
-  function useThisVariant(n: VariantId) {
+  function applyVariant(n: VariantId) {
     document.cookie = `display_center_variant=${n}; path=/; max-age=31536000; SameSite=Lax`;
     router.push("/dashboard/display-center");
     router.refresh();
@@ -48,7 +47,7 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <span className="text-muted-foreground text-sm">Beds</span>
-          <Badge variant="default" className="rounded-full pr-1 pl-3 py-1 h-7 gap-1">
+          <Badge variant="default" className="h-7 gap-1 rounded-full py-1 pr-1 pl-3">
             2 Beds
             <Button variant="ghost" size="icon" className="size-5 rounded-full hover:bg-white/20">
               <X className="size-3" />
@@ -61,11 +60,7 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
             <ListFilter className="size-4" />
             Filter
           </Button>
-          <ToggleGroup
-            type="single"
-            value={view}
-            onValueChange={setView}
-            className="h-9">
+          <ToggleGroup type="single" value={view} onValueChange={setView} className="h-9">
             <ToggleGroupItem variant="outline" value="facade" className="h-9 px-3">
               <Home className="size-4" />
               Facade View
@@ -81,20 +76,21 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
       {mode === "iteration" && activeVariant ? (
         <div className="border-border bg-muted/40 flex flex-wrap items-center gap-1 rounded-md border p-1">
           <span className="text-muted-foreground px-2 text-xs font-medium uppercase">Layout</span>
-          {([1, 2, 3, 4, 5] as const).map((n) => (
+          {([1, 5, 6, 7] as const).map((n) => (
             <Button
               key={n}
               asChild
               variant={n === activeVariant ? "default" : "ghost"}
               size="sm"
-              className={cn("h-7", n !== activeVariant && "text-muted-foreground")}>
+              className={cn("h-7", n !== activeVariant && "text-muted-foreground")}
+            >
               <Link href={`/dashboard/templates/display-center/variant-${n}`}>
                 V{n} · {variantLabels[n]}
               </Link>
             </Button>
           ))}
           <div className="ms-auto">
-            <Button size="sm" className="h-7" onClick={() => useThisVariant(activeVariant)}>
+            <Button size="sm" className="h-7" onClick={() => applyVariant(activeVariant)}>
               <Check className="size-4" />
               Use this on Display Center
             </Button>

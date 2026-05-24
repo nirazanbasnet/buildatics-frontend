@@ -19,7 +19,7 @@ export function PropertyRow({
 }) {
   const src = view === "floor" ? property.floorPlan : property.facade;
   return (
-    <Card className="overflow-hidden gap-0 p-0">
+    <Card className="gap-0 overflow-hidden p-0">
       <div className="grid gap-0 md:grid-cols-[5fr_7fr]">
         <div className="relative">
           <Image
@@ -27,33 +27,34 @@ export function PropertyRow({
             alt={`${property.title} ${view === "floor" ? "floor plan" : "facade"}`}
             width={900}
             height={560}
-            className={cn(
-              "h-full w-full object-cover min-h-56",
-              view === "floor" && "object-contain bg-muted"
-            )}
+            className={cn("h-full min-h-56 w-full object-cover", view === "floor" && "bg-muted")}
           />
-          <div className="absolute right-3 top-3 flex gap-2">
+          <div className="absolute top-3 right-3 flex gap-2">
             <Button
               size="icon"
               variant="secondary"
-              className="bg-background/80 size-8 rounded-full backdrop-blur hover:bg-background">
+              className="bg-background/80 hover:bg-background size-8 rounded-full backdrop-blur"
+            >
               <ZoomIn className="size-4" />
             </Button>
             <Button
               size="icon"
               variant="secondary"
-              className="bg-background/80 size-8 rounded-full backdrop-blur hover:bg-background">
+              className="bg-background/80 hover:bg-background size-8 rounded-full backdrop-blur"
+            >
               <Share2 className="size-4" />
             </Button>
           </div>
           <Badge
             variant="secondary"
-            className="bg-background text-foreground absolute bottom-3 left-3 rounded-full px-3 py-1 font-medium">
+            className="bg-background text-foreground absolute bottom-3 left-3 rounded-full px-3 py-1 font-medium"
+          >
             {property.brand}
           </Badge>
           <Badge
             variant="secondary"
-            className="bg-background text-foreground absolute bottom-3 right-3 gap-1 rounded-full px-3 py-1 font-medium">
+            className="bg-background text-foreground absolute right-3 bottom-3 gap-1 rounded-full px-3 py-1 font-medium"
+          >
             <Clock className="size-3" />
             Version {property.version}
           </Badge>
