@@ -83,7 +83,8 @@ export function RecentActivities() {
             <div
               key={item.id}
               className="hover:bg-muted -mx-2 flex cursor-pointer items-center gap-3 rounded-lg p-2 transition-colors"
-              onClick={() => setSelectedItem(item)}>
+              onClick={() => setSelectedItem(item)}
+            >
               <Avatar>
                 <AvatarImage src={item.avatar} alt={item.name} />
                 <AvatarFallback>

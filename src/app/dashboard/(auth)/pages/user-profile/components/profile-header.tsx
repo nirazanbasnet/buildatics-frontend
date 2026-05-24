@@ -149,7 +149,8 @@ function EditProfileModal() {
                 aria-live="polite"
                 className="text-muted-foreground mt-2 text-right text-xs"
                 id={`${id}-description`}
-                role="status">
+                role="status"
+              >
                 <span className="tabular-nums">{limit - characterCount}</span> characters left
               </p>
             </div>
@@ -203,7 +204,8 @@ function ProfileBg({ initialFiles }: { initialFiles: FileMetadata[] }) {
             aria-label={currentImage ? "Change image" : "Upload image"}
             className="focus-visible:border-ring focus-visible:ring-ring/50 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-[color,box-shadow] outline-none hover:bg-black/80 focus-visible:ring-[3px]"
             onClick={openFileDialog}
-            type="button">
+            type="button"
+          >
             <ImagePlusIcon aria-hidden size={16} />
           </button>
           {currentImage && (
@@ -211,7 +213,8 @@ function ProfileBg({ initialFiles }: { initialFiles: FileMetadata[] }) {
               aria-label="Remove image"
               className="focus-visible:border-ring focus-visible:ring-ring/50 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-[color,box-shadow] outline-none hover:bg-black/80 focus-visible:ring-[3px]"
               onClick={() => removeFile(files[0]?.id ?? "")}
-              type="button">
+              type="button"
+            >
               <XIcon aria-hidden size={16} />
             </button>
           )}
@@ -246,7 +249,8 @@ function ProfileAvatar({ initialFiles }: { initialFiles: FileMetadata[] }) {
           aria-label="Change profile picture"
           className="focus-visible:border-ring focus-visible:ring-ring/50 absolute flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-[color,box-shadow] outline-none hover:bg-black/80 focus-visible:ring-[3px]"
           onClick={openFileDialog}
-          type="button">
+          type="button"
+        >
           <ImagePlusIcon aria-hidden size={16} />
         </button>
         <input {...getInputProps()} aria-label="Upload profile picture" className="sr-only" />
@@ -262,7 +266,8 @@ export function ProfileHeader() {
     <div className="relative">
       <div
         className="relative aspect-3/1 w-full rounded-t-md bg-cover bg-center md:max-h-[240px]"
-        style={{ backgroundImage: `url('${DEFAULT_COVER_URL}')` }}>
+        style={{ backgroundImage: `url('${DEFAULT_COVER_URL}')` }}
+      >
         <div className="absolute end-4 top-4">
           <Dialog>
             <DialogTrigger asChild>

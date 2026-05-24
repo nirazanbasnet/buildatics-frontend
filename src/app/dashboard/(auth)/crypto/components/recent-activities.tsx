@@ -87,7 +87,8 @@ export function RecentActivities() {
                         activity.type === "Buy",
                       "border-blue-400 bg-blue-100 text-blue-900 dark:border-blue-700 dark:bg-blue-900 dark:text-white":
                         activity.type === "Sell"
-                    })}>
+                    })}
+                  >
                     {activity.type}
                   </Badge>
                 </p>

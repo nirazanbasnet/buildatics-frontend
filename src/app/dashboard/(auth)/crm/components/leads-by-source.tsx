@@ -83,17 +83,20 @@ export function LeadBySourceCard() {
                         x={viewBox.cx}
                         y={viewBox.cy}
                         textAnchor="middle"
-                        dominantBaseline="middle">
+                        dominantBaseline="middle"
+                      >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground font-display text-3xl">
+                          className="fill-foreground font-display text-3xl"
+                        >
                           {totalVisitors.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground">
+                          className="fill-muted-foreground"
+                        >
                           Leads
                         </tspan>
                       </text>
@@ -112,7 +115,8 @@ export function LeadBySourceCard() {
                   className="block size-2 rounded-full"
                   style={{
                     backgroundColor: chartConfig[item.source as ChartConfigKeys]?.color
-                  }}></span>
+                  }}
+                ></span>
                 <div className="text-xs tracking-wide uppercase">
                   {chartConfig[item.source as ChartConfigKeys]?.label}
                 </div>

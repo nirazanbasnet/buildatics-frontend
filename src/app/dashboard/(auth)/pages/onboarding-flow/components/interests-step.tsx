@@ -56,7 +56,8 @@ export function InterestsStep() {
               className={`hover:border-primary cursor-pointer rounded-md border px-4 py-6 ${
                 selectedInterests.includes(interest.name) ? "bg-primary/10 border-primary" : ""
               }`}
-              onClick={() => toggleInterest(interest.name)}>
+              onClick={() => toggleInterest(interest.name)}
+            >
               <div className="space-y-2 text-center">
                 <div className="text-2xl">{interest.emoji}</div>
                 <div>{interest.name}</div>

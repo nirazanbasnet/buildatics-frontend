@@ -34,7 +34,10 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export function AppSidebar({ variant: variantProp, ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  variant: variantProp,
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   const { setOpen, setOpenMobile, isMobile } = useSidebar();
   const isTablet = useIsTablet();
@@ -60,10 +63,11 @@ export function AppSidebar({ variant: variantProp, ...props }: React.ComponentPr
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="hover:text-foreground h-10 group-data-[collapsible=icon]:px-0!">
+              className="hover:text-foreground h-10 group-data-[collapsible=icon]:px-0!"
+            >
               <Link href="/dashboard">
                 <Logo />
-                <span className="text-foreground font-semibold text-xl">Buildatics.</span>
+                <span className="text-foreground text-xl font-semibold">Buildatics.</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -74,7 +78,7 @@ export function AppSidebar({ variant: variantProp, ...props }: React.ComponentPr
           <NavMain />
         </ScrollArea>
       </SidebarContent>
-      <SidebarFooter>        
+      <SidebarFooter>
         <NavUser />
       </SidebarFooter>
     </Sidebar>

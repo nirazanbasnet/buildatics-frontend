@@ -317,7 +317,8 @@ export function CalendarDndProvider({ children, onEventUpdate }: CalendarDndProv
       sensors={sensors}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}>
+      onDragEnd={handleDragEnd}
+    >
       <CalendarDndContext.Provider
         value={{
           activeEvent,
@@ -328,7 +329,8 @@ export function CalendarDndProvider({ children, onEventUpdate }: CalendarDndProv
           isMultiDay,
           multiDayWidth,
           dragHandlePosition
-        }}>
+        }}
+      >
         {children}
 
         <DragOverlay adjustScale={false} dropAnimation={null}>
@@ -338,7 +340,8 @@ export function CalendarDndProvider({ children, onEventUpdate }: CalendarDndProv
                 height: eventHeight ? `${eventHeight}px` : "auto",
                 width: isMultiDay && multiDayWidth ? `${multiDayWidth}%` : "100%"
                 // Remove the transform that was causing the shift
-              }}>
+              }}
+            >
               <EventItem
                 event={activeEvent}
                 view={activeView}

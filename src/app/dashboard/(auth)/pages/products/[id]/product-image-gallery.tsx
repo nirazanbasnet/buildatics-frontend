@@ -38,7 +38,8 @@ export default function ProductImageGallery() {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2">
+        className="mySwiper2"
+      >
         {images.map((image, key) => (
           <SwiperSlide key={key}>
             <img
@@ -59,7 +60,8 @@ export default function ProductImageGallery() {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper mt-2">
+        className="mySwiper mt-2"
+      >
         {images.map((image, key) => (
           <SwiperSlide key={key} className="group">
             <figure className="group-[.swiper-slide-thumb-active]:border-primary overflow-hidden rounded-lg border opacity-70 group-[.swiper-slide-thumb-active]:opacity-100!">

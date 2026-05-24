@@ -132,7 +132,8 @@ export const columns: ColumnDef<ReportsData>[] = [
               : status === "Pending"
                 ? "bg-yellow-100 text-yellow-800"
                 : "bg-red-100 text-red-800"
-          }`}>
+          }`}
+        >
           {status}
         </div>
       );

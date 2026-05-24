@@ -13,7 +13,8 @@ const StatusTabs: React.FC<StatusTabsProps> = ({ onTabChange, activeTab }) => {
     <Tabs
       defaultValue={activeTab}
       onValueChange={(value) => onTabChange(value as FilterTab)}
-      value={activeTab}>
+      value={activeTab}
+    >
       <TabsList>
         <TabsTrigger value="all">All</TabsTrigger>
         {Object.values(EnumTodoStatus).map((status) => (

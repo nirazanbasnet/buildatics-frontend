@@ -71,7 +71,8 @@ export function MonthlyCampaignStateCard() {
                     className={cn({
                       "text-green-600": metric.percentage >= 0,
                       "text-red-600": metric.percentage < 0
-                    })}>
+                    })}
+                  >
                     {metric.percentage}%
                   </Badge>
                 </div>

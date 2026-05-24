@@ -66,7 +66,8 @@ export function SalesPipeline() {
                 <TooltipTrigger asChild>
                   <div
                     className={`${stage.color} h-full`}
-                    style={{ width: `${(stage.value / totalValue) * 100}%` }}></div>
+                    style={{ width: `${(stage.value / totalValue) * 100}%` }}
+                  ></div>
                 </TooltipTrigger>
                 <TooltipContent>
                   <div className="text-sm">

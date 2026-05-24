@@ -37,7 +37,8 @@ export default function Layout({
           <Button
             variant={pathname.endsWith(tab.key) ? "default" : "outline"}
             key={tab.key}
-            asChild>
+            asChild
+          >
             <Link href={tab.href}>{tab.label}</Link>
           </Button>
         ))}

@@ -29,6 +29,7 @@ const ImagePlaceholderToolbar = React.forwardRef<HTMLButtonElement, ButtonProps>
             }}
             ref={ref}
             {...props}>
+            {/* eslint-disable-next-line jsx-a11y/alt-text -- false positive: Image is the lucide-react icon, not an <img> element */}
             {children ?? <Image className="h-4 w-4" />}
           </Button>
         </TooltipTrigger>

@@ -50,9 +50,11 @@ export default function Page() {
           {templates.map(({ icon: Icon, iconBg, title, description }) => (
             <Card
               key={title}
-              className="group hover:bg-muted flex cursor-pointer flex-row items-center gap-4 p-4">
+              className="group hover:bg-muted flex cursor-pointer flex-row items-center gap-4 p-4"
+            >
               <div
-                className={`flex size-10 shrink-0 items-center justify-center rounded-full ${iconBg}`}>
+                className={`flex size-10 shrink-0 items-center justify-center rounded-full ${iconBg}`}
+              >
                 <Icon className="size-4 text-white" />
               </div>
               <div className="grow text-left">

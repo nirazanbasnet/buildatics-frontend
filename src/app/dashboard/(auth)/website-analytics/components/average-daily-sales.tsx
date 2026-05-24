@@ -53,7 +53,8 @@ export function AverageDailySalesCard() {
             top: 5,
             left: 0,
             right: 0
-          }}>
+          }}
+        >
           <defs>
             <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="var(--color-mobile)" stopOpacity={0.8} />

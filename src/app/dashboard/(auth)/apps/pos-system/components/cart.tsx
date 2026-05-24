@@ -71,7 +71,8 @@ export default function POStSystemCart({ setShowAssignOrderDialogAction }: POStS
                 onClick={() => {
                   createOrder();
                   setShowAssignOrderDialogAction(true);
-                }}>
+                }}
+              >
                 <Utensils />
                 Create Order
               </Button>

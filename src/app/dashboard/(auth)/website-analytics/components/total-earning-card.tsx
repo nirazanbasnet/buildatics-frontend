@@ -58,7 +58,8 @@ export function TotalEarningCard() {
             margin={{
               left: -8,
               right: -8
-            }}>
+            }}
+          >
             <Bar
               dataKey="desktop"
               stackId="a"

@@ -85,7 +85,8 @@ export function PerformanceChart() {
         </div>
         <Tabs
           value={period}
-          onValueChange={(value) => setPeriod(value as "weekly" | "monthly" | "yearly")}>
+          onValueChange={(value) => setPeriod(value as "weekly" | "monthly" | "yearly")}
+        >
           <TabsList>
             <TabsTrigger value="weekly">W</TabsTrigger>
             <TabsTrigger value="monthly">M</TabsTrigger>

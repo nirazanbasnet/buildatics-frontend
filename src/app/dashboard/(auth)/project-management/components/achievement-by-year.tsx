@@ -27,7 +27,8 @@ export function AchievementByYear() {
                 color: "var(--chart-1)"
               }
             }}
-            className="aspect-auto h-[32px] w-full">
+            className="aspect-auto h-[32px] w-full"
+          >
             <BarChart
               accessibilityLayer
               layout="vertical"
@@ -42,7 +43,8 @@ export function AchievementByYear() {
                   date: "2024",
                   steps: 57
                 }
-              ]}>
+              ]}
+            >
               <Bar dataKey="steps" fill="var(--color-steps)" radius={4} barSize={32}>
                 <LabelList
                   position="insideLeft"
@@ -69,7 +71,8 @@ export function AchievementByYear() {
                 color: "var(--chart-2)"
               }
             }}
-            className="aspect-auto h-[32px] w-full">
+            className="aspect-auto h-[32px] w-full"
+          >
             <BarChart
               accessibilityLayer
               layout="vertical"
@@ -84,7 +87,8 @@ export function AchievementByYear() {
                   date: "2023",
                   steps: 48
                 }
-              ]}>
+              ]}
+            >
               <Bar dataKey="steps" fill="var(--color-steps)" radius={4} barSize={32}>
                 <LabelList
                   position="insideLeft"
@@ -111,7 +115,8 @@ export function AchievementByYear() {
                 color: "var(--chart-3)"
               }
             }}
-            className="aspect-auto h-[32px] w-full">
+            className="aspect-auto h-[32px] w-full"
+          >
             <BarChart
               accessibilityLayer
               layout="vertical"
@@ -126,7 +131,8 @@ export function AchievementByYear() {
                   date: "2022",
                   steps: 42
                 }
-              ]}>
+              ]}
+            >
               <Bar dataKey="steps" fill="var(--color-steps)" radius={4} barSize={32}>
                 <LabelList
                   position="insideLeft"

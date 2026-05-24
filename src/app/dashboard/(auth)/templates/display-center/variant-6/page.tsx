@@ -1,7 +1,7 @@
 import { Toolbar } from "../_components/toolbar";
-import { Variant4Layout } from "../_components/variant-layouts";
+import { Variant6Layout } from "../_components/variant-layouts";
 
-export default async function DisplayCenterVariant4({
+export default async function DisplayCenterVariant6({
   searchParams
 }: {
   searchParams: Promise<{ view?: string }>;
@@ -9,8 +9,8 @@ export default async function DisplayCenterVariant4({
   const view = (await searchParams).view === "floor" ? "floor" : "facade";
   return (
     <div>
-      <Toolbar activeVariant={4} />
-      <Variant4Layout view={view} />
+      <Toolbar activeVariant={6} />
+      <Variant6Layout view={view} />
     </div>
   );
 }

@@ -72,9 +72,7 @@
     "priority": "low",
     "createdAt": "2023-05-27T00:00:00.000Z",
     "dueDate": "2023-06-20T00:00:00.000Z",
-    "subTasks": [
-      { "id": "st10", "title": "Domain verification", "completed": false }
-    ],
+    "subTasks": [{ "id": "st10", "title": "Domain verification", "completed": false }],
     "starred": false
   },
   {

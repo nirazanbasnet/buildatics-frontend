@@ -30,7 +30,8 @@ export function LearningPathCard() {
         </Link>
         <Link
           href="#"
-          className="hover:bg-muted block space-y-4 rounded-md border p-4 transition-colors">
+          className="hover:bg-muted block space-y-4 rounded-md border p-4 transition-colors"
+        >
           <div className="space-y-2">
             <div className="text-xl font-semibold">Full-Stack Developer</div>
             <Progress value={pathProgress} indicatorColor="bg-orange-600" />

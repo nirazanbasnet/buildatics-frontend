@@ -31,9 +31,7 @@ export function FontSelector() {
   return (
     <div className="flex flex-col gap-3">
       <Label>Font:</Label>
-      <Select
-        value={theme.font}
-        onValueChange={(value) => setTheme({ ...theme, font: value })}>
+      <Select value={theme.font} onValueChange={(value) => setTheme({ ...theme, font: value })}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a font" />
         </SelectTrigger>

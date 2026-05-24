@@ -46,14 +46,16 @@ export default function NoteContent() {
               variant={viewMode === "masonry" ? "default" : "ghost"}
               size="sm"
               className="rounded-none"
-              onClick={() => setViewMode("masonry")}>
+              onClick={() => setViewMode("masonry")}
+            >
               <LayoutGridIcon className="h-4 w-4" />
             </Button>
             <Button
               variant={viewMode === "list" ? "default" : "ghost"}
               size="sm"
               className="rounded-none"
-              onClick={() => setViewMode("list")}>
+              onClick={() => setViewMode("list")}
+            >
               <ListIcon className="h-4 w-4" />
             </Button>
           </div>
@@ -85,7 +87,8 @@ export default function NoteContent() {
         className={cn("group", {
           "box-border columns-1 gap-4 [column-fill:_balance] group-data-[theme-content-layout=centered]/layout:columns-3 group-data-[theme-content-layout=full]/layout:columns-1 sm:group-data-[theme-content-layout=full]:columns-2 md:group-data-[theme-content-layout=full]/layout:columns-3 lg:columns-2 xl:group-data-[theme-content-layout=full]/layout:columns-4":
             viewMode === "masonry"
-        })}>
+        })}
+      >
         {filteredNotes.map((note: Note, key: number) => (
           <NoteListItem key={key} note={note} />
         ))}

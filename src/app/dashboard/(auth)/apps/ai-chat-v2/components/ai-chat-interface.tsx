@@ -172,7 +172,8 @@ export default function AIChatInterface() {
       {dismiss && (
         <button
           onClick={() => handleRemoveFile(index)}
-          className="hover:bg-secondary/50 rounded-full p-1">
+          className="hover:bg-secondary/50 rounded-full p-1"
+        >
           <X className="size-4" />
         </button>
       )}
@@ -190,7 +191,8 @@ export default function AIChatInterface() {
           hidden: !isFirstResponse
         })}
         ref={containerRef}
-        scrollToRef={bottomRef}>
+        scrollToRef={bottomRef}
+      >
         {messages.map((message, index) => {
           const isAssistant = message.role === "assistant";
           const isLastMessage = index === messages.length - 1;
@@ -198,11 +200,13 @@ export default function AIChatInterface() {
           return (
             <Message
               key={message.id}
-              className={message.role === "user" ? "justify-end" : "justify-start"}>
+              className={message.role === "user" ? "justify-end" : "justify-start"}
+            >
               <div
                 className={cn("max-w-[85%] flex-1 sm:max-w-[75%]", {
                   "justify-end text-end": !isAssistant
-                })}>
+                })}
+              >
                 {isAssistant ? (
                   <div className="space-y-2">
                     <div className="bg-muted text-foreground prose rounded-lg border p-4">
@@ -212,7 +216,8 @@ export default function AIChatInterface() {
                       className={cn(
                         "flex gap-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100",
                         isLastMessage && "opacity-100"
-                      )}>
+                      )}
+                    >
                       <MessageAction tooltip="Copy" delayDuration={100}>
                         <Button variant="ghost" size="icon" className="rounded-full">
                           <CopyIcon />
@@ -300,7 +305,8 @@ export default function AIChatInterface() {
           value={prompt}
           onValueChange={setPrompt}
           onSubmit={streamResponse}
-          className="w-full overflow-hidden border-0 p-0 shadow-none">
+          className="w-full overflow-hidden border-0 p-0 shadow-none"
+        >
           {files.length > 0 && (
             <div className="flex flex-wrap gap-2 pb-2">
               {files.map((file, index) => (
@@ -316,7 +322,8 @@ export default function AIChatInterface() {
               <PromptInputAction tooltip="Attach files">
                 <label
                   htmlFor="file-upload"
-                  className="hover:bg-secondary-foreground/10 flex size-8 cursor-pointer items-center justify-center rounded-2xl">
+                  className="hover:bg-secondary-foreground/10 flex size-8 cursor-pointer items-center justify-center rounded-2xl"
+                >
                   <input
                     type="file"
                     multiple
@@ -358,7 +365,8 @@ export default function AIChatInterface() {
                   size="icon"
                   className="size-8 rounded-full"
                   onClick={streamResponse}
-                  disabled={!prompt.trim()}>
+                  disabled={!prompt.trim()}
+                >
                   {isStreaming ? <SquareIcon /> : <ArrowUpIcon />}
                 </Button>
               </PromptInputAction>
@@ -381,7 +389,8 @@ export default function AIChatInterface() {
                       setActiveCategory("");
                       // Optional: auto-send
                       // handleSend()
-                    }}>
+                    }}
+                  >
                     {suggestion}
                   </Suggestion>
                 ))}
@@ -396,7 +405,8 @@ export default function AIChatInterface() {
                       setActiveCategory(suggestion.label);
                       setPrompt(""); // Clear input when selecting a category
                     }}
-                    className="capitalize">
+                    className="capitalize"
+                  >
                     {suggestion.icon && <suggestion.icon />}
                     {suggestion.label}
                   </Suggestion>

@@ -78,7 +78,8 @@ export function RecentTasks() {
             className={cn(
               "flex items-start space-x-3 rounded-md border p-3 transition-colors",
               task.completed && "bg-muted/50"
-            )}>
+            )}
+          >
             <Checkbox
               checked={task.completed}
               onCheckedChange={() => toggleTaskStatus(task.id)}
@@ -89,7 +90,8 @@ export function RecentTasks() {
                 className={cn(
                   "text-sm leading-none font-medium",
                   task.completed && "text-muted-foreground line-through"
-                )}>
+                )}
+              >
                 {task.title}
               </p>
               <p className={cn("text-muted-foreground text-xs", task.completed && "line-through")}>
@@ -102,7 +104,8 @@ export function RecentTasks() {
                     task.priority === "high" && "bg-red-100 text-red-700",
                     task.priority === "medium" && "bg-amber-100 text-amber-700",
                     task.priority === "low" && "bg-green-100 text-green-700"
-                  )}>
+                  )}
+                >
                   {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
                 </div>
                 <span className="text-muted-foreground text-xs">Due {task.dueDate}</span>

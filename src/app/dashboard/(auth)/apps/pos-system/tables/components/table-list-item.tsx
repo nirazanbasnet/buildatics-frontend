@@ -4,10 +4,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 import { useStore, Table } from "../../store";
-import {
-  EnumTableStatus,
-  EnumTableStatusColor
-} from "../../enums";
+import { EnumTableStatus, EnumTableStatusColor } from "../../enums";
 
 import { Badge } from "@/components/ui/badge";
 import TableDetailDialog from "./table-detail-dialog";
@@ -34,12 +31,14 @@ export default function TableListItem({ table }: TableListItem) {
         className={cn(
           "cursor-pointer overflow-hidden rounded-lg border p-4 transition-all",
           EnumTableStatusColor[table.status as EnumTableStatus].card
-        )}>
+        )}
+      >
         <div className="mb-2 flex items-center justify-between">
           <h3 className="font-medium lg:text-lg">{table.name}</h3>
           <Badge
             variant={EnumTableStatusColor[table.status as EnumTableStatus].badge}
-            className="capitalize">
+            className="capitalize"
+          >
             {table.status}
           </Badge>
         </div>

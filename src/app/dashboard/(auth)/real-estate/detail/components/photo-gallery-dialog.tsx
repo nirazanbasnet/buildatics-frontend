@@ -31,7 +31,7 @@ export function PhotoGalleryDialog({ images }: PhotoGalleryDialogProps) {
           {images.length} photos
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-4xl p-0 border-0">
+      <DialogContent className="border-0 p-0 sm:max-w-4xl">
         <VisuallyHidden>
           <DialogHeader>
             <DialogTitle>Photo Gallery</DialogTitle>

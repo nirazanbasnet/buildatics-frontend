@@ -35,7 +35,8 @@ export default function POStSystemCartSheet({ setShowAssignOrderDialogAction }: 
             variant="outline"
             size="icon"
             className="bg-muted! fixed end-4 bottom-4 lg:hidden"
-            aria-label="Cart">
+            aria-label="Cart"
+          >
             <span className="relative">
               <ShoppingBasketIcon size={16} aria-hidden="true" />
               <Badge className="absolute -top-5 left-full size-5 min-w-5 -translate-x-1/2 rounded-full px-1">
@@ -88,7 +89,8 @@ export default function POStSystemCartSheet({ setShowAssignOrderDialogAction }: 
                   onClick={() => {
                     createOrder();
                     setShowAssignOrderDialogAction(true);
-                  }}>
+                  }}
+                >
                   <Utensils />
                   Create Order
                 </Button>

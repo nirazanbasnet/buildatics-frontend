@@ -89,7 +89,8 @@ export function TeamMembersCard() {
             </div>
             <Popover
               open={openIndex === key}
-              onOpenChange={(isOpen) => setOpenIndex(isOpen ? key : null)}>
+              onOpenChange={(isOpen) => setOpenIndex(isOpen ? key : null)}
+            >
               <PopoverTrigger asChild>
                 <Button variant="outline" className="shrink-0">
                   {roles.find((role) => role.id === member.role_id)?.name}{" "}
@@ -113,7 +114,8 @@ export function TeamMembersCard() {
                             );
                             setOpenIndex(null);
                           }}
-                          className="teamaspace-y-1 flex items-start px-4 py-2">
+                          className="teamaspace-y-1 flex items-start px-4 py-2"
+                        >
                           <div>
                             <p>{role.name}</p>
                             <p className="text-muted-foreground text-sm">{role.description}</p>

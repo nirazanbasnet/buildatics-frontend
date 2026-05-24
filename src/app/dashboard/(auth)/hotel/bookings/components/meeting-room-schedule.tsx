@@ -129,7 +129,8 @@ export function MeetingRoomSchedule() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="p-0 hover:bg-transparent">
+            className="p-0 hover:bg-transparent"
+          >
             ID
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
@@ -142,7 +143,8 @@ export function MeetingRoomSchedule() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="p-0 hover:bg-transparent">
+            className="p-0 hover:bg-transparent"
+          >
             Name
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
@@ -196,7 +198,8 @@ export function MeetingRoomSchedule() {
               <DropdownMenuItem>Edit</DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => setBookingToDelete(row.original)}
-                className="text-destructive focus:text-destructive">
+                className="text-destructive focus:text-destructive"
+              >
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -242,7 +245,8 @@ export function MeetingRoomSchedule() {
                   variant="ghost"
                   size="icon"
                   className="rounded-e-none border-e"
-                  onClick={goToPreviousDay}>
+                  onClick={goToPreviousDay}
+                >
                   <ChevronLeft />
                 </Button>
                 <div className="px-3 text-center text-sm lg:min-w-[140px]">
@@ -252,7 +256,8 @@ export function MeetingRoomSchedule() {
                   variant="ghost"
                   size="icon"
                   className="rounded-s-none border-s"
-                  onClick={goToNextDay}>
+                  onClick={goToNextDay}
+                >
                   <ChevronRight />
                 </Button>
               </div>
@@ -269,14 +274,16 @@ export function MeetingRoomSchedule() {
                 variant={viewMode === "grid" ? "secondary" : "ghost"}
                 size="icon"
                 className="rounded-r-none"
-                onClick={() => setViewMode("grid")}>
+                onClick={() => setViewMode("grid")}
+              >
                 <LayoutGrid />
               </Button>
               <Button
                 variant={viewMode === "list" ? "secondary" : "ghost"}
                 size="icon"
                 className="rounded-l-none"
-                onClick={() => setViewMode("list")}>
+                onClick={() => setViewMode("list")}
+              >
                 <List />
               </Button>
             </div>
@@ -296,7 +303,8 @@ export function MeetingRoomSchedule() {
                 {timeSlots.map((timeSlot, timeIndex) => (
                   <div
                     key={timeIndex}
-                    className="text-muted-foreground flex h-[120px] items-start justify-center border-b p-4 text-sm last:border-b-0">
+                    className="text-muted-foreground flex h-[120px] items-start justify-center border-b p-4 text-sm last:border-b-0"
+                  >
                     {timeSlot}
                   </div>
                 ))}
@@ -308,7 +316,8 @@ export function MeetingRoomSchedule() {
                   {rooms.map((room, roomIndex) => (
                     <div
                       key={roomIndex}
-                      className="w-[200px] flex-shrink-0 border-r last:border-r-0">
+                      className="w-[200px] flex-shrink-0 border-r last:border-r-0"
+                    >
                       {/* Room Header */}
                       <div className="text-muted-foreground flex h-[57px] items-center justify-center border-b p-4 text-center text-sm">
                         {room}
@@ -321,7 +330,8 @@ export function MeetingRoomSchedule() {
                         return (
                           <div
                             key={timeIndex}
-                            className={`group relative h-[120px] border-b p-2 last:border-b-0 ${isEmpty ? "hover:bg-muted/50" : ""}`}>
+                            className={`group relative h-[120px] border-b p-2 last:border-b-0 ${isEmpty ? "hover:bg-muted/50" : ""}`}
+                          >
                             {isEmpty && (
                               <div className="flex h-full items-center justify-center opacity-0 group-hover:opacity-100">
                                 <Button variant="outline" size="sm">
@@ -333,7 +343,8 @@ export function MeetingRoomSchedule() {
                             {slotBookings.map((booking, idx) => (
                               <Card
                                 key={`${booking.id}-${booking.room}-${booking.timeSlot}-${idx}`}
-                                className={`p-3 ${getCardStyle(booking.status)}`}>
+                                className={`p-3 ${getCardStyle(booking.status)}`}
+                              >
                                 <CardContent className="px-1">
                                   <div className="mb-1 flex items-start justify-between">
                                     <span className="text-foreground text-xs font-medium">
@@ -344,7 +355,8 @@ export function MeetingRoomSchedule() {
                                         <Button
                                           variant="ghost"
                                           size="icon-sm"
-                                          className="absolute end-3 top-3">
+                                          className="absolute end-3 top-3"
+                                        >
                                           <MoreHorizontal />
                                         </Button>
                                       </DropdownMenuTrigger>
@@ -352,7 +364,8 @@ export function MeetingRoomSchedule() {
                                         <DropdownMenuItem>Edit</DropdownMenuItem>
                                         <DropdownMenuItem
                                           onClick={() => setBookingToDelete(booking)}
-                                          className="text-destructive focus:text-destructive">
+                                          className="text-destructive focus:text-destructive"
+                                        >
                                           Delete
                                         </DropdownMenuItem>
                                       </DropdownMenuContent>
@@ -425,7 +438,8 @@ export function MeetingRoomSchedule() {
       {/* Delete Confirmation Dialog */}
       <AlertDialog
         open={!!bookingToDelete}
-        onOpenChange={(open) => !open && setBookingToDelete(null)}>
+        onOpenChange={(open) => !open && setBookingToDelete(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Booking</AlertDialogTitle>
@@ -438,7 +452,8 @@ export function MeetingRoomSchedule() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteBooking}
-              className="bg-destructive hover:bg-destructive/90">
+              className="bg-destructive hover:bg-destructive/90"
+            >
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>

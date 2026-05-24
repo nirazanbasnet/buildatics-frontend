@@ -18,7 +18,8 @@ export function SidebarModeSelector() {
         onValueChange={(value) => {
           if (!value) return;
           setTheme({ ...theme, sidebarMode: value });
-        }}>
+        }}
+      >
         {SIDEBAR_MODES.map((mode) => (
           <ToggleGroupItem key={mode.value} variant="outline" className="grow" value={mode.value}>
             {mode.name}

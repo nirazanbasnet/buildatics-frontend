@@ -165,7 +165,9 @@ export function ExchangeRates() {
         <CardTitle>Exchange rates</CardTitle>
         <CardAction>
           <div className="text-muted-foreground -mt-2 flex items-center space-x-2 text-sm">
-            <div><span className="hidden md:inline">Last updated:</span> 11:08 AM</div>
+            <div>
+              <span className="hidden md:inline">Last updated:</span> 11:08 AM
+            </div>
             <Button variant="ghost" size="sm">
               <RefreshCwIcon />
             </Button>
@@ -212,7 +214,8 @@ export function ExchangeRates() {
                 selectedPeriod === period
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-              }`}>
+              }`}
+            >
               {period}
             </button>
           ))}
@@ -220,14 +223,16 @@ export function ExchangeRates() {
 
         <ChartContainer
           config={chartConfig}
-          className="shadow-chart aspect-auto h-[250px] w-full rounded-lg">
+          className="shadow-chart aspect-auto h-[250px] w-full rounded-lg"
+        >
           <LineChart
             accessibilityLayer
             data={filteredChartData}
             margin={{
               left: 12,
               right: 12
-            }}>
+            }}
+          >
             <CartesianGrid vertical={false} className="stroke-border/50" />
             <XAxis
               dataKey="date"
@@ -273,7 +278,8 @@ export function ExchangeRates() {
         <div className="space-y-3">
           <Button
             className="from-primary to-chart-1 w-full bg-gradient-to-r transition-opacity hover:opacity-90"
-            size="lg">
+            size="lg"
+          >
             Convert Currencies
           </Button>
           <Button variant="outline" className="w-full" size="lg">

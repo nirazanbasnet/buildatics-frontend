@@ -24,7 +24,8 @@ export function Nav({ links, isCollapsed }: NavProps) {
   return (
     <div
       data-collapsed={isCollapsed}
-      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2">
+      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2"
+    >
       <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {links.map((link, index) =>
           isCollapsed ? (
@@ -37,7 +38,8 @@ export function Nav({ links, isCollapsed }: NavProps) {
                     "size-9",
                     link.variant === "default" &&
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                  )}>
+                  )}
+                >
                   {link.dot ?? <link.icon className="size-4" />}
                   <span className="sr-only">{link.title}</span>
                 </Link>
@@ -56,13 +58,15 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 link.variant === "default" &&
                   "dark:bg-muted dark:hover:bg-muted dark:text-white dark:hover:text-white",
                 "flex justify-start gap-3"
-              )}>
+              )}
+            >
               {link.dot ?? <link.icon className="size-4" />}
               {link.title}
               {link.label && (
                 <Badge
                   variant={link.variant === "default" ? "default" : "outline"}
-                  className="ml-auto">
+                  className="ml-auto"
+                >
                   {link.label}
                 </Badge>
               )}

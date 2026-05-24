@@ -253,7 +253,8 @@ export function EventDialog({ event, isOpen, onClose, onSave, onDelete }: EventD
                     className={cn(
                       "group bg-background hover:bg-background border-input w-full justify-between px-3 font-normal outline-offset-0 outline-none focus-visible:outline-[3px]",
                       !startDate && "text-muted-foreground"
-                    )}>
+                    )}
+                  >
                     <span className={cn("truncate", !startDate && "text-muted-foreground")}>
                       {startDate ? format(startDate, "PPP") : "Pick a date"}
                     </span>
@@ -315,7 +316,8 @@ export function EventDialog({ event, isOpen, onClose, onSave, onDelete }: EventD
                     className={cn(
                       "group bg-background hover:bg-background border-input w-full justify-between px-3 font-normal outline-offset-0 outline-none focus-visible:outline-[3px]",
                       !endDate && "text-muted-foreground"
-                    )}>
+                    )}
+                  >
                     <span className={cn("truncate", !endDate && "text-muted-foreground")}>
                       {endDate ? format(endDate, "PPP") : "Pick a date"}
                     </span>
@@ -382,7 +384,8 @@ export function EventDialog({ event, isOpen, onClose, onSave, onDelete }: EventD
               className="flex gap-1.5"
               defaultValue={colorOptions[0]?.value}
               value={color}
-              onValueChange={(value: EventColor) => setColor(value)}>
+              onValueChange={(value: EventColor) => setColor(value)}
+            >
               {colorOptions.map((colorOption) => (
                 <RadioGroupItem
                   key={colorOption.value}

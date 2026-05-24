@@ -1,15 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import {
-  Bath,
-  BedDouble,
-  Car,
-  Clock,
-  Maximize2,
-  Plus,
-  Share2,
-  Sofa,
-  ZoomIn
-} from "lucide-react";
+import { motion } from "motion/react";
+import { Bath, BedDouble, Car, Clock, Maximize2, Plus, Share2, Sofa, ZoomIn } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,77 +16,88 @@ type Props = {
   property: Property;
   view?: PropertyView;
   imageClassName?: string;
+  index?: number;
 };
 
-export function PropertyCard({ property, view = "facade", imageClassName }: Props) {
+export function PropertyCard({ property, view = "facade", imageClassName, index = 0 }: Props) {
   const src = view === "floor" ? property.floorPlan : property.facade;
   return (
-    <Card className="overflow-hidden gap-0 p-0">
-      <div className="relative">
-        <Image
-          src={src}
-          alt={`${property.title} ${view === "floor" ? "floor plan" : "facade"}`}
-          width={900}
-          height={560}
-          className={cn(
-            "h-82.5 w-full object-cover",
-            view === "floor" && "object-contain bg-muted",
-            imageClassName
-          )}
-        />
-        <div className="absolute right-3 top-3 flex flex-col gap-2">
-          <Button
-            size="icon"
-            variant="secondary"
-            className="bg-background/80 size-8 rounded-full backdrop-blur hover:bg-background">
-            <ZoomIn className="size-4" />
-          </Button>
-          <Button
-            size="icon"
-            variant="secondary"
-            className="bg-background/80 size-8 rounded-full backdrop-blur hover:bg-background">
-            <Share2 className="size-4" />
-          </Button>
-        </div>
-        <Badge
-          variant="secondary"
-          className="bg-background text-foreground absolute bottom-3 left-3 rounded-full px-3 py-1 font-medium">
-          {property.brand}
-        </Badge>
-        <Badge
-          variant="secondary"
-          className="bg-background text-foreground absolute bottom-3 right-3 gap-1 rounded-full px-3 py-1 font-medium">
-          <Clock className="size-3" />
-          Version {property.version}
-        </Badge>
-      </div>
-
-      <div className="space-y-3 p-4">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-lg font-semibold">{property.title}</h3>
-          <Button size="sm" className="rounded-md">
-            <Plus className="size-4" />
-            Add Lead
-          </Button>
-        </div>
-
-        <div className="flex items-center justify-between gap-2">
-          <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
-            <Maximize2 className="size-4" />
-            <span>
-              {property.width}W X {property.depth}D
-            </span>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+    >
+      <Card className="group gap-0 overflow-hidden p-0 transition duration-300 hover:-translate-y-1.5 hover:shadow-lg">
+        <div className="relative">
+          <Image
+            src={src}
+            alt={`${property.title} ${view === "floor" ? "floor plan" : "facade"}`}
+            width={900}
+            height={560}
+            className={cn(
+              "h-82.5 w-full object-cover transition-transform duration-500 group-hover:scale-105",
+              view === "floor" && "bg-muted dark:bg-stone-100",
+              imageClassName
+            )}
+          />
+          <div className="absolute top-3 right-3 flex flex-col gap-2">
+            <Button
+              size="icon"
+              variant="secondary"
+              className="bg-foreground/80 text-background hover:bg-foreground size-8 rounded-full backdrop-blur"
+            >
+              <ZoomIn className="size-4" />
+            </Button>
+            <Button
+              size="icon"
+              variant="secondary"
+              className="bg-foreground/80 text-background hover:bg-foreground size-8 rounded-full backdrop-blur"
+            >
+              <Share2 className="size-4" />
+            </Button>
           </div>
-          <Badge variant="secondary" className="rounded-md">
-            {property.squareFootage} sq
+          <Badge
+            variant="secondary"
+            className="bg-background text-foreground absolute bottom-3 left-3 rounded-full px-3 py-1 font-medium"
+          >
+            {property.brand}
+          </Badge>
+          <Badge
+            variant="secondary"
+            className="bg-background text-foreground absolute right-3 bottom-3 gap-1 rounded-full px-3 py-1 font-medium"
+          >
+            <Clock className="size-3" />
+            Version {property.version}
           </Badge>
         </div>
 
-        <Separator />
+        <div className="space-y-3 p-4">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-lg font-semibold">{property.title}</h3>
+            <Button size="sm" className="rounded-md">
+              <Plus className="size-4" />
+              Add Lead
+            </Button>
+          </div>
 
-        <PropertyStats property={property} />
-      </div>
-    </Card>
+          <div className="flex items-center justify-between gap-2">
+            <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
+              <Maximize2 className="size-4" />
+              <span>
+                {property.width}W X {property.depth}D
+              </span>
+            </div>
+            <Badge variant="secondary" className="rounded-md">
+              {property.squareFootage} sq
+            </Badge>
+          </div>
+
+          <Separator />
+
+          <PropertyStats property={property} />
+        </div>
+      </Card>
+    </motion.div>
   );
 }
 
@@ -111,13 +115,7 @@ export function PropertyStats({ property }: { property: Property }) {
   );
 }
 
-function Stat({
-  icon: Icon,
-  value
-}: {
-  icon: typeof BedDouble;
-  value: string;
-}) {
+function Stat({ icon: Icon, value }: { icon: typeof BedDouble; value: string }) {
   return (
     <div className="flex items-center gap-1.5">
       <Icon className="size-4" />

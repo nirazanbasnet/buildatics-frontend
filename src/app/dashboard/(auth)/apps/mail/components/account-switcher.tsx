@@ -31,7 +31,8 @@ export function AccountSwitcher({ isCollapsed, accounts }: AccountSwitcherProps)
           isCollapsed &&
             "flex h-9 w-9 shrink-0 items-center justify-center p-0 [&>span]:w-auto [&>svg]:hidden"
         )}
-        aria-label="Select account">
+        aria-label="Select account"
+      >
         <SelectValue placeholder="Select an account">
           {accounts.find((account) => account.email === selectedAccount)?.icon}
           <span className={cn("ml-1", isCollapsed && "hidden")}>

@@ -93,7 +93,8 @@ export function EcommerceCustomerReviewsCard() {
                 <div className="bg-muted mx-2 h-3 flex-1 overflow-hidden rounded-full">
                   <div
                     className={`h-full ${stat.color} rounded-full`}
-                    style={{ width: `${stat.percentage}%` }}></div>
+                    style={{ width: `${stat.percentage}%` }}
+                  ></div>
                 </div>
                 <div className="text-muted-foreground w-12 text-right text-sm font-medium">
                   {stat.count}

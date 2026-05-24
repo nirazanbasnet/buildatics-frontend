@@ -28,7 +28,8 @@ export function CourseContent({ data }: CourseContentProps) {
             variant="ghost"
             size="sm"
             className="mt-2"
-            onClick={() => setIsExpanded(!isExpanded)}>
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
             {isExpanded ? "Show less" : "Show more"}
             <ChevronDown
               className={`ml-1 transition-transform ${isExpanded ? "rotate-180" : ""}`}

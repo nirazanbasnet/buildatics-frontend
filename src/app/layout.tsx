@@ -37,17 +37,22 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script src="https://dashboard.shadcnuikit.com/iframe-listener.js" strategy="afterInteractive" />
+        <Script
+          src="https://dashboard.shadcnuikit.com/iframe-listener.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         suppressHydrationWarning
         className={cn("bg-background group/layout font-sans", fontVariables)}
-        {...bodyAttributes}>
+        {...bodyAttributes}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
-          disableTransitionOnChange>
+          disableTransitionOnChange
+        >
           <ActiveThemeProvider initialTheme={themeSettings}>
             {children}
             <Toaster position="top-center" richColors />

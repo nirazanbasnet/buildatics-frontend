@@ -14,7 +14,8 @@ export function ColorModeSelector() {
         className="w-full"
         value={theme}
         type="single"
-        onValueChange={(value) => setTheme(value)}>
+        onValueChange={(value) => setTheme(value)}
+      >
         <ToggleGroupItem variant="outline" className="grow" value="light">
           Light
         </ToggleGroupItem>

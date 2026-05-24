@@ -118,7 +118,8 @@ export default function Page() {
                               className={cn({
                                 "text-green-600": transaction.type === "payment",
                                 "text-red-400": transaction.type === "withdrawal"
-                              })}>
+                              })}
+                            >
                               {transaction.amount}
                             </span>
                             <Button variant="outline" size="sm">

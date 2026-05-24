@@ -108,15 +108,24 @@ export default function Page() {
 
       <section className="grid gap-3 lg:grid-cols-3">
         <div className="relative min-h-[250px] overflow-hidden rounded-md border lg:col-span-2 lg:min-h-[420px]">
-          <img src={mainImage.url} alt={mainImage.alt} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={mainImage.url}
+            alt={mainImage.alt}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
           {subImages.map((image, index) => (
             <div
               className="relative min-h-[200px] overflow-hidden rounded-md border lg:min-h-[200px]"
-              key={image.url}>
-              <img src={image.url} alt={image.alt} className="absolute inset-0 h-full w-full object-cover" />
+              key={image.url}
+            >
+              <img
+                src={image.url}
+                alt={image.alt}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
               {index === subImages.length - 1 && (
                 <div className="absolute right-3 bottom-3">
                   <PhotoGalleryDialog images={detail.gallery} />
@@ -210,7 +219,7 @@ export default function Page() {
       <section className="grid gap-4 lg:grid-cols-[280px_1fr]">
         <Card className="py-5">
           <CardContent className="px-5">
-            <h2 className="mb-4 text-2xl font-semibold">What's special</h2>
+            <h2 className="mb-4 text-2xl font-semibold">What&apos;s special</h2>
             <div className="flex flex-wrap gap-2">
               {detail.specials.map((item) => (
                 <Badge variant="outline" key={item}>

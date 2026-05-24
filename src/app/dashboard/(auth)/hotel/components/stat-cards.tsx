@@ -84,7 +84,8 @@ export function StatCards() {
                   className={cn(
                     "flex size-8 items-center justify-center rounded-xl lg:size-10",
                     colorClasses[item.color].icon
-                  )}>
+                  )}
+                >
                   <IconComponent className="size-4 text-white/90 lg:size-5" />
                 </div>
                 <DropdownMenu>
@@ -101,7 +102,8 @@ export function StatCards() {
               </div>
               <p className="text-muted-foreground text-sm">{item.title}</p>
               <p
-                className={cn("text-2xl font-semibold lg:text-3xl", colorClasses[item.color].text)}>
+                className={cn("text-2xl font-semibold lg:text-3xl", colorClasses[item.color].text)}
+              >
                 {item.value}
               </p>
               <p className="text-muted-foreground text-sm">Unit Number: {item.unitNumber}</p>

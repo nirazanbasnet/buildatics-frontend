@@ -31,7 +31,8 @@ export function LeadsContact({ items }: LeadsContactProps) {
         {items.map((lead) => (
           <div
             key={lead.id}
-            className="hover:bg-muted flex items-center justify-between rounded-lg p-2">
+            className="hover:bg-muted flex items-center justify-between rounded-lg p-2"
+          >
             <div className="flex min-w-0 items-center gap-3">
               <Avatar>
                 <AvatarImage src={lead.avatar} />

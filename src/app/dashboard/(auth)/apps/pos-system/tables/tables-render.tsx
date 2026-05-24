@@ -60,23 +60,27 @@ export default function PosSystemTableRender({ tableCategories, tables }: PosSys
             <RadioGroup
               className="flex gap-4"
               defaultValue="all"
-              onValueChange={(value) => setSelectedCategory(value === "all" ? null : value)}>
+              onValueChange={(value) => setSelectedCategory(value === "all" ? null : value)}
+            >
               <div className="has-data-[state=checked]:border-primary has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex cursor-pointer flex-col items-center gap-4 rounded-md border px-4 py-4 text-center outline-none">
                 <RadioGroupItem id={`c-all`} value="all" className="sr-only" />
                 <label
                   htmlFor={`c-all`}
-                  className="text-foreground cursor-pointer leading-none after:absolute after:inset-0">
+                  className="text-foreground cursor-pointer leading-none after:absolute after:inset-0"
+                >
                   All
                 </label>
               </div>
               {tableCategories.map((category) => (
                 <div
                   key={category.id}
-                  className="has-data-[state=checked]:border-primary has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex cursor-pointer flex-col items-center gap-4 rounded-md border px-4 py-4 text-center outline-none">
+                  className="has-data-[state=checked]:border-primary has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex cursor-pointer flex-col items-center gap-4 rounded-md border px-4 py-4 text-center outline-none"
+                >
                   <RadioGroupItem id={`c-${category.id}`} value={category.id} className="sr-only" />
                   <label
                     htmlFor={`c-${category.id}`}
-                    className="text-foreground cursor-pointer leading-none after:absolute after:inset-0">
+                    className="text-foreground cursor-pointer leading-none after:absolute after:inset-0"
+                  >
                     {category.name}
                   </label>
                 </div>

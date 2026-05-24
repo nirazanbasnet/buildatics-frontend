@@ -371,7 +371,8 @@ export function TableOrderStatus() {
                         key={column.id}
                         className="capitalize"
                         checked={column.getIsVisible()}
-                        onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                        onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                      >
                         {column.id}
                       </DropdownMenuCheckboxItem>
                     );
@@ -427,14 +428,16 @@ export function TableOrderStatus() {
                 variant="outline"
                 size="sm"
                 onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}>
+                disabled={!table.getCanPreviousPage()}
+              >
                 Previous
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}>
+                disabled={!table.getCanNextPage()}
+              >
                 Next
               </Button>
             </div>

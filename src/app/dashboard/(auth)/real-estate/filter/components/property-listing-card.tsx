@@ -27,7 +27,8 @@ export function PropertyListingCard({
   return (
     <Card
       className="cursor-pointer gap-4 overflow-hidden pt-0 transition-shadow hover:shadow-lg"
-      onClick={() => onOpenDetail(property)}>
+      onClick={() => onOpenDetail(property)}
+    >
       <div className="relative">
         <img src={property.image} alt={property.title} className="h-48 w-full object-cover" />
         <Button
@@ -39,7 +40,8 @@ export function PropertyListingCard({
             {
               "text-destructive": isFavorite
             }
-          )}>
+          )}
+        >
           <Heart fill={isFavorite ? "currentColor" : "none"} />
         </Button>
       </div>

@@ -27,7 +27,8 @@ export function BalanceOverview() {
         {balances.map((balance) => (
           <Card
             key={balance.currency}
-            className={`cursor-pointer transition-shadow hover:shadow-md`}>
+            className={`cursor-pointer transition-shadow hover:shadow-md`}
+          >
             <CardContent>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">

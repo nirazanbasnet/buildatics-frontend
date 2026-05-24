@@ -77,7 +77,8 @@ export function EcommerceReturnRateCard() {
             margin={{
               left: 12,
               right: 12
-            }}>
+            }}
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"

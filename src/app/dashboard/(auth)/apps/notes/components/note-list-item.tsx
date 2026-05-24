@@ -58,9 +58,10 @@ export default function NoteListItem({ note }: { note: Note }) {
                     <label
                       htmlFor={`checklist_${note.id}_${key}`}
                       className={cn(
-                        "text-sm leading-none font-medium cursor-pointer",
+                        "cursor-pointer text-sm leading-none font-medium",
                         isChecked && "text-muted-foreground line-through"
-                      )}>
+                      )}
+                    >
                       {item.text}
                     </label>
                   </li>

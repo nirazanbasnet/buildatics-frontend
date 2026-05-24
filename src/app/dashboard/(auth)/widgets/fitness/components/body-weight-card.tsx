@@ -45,7 +45,8 @@ export function BodyWeightCard() {
             margin={{
               left: 5,
               right: 5
-            }}>
+            }}
+          >
             <CartesianGrid stroke="var(--color-slate-600)" vertical={false} />
             <XAxis
               dataKey="month"

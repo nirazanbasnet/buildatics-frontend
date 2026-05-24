@@ -197,7 +197,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
               size="sm"
               pressed={filterUser?.includes(user) || false}
               onPressedChange={(pressed) => handleUserFilterChange(user, pressed)}
-              className="px-3 text-xs">
+              className="px-3 text-xs"
+            >
               {user}
             </Toggle>
           ))}
@@ -219,7 +220,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
               size="sm"
               pressed={filterPriority?.includes(priority) || false}
               onPressedChange={() => setFilterPriority(priority)}
-              className="px-3 text-xs capitalize">
+              className="px-3 text-xs capitalize"
+            >
               <span className={cn("size-2 rounded-full", priorityDotColors[priority])}></span>
               {priority}
             </Toggle>
@@ -248,7 +250,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
-          onDragCancel={handleDragCancel}>
+          onDragCancel={handleDragCancel}
+        >
           <SortableContext items={items} strategy={rectSortingStrategy}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredTodos.map((todo) => (
@@ -284,7 +287,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
-        modifiers={[restrictToVerticalAxis]}>
+        modifiers={[restrictToVerticalAxis]}
+      >
         <SortableContext items={items} strategy={rectSortingStrategy}>
           <div className="grid grid-cols-1 space-y-4">
             {filteredTodos.map((todo) => (
@@ -337,7 +341,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
                 {(filterUser || filterPriority || showStarredOnly) && (
                   <Badge
                     variant="secondary"
-                    className="absolute -end-1.5 -top-1.5 size-4 rounded-full p-0">
+                    className="absolute -end-1.5 -top-1.5 size-4 rounded-full p-0"
+                  >
                     {(filterUser ? 1 : 0) + (filterPriority ? 1 : 0) + (showStarredOnly ? 1 : 0)}
                   </Badge>
                 )}
@@ -353,7 +358,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
             type="single"
             variant="outline"
             value={viewMode}
-            onValueChange={(value) => value && setViewMode(value as "list" | "grid")}>
+            onValueChange={(value) => value && setViewMode(value as "list" | "grid")}
+          >
             <ToggleGroupItem value="list" aria-label="List view">
               <ListIcon />
             </ToggleGroupItem>
@@ -369,7 +375,8 @@ export default function TodoList({ activeTab, onSelectTodo, onAddTodoClick }: To
                 <Button
                   size="icon"
                   onClick={onAddTodoClick}
-                  className="fixed end-6 bottom-6 z-10 rounded-full! md:size-14">
+                  className="fixed end-6 bottom-6 z-10 rounded-full! md:size-14"
+                >
                   <Plus className="md:size-6" />
                 </Button>
               </TooltipTrigger>

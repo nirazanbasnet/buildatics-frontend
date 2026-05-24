@@ -155,7 +155,8 @@ export function CampaignOverview() {
         <ChartContainer config={chartConfig} className="aspect-video w-full md:h-[180px]">
           <LineChart
             data={campaignData.chartData}
-            margin={{ top: 20, right: 20, bottom: 20, left: -15 }}>
+            margin={{ top: 20, right: 20, bottom: 20, left: -15 }}
+          >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
             <XAxis
               dataKey="date"

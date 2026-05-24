@@ -170,7 +170,8 @@ const AddTodoSheet: React.FC<AddTodoSheetProps> = ({ isOpen, onClose, editTodoId
                     variant="outline"
                     className="cursor-pointer"
                     key={user}
-                    onClick={() => removeAssignedUser(user)}>
+                    onClick={() => removeAssignedUser(user)}
+                  >
                     {user}
                     <X className="size-3" />
                   </Badge>
@@ -213,7 +214,8 @@ const AddTodoSheet: React.FC<AddTodoSheetProps> = ({ isOpen, onClose, editTodoId
                           className={cn(
                             "w-full justify-start text-left font-normal",
                             !field.value && "text-muted-foreground"
-                          )}>
+                          )}
+                        >
                           <CalendarIcon />
                           {field.value ? format(field.value, "PPP") : "Select a date"}
                         </Button>
@@ -247,7 +249,8 @@ const AddTodoSheet: React.FC<AddTodoSheetProps> = ({ isOpen, onClose, editTodoId
                           className={cn(
                             "w-full justify-start text-left font-normal",
                             !field.value && "text-muted-foreground"
-                          )}>
+                          )}
+                        >
                           <CalendarIcon />
                           {field.value ? format(field.value, "PPP") : "Select a date"}
                         </Button>
@@ -283,10 +286,8 @@ const AddTodoSheet: React.FC<AddTodoSheetProps> = ({ isOpen, onClose, editTodoId
                           {Object.values(EnumTodoStatus).map((status) => (
                             <SelectItem key={status} value={status}>
                               <span
-                                className={cn(
-                                  "size-2 rounded-full",
-                                  statusDotColors[status]
-                                )}></span>
+                                className={cn("size-2 rounded-full", statusDotColors[status])}
+                              ></span>
                               {todoStatusNamed[status]}
                             </SelectItem>
                           ))}
@@ -313,10 +314,8 @@ const AddTodoSheet: React.FC<AddTodoSheetProps> = ({ isOpen, onClose, editTodoId
                           {Object.values(EnumTodoPriority).map((priority) => (
                             <SelectItem className="capitalize" key={priority} value={priority}>
                               <span
-                                className={cn(
-                                  "size-2 rounded-full",
-                                  priorityDotColors[priority]
-                                )}></span>
+                                className={cn("size-2 rounded-full", priorityDotColors[priority])}
+                              ></span>
                               {priority}
                             </SelectItem>
                           ))}

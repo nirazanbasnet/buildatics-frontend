@@ -81,7 +81,8 @@ export function EventsPopup({ date, events, position, onClose, onEventSelect }: 
       style={{
         top: `${adjustedPosition.top}px`,
         left: `${adjustedPosition.left}px`
-      }}>
+      }}
+    >
       <div className="bg-background sticky top-0 flex items-center justify-between border-b p-3">
         <h3 className="font-medium">{format(date, "d MMMM yyyy")}</h3>
         <button onClick={onClose} className="hover:bg-muted rounded-full p-1" aria-label="Close">
@@ -103,7 +104,8 @@ export function EventsPopup({ date, events, position, onClose, onEventSelect }: 
               <div
                 key={event.id}
                 className="cursor-pointer"
-                onClick={() => handleEventClick(event)}>
+                onClick={() => handleEventClick(event)}
+              >
                 <EventItem
                   event={event}
                   view="agenda"

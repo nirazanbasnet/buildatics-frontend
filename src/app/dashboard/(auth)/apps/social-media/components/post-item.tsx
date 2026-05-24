@@ -182,7 +182,8 @@ export function PostItem({ post }: { post: Post }) {
               variant="ghost"
               size="icon"
               className="rounded-full"
-              onClick={() => toggleLike(post.id)}>
+              onClick={() => toggleLike(post.id)}
+            >
               <Heart
                 className={` ${likedPosts.has(post.id) ? "fill-destructive text-destructive" : ""}`}
               />
@@ -191,7 +192,8 @@ export function PostItem({ post }: { post: Post }) {
               variant="ghost"
               size="icon"
               className="rounded-full"
-              onClick={() => toggleComments(post.id)}>
+              onClick={() => toggleComments(post.id)}
+            >
               <MessageCircle />
             </Button>
             <Button variant="ghost" className="rounded-full" size="icon">
@@ -202,7 +204,8 @@ export function PostItem({ post }: { post: Post }) {
             variant="ghost"
             className="rounded-full"
             size="icon"
-            onClick={() => toggleSave(post.id)}>
+            onClick={() => toggleSave(post.id)}
+          >
             <Bookmark
               className={` ${savedPosts.has(post.id) ? "fill-blue-500 text-blue-500" : ""}`}
             />
@@ -241,7 +244,8 @@ export function PostItem({ post }: { post: Post }) {
         <Button
           variant="link"
           className="text-muted-foreground hover:text-foreground h-auto p-0 text-xs font-normal"
-          onClick={() => toggleComments(post.id)}>
+          onClick={() => toggleComments(post.id)}
+        >
           {expandedComments.has(post.id)
             ? "Hide comments"
             : `View all ${post.comments.length} comments`}
@@ -266,7 +270,8 @@ export function PostItem({ post }: { post: Post }) {
                       variant="ghost"
                       size="icon"
                       className="h-6 w-6"
-                      onClick={() => toggleCommentLike(comment.id)}>
+                      onClick={() => toggleCommentLike(comment.id)}
+                    >
                       <Heart
                         className={`h-3 w-3 ${
                           likedComments.has(comment.id) ? "fill-destructive text-destructive" : ""
@@ -311,7 +316,8 @@ export function PostItem({ post }: { post: Post }) {
           variant="ghost"
           size="sm"
           disabled={!newComments[post.id]?.trim()}
-          onClick={() => handleAddComment(post.id)}>
+          onClick={() => handleAddComment(post.id)}
+        >
           Post
         </Button>
       </div>

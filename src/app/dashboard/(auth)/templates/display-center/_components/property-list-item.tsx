@@ -17,23 +17,20 @@ export function PropertyListItem({
   const src = view === "floor" ? property.floorPlan : property.facade;
   return (
     <div className="hover:bg-accent/40 group bg-card flex items-center gap-4 rounded-lg border p-3 transition-colors">
-      <div className="relative size-20 shrink-0 overflow-hidden rounded-md bg-muted">
+      <div className="bg-muted relative size-20 shrink-0 overflow-hidden rounded-md dark:bg-stone-100">
         <Image
           src={src}
           alt={`${property.title} ${view === "floor" ? "floor plan" : "facade"}`}
           width={200}
           height={200}
-          className={cn(
-            "h-full w-full",
-            view === "floor" ? "object-contain p-1" : "object-cover"
-          )}
+          className={cn("h-full w-full", "object-cover")}
         />
       </div>
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <h3 className="font-semibold truncate">{property.title}</h3>
-          <Badge variant="outline" className="rounded-full px-2 py-0 text-xs gap-1">
+          <h3 className="truncate font-semibold">{property.title}</h3>
+          <Badge variant="outline" className="gap-1 rounded-full px-2 py-0 text-xs">
             <Clock className="size-3" />v{property.version}
           </Badge>
           <Badge variant="secondary" className="rounded-full px-2 py-0 text-xs">
@@ -45,7 +42,7 @@ export function PropertyListItem({
         </p>
       </div>
 
-      <div className="hidden md:flex items-center gap-4 text-sm">
+      <div className="hidden items-center gap-4 text-sm md:flex">
         <CompactStat icon={BedDouble} value={property.beds} />
         <CompactStat icon={Bath} value={property.baths} />
         <CompactStat icon={Sofa} value={property.living} />

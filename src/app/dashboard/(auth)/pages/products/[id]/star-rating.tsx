@@ -24,7 +24,8 @@ export function StarRating({ rating, onRatingChangeAction, maxStars = 5 }: StarR
           type="button"
           onClick={() => handleStarClick(index + 1)}
           className="focus:outline-none"
-          aria-label={`Rate ${index + 1} out of ${maxStars} stars`}>
+          aria-label={`Rate ${index + 1} out of ${maxStars} stars`}
+        >
           <StarIcon
             className={cn(
               "size-8 cursor-pointer transition-all",

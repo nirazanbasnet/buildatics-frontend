@@ -48,7 +48,8 @@ export function StatCards() {
                     item.changeType === "positive"
                       ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
                       : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
-                  )}>
+                  )}
+                >
                   {item.changeType === "positive" ? (
                     <TrendingUp className="mr-0.5 -ml-1 h-5 w-5 shrink-0 self-center text-green-500" />
                   ) : (

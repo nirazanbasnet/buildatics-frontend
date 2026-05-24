@@ -68,7 +68,8 @@ export default function Page() {
               <div className="text-end">
                 <Link
                   href="/dashboard/forgot-password"
-                  className="ml-auto inline-block text-sm underline">
+                  className="ml-auto inline-block text-sm underline"
+                >
                   Forgot your password?
                 </Link>
               </div>

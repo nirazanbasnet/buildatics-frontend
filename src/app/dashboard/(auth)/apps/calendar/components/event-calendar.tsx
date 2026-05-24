@@ -260,14 +260,16 @@ export function EventCalendar({
           "--event-gap": `${EventGap}px`,
           "--week-cells-height": `${WeekCellsHeight}px`
         } as React.CSSProperties
-      }>
+      }
+    >
       <CalendarDndProvider onEventUpdate={handleEventUpdate}>
         <div className={cn("flex items-center justify-between p-2 sm:p-4", className)}>
           <div className="flex items-center gap-1 sm:gap-4">
             <Button
               variant="outline"
               className="max-[479px]:aspect-square max-[479px]:p-0!"
-              onClick={handleToday}>
+              onClick={handleToday}
+            >
               <RiCalendarCheckLine className="min-[480px]:hidden" size={16} aria-hidden="true" />
               <span className="max-[479px]:sr-only">Today</span>
             </Button>
@@ -317,7 +319,8 @@ export function EventCalendar({
               onClick={() => {
                 setSelectedEvent(null); // Ensure we're creating a new event
                 setIsEventDialogOpen(true);
-              }}>
+              }}
+            >
               <PlusIcon className="opacity-60 sm:-ms-1" size={16} aria-hidden="true" />
               <span className="max-sm:sr-only">New event</span>
             </Button>

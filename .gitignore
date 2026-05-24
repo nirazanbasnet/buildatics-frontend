@@ -45,6 +45,8 @@ next-env.d.ts
 .cursorrules
 .cursor
 
-.claude
+# Claude Code — track project settings + custom skills, exclude local + installed plugins
+.claude/settings.local.json
+.claude/plugins/
 
 .history

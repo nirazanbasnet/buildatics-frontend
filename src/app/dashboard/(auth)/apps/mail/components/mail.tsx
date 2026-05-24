@@ -53,7 +53,8 @@ export function Mail({
         onLayoutChange={(layout) => {
           document.cookie = `${cookieID}=${JSON.stringify(layout)}; path=/;`;
         }}
-        className="items-stretch">
+        className="items-stretch"
+      >
         <ResizablePanel
           id="left-panel"
           hidden={isMobile}
@@ -70,7 +71,8 @@ export function Mail({
               document.cookie = `${collapsedCookieID}=${JSON.stringify(false)}`;
             }
           }}
-          className={cn(isCollapsed && "max-w-[50px] transition-all duration-1000 ease-in-out")}>
+          className={cn(isCollapsed && "max-w-[50px] transition-all duration-1000 ease-in-out")}
+        >
           <NavDesktop isCollapsed={isCollapsed} />
         </ResizablePanel>
         <ResizableHandle hidden={isMobile} withHandle />
@@ -78,7 +80,8 @@ export function Mail({
           <Tabs
             defaultValue="all"
             className="flex h-full flex-col gap-0"
-            onValueChange={(value) => setTab(value)}>
+            onValueChange={(value) => setTab(value)}
+          >
             <div className="flex items-center px-4 py-2">
               <div className="flex items-center gap-2">
                 {isMobile && <NavMobile />}

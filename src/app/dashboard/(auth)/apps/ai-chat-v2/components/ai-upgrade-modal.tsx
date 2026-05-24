@@ -92,7 +92,8 @@ export const AIUpgradePricingModal = ({ children }: { children: React.ReactNode 
                 plan.popular
                   ? "border-primary scale-105 shadow-lg"
                   : "border-border hover:border-primary/50"
-              }`}>
+              }`}
+            >
               {plan.popular && (
                 <Badge className="bg-primary text-primary-foreground absolute -top-3 left-1/2 -translate-x-1/2">
                   Most Popular
@@ -101,7 +102,8 @@ export const AIUpgradePricingModal = ({ children }: { children: React.ReactNode 
 
               <div className="mb-4 flex items-center gap-2">
                 <div
-                  className={`rounded-md p-2 ${plan.popular ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
+                  className={`rounded-md p-2 ${plan.popular ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+                >
                   {plan.icon}
                 </div>
                 <h3 className="text-lg font-semibold">{plan.name}</h3>
@@ -128,7 +130,8 @@ export const AIUpgradePricingModal = ({ children }: { children: React.ReactNode 
                 className="w-full"
                 variant={plan.buttonVariant}
                 onClick={() => handleUpgrade(plan.id)}
-                disabled={plan.current || selectedPlan === plan.id}>
+                disabled={plan.current || selectedPlan === plan.id}
+              >
                 {selectedPlan === plan.id ? "Processing..." : plan.buttonText}
               </Button>
             </div>

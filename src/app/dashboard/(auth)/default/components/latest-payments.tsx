@@ -361,7 +361,8 @@ export function LatestPayments() {
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     variant="destructive"
-                    onClick={() => handleBulkAction("delete")}>
+                    onClick={() => handleBulkAction("delete")}
+                  >
                     <Trash2 />
                     Delete
                   </DropdownMenuItem>
@@ -418,14 +419,16 @@ export function LatestPayments() {
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>

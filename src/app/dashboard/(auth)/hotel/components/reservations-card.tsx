@@ -70,17 +70,20 @@ export function ReservationsCard() {
                             x={viewBox.cx}
                             y={viewBox.cy}
                             textAnchor="middle"
-                            dominantBaseline="middle">
+                            dominantBaseline="middle"
+                          >
                             <tspan
                               x={viewBox.cx}
                               y={viewBox.cy}
-                              className="fill-foreground text-2xl font-semibold lg:text-3xl">
+                              className="fill-foreground text-2xl font-semibold lg:text-3xl"
+                            >
                               {total.toLocaleString()}
                             </tspan>
                             <tspan
                               x={viewBox.cx}
                               y={(viewBox.cy || 0) + 24}
-                              className="fill-muted-foreground">
+                              className="fill-muted-foreground"
+                            >
                               Reservations
                             </tspan>
                           </text>

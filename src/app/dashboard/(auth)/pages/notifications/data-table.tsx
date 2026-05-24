@@ -126,7 +126,8 @@ export const columns: ColumnDef<Notification>[] = [
                 className={cn(
                   "flex size-10 items-center justify-center rounded-full text-white",
                   iconColor
-                )}>
+                )}
+              >
                 <Icon className="size-4" />
               </div>
             )}
@@ -136,13 +137,14 @@ export const columns: ColumnDef<Notification>[] = [
               </div>
               <div className="text-muted-foreground text-sm">{notification.description}</div>
               {notification.actions && notification.actions.length > 0 && (
-                <div className="flex gap-2 mt-3">
+                <div className="mt-3 flex gap-2">
                   {notification.actions.map((action, index) => (
                     <Button
                       key={index}
                       variant={action.variant || "outline"}
                       size="sm"
-                      onClick={action.onClick}>
+                      onClick={action.onClick}
+                    >
                       {action.label}
                     </Button>
                   ))}
@@ -169,7 +171,8 @@ export const columns: ColumnDef<Notification>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Time
           <ArrowUpDown className="size-3" />
         </Button>
@@ -375,7 +378,8 @@ export default function NotificationsDataTable({ data }: { data: Notification[] 
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
                       {column.id}
                     </DropdownMenuCheckboxItem>
                   );
@@ -397,7 +401,8 @@ export default function NotificationsDataTable({ data }: { data: Notification[] 
                       className={cn(
                         isUnread &&
                           "border-l border-l-amber-500 bg-orange-50! dark:bg-amber-950/50!"
-                      )}>
+                      )}
+                    >
                       {row.getVisibleCells().map((cell) => (
                         <TableCell key={cell.id}>
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -431,14 +436,16 @@ export default function NotificationsDataTable({ data }: { data: Notification[] 
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               Previous
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               Next
             </Button>
           </div>

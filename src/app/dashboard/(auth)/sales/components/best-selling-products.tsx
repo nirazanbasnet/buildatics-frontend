@@ -84,7 +84,8 @@ export function BestSellingProducts() {
           <Link
             href="/dashboard/pages/products/1"
             key={product.name}
-            className="hover:bg-muted flex items-center justify-between rounded-md border px-4 py-3">
+            className="hover:bg-muted flex items-center justify-between rounded-md border px-4 py-3"
+          >
             <div className="flex items-center gap-4">
               <img
                 src={product.image}

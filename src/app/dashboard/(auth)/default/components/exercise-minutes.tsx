@@ -86,7 +86,8 @@ export function ExerciseMinutes() {
               top: 5,
               right: 10,
               left: 10
-            }}>
+            }}
+          >
             <Tooltip
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {

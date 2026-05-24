@@ -48,7 +48,8 @@ export function AgendaView({ currentDate, events, onEventSelect }: AgendaViewPro
             <div key={day.toString()} className="border-border/70 relative my-12 border-t">
               <span
                 className="bg-background absolute -top-3 left-0 flex h-6 items-center pe-4 text-[10px] uppercase data-today:font-medium sm:pe-4 sm:text-xs"
-                data-today={isToday(day) || undefined}>
+                data-today={isToday(day) || undefined}
+              >
                 {format(day, "d MMM, EEEE")}
               </span>
               <div className="mt-6 space-y-2">

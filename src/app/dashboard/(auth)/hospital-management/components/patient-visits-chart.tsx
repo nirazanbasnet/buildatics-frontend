@@ -66,7 +66,8 @@ export function PatientVisitsChart() {
             margin={{
               left: 6,
               right: 6
-            }}>
+            }}
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"

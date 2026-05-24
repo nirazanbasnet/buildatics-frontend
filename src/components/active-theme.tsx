@@ -71,14 +71,7 @@ export function ActiveThemeProvider({
 
     setThemeCookie("theme_sidebar_mode", theme.sidebarMode);
     body.setAttribute("data-theme-sidebar-mode", theme.sidebarMode);
-  }, [
-    theme.preset,
-    theme.radius,
-    theme.scale,
-    theme.contentLayout,
-    theme.font,
-    theme.sidebarMode
-  ]);
+  }, [theme.preset, theme.radius, theme.scale, theme.contentLayout, theme.font, theme.sidebarMode]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }

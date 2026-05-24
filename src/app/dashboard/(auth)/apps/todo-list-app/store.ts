@@ -1,12 +1,6 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
-import {
-  Todo,
-  FilterTab,
-  ViewMode,
-  TodoFile,
-  TodoPriority
-} from "./types";
+import { Todo, FilterTab, ViewMode, TodoFile, TodoPriority } from "./types";
 
 interface TodoStore {
   todos: Todo[];

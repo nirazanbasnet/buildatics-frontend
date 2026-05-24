@@ -39,7 +39,8 @@ export function CourseModules({ data }: CourseModulesProps) {
                 "flex items-center gap-3 rounded-lg border p-3 transition-colors",
                 module.current && "border-primary bg-primary/5",
                 !module.current && "border-border"
-              )}>
+              )}
+            >
               {module.completed ? (
                 <div className="flex size-8 items-center justify-center rounded-full bg-green-500 text-white">
                   <Check className="size-4" />

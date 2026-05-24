@@ -90,7 +90,8 @@ export default function Page() {
 
                   <div className="mb-6 flex items-start justify-start space-x-4">
                     <span
-                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}
+                    >
                       Monthly
                     </span>
                     <Switch
@@ -99,7 +100,8 @@ export default function Page() {
                       aria-label="Toggle annual pricing"
                     />
                     <span
-                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}
+                    >
                       Annual
                     </span>
                   </div>
@@ -129,7 +131,8 @@ export default function Page() {
 
                   <div className="mb-6 flex items-center justify-center space-x-4">
                     <span
-                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${!isAnnual ? "font-medium" : "text-muted-foreground"}`}
+                    >
                       Monthly
                     </span>
                     <Switch
@@ -138,7 +141,8 @@ export default function Page() {
                       aria-label="Toggle annual pricing"
                     />
                     <span
-                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}>
+                      className={`text-sm font-medium ${isAnnual ? "font-medium" : "text-muted-foreground"}`}
+                    >
                       Annual
                     </span>
                   </div>

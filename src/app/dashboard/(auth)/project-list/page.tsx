@@ -65,7 +65,8 @@ export default function Page() {
                   </div>
 
                   <Badge
-                    className={`${project.badgeColor} border-0 text-white hover:${project.badgeColor}`}>
+                    className={`${project.badgeColor} border-0 text-white hover:${project.badgeColor}`}
+                  >
                     {project.timeLeft}
                   </Badge>
                 </div>

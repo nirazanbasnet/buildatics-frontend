@@ -63,7 +63,8 @@ export function SidebarNav() {
                 "hover:bg-muted justify-start",
                 pathname === item.href ? "bg-muted hover:bg-muted" : ""
               )}
-              asChild>
+              asChild
+            >
               <Link href={item.href}>
                 {item.icon && <item.icon />}
                 {item.title}

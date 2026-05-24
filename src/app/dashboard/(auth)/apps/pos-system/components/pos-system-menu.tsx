@@ -4,12 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Search, FileEdit, SearchIcon } from "lucide-react";
 
-import {
-  Product,
-  ProductCategory,
-  Table,
-  TableCategory
-} from "../store";
+import { Product, ProductCategory, Table, TableCategory } from "../store";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -109,7 +104,8 @@ export default function PosSystemMenu({
               onValueChange={(value) => {
                 setSelectedCategory(value === "all" ? null : value);
                 setSearchTerm("");
-              }}>
+              }}
+            >
               <ProductCategoryListItem
                 category={{
                   id: "all",

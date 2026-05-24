@@ -388,21 +388,24 @@ export default function KanbanBoard() {
                   onSelect={() => {
                     setFilterStatus("completed");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>Completed</span>
                 </CommandItem>
                 <CommandItem
                   onSelect={() => {
                     setFilterStatus("inProgress");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>In Progress</span>
                 </CommandItem>
                 <CommandItem
                   onSelect={() => {
                     setFilterStatus("notStarted");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>Not Started</span>
                 </CommandItem>
               </CommandGroup>
@@ -415,21 +418,24 @@ export default function KanbanBoard() {
                   onSelect={() => {
                     setFilterPriority("high");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>High </span>
                 </CommandItem>
                 <CommandItem
                   onSelect={() => {
                     setFilterPriority("medium");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>Medium </span>
                 </CommandItem>
                 <CommandItem
                   onSelect={() => {
                     setFilterPriority("low");
                     setOpen(false);
-                  }}>
+                  }}
+                >
                   <span>Low </span>
                 </CommandItem>
               </CommandGroup>
@@ -450,7 +456,8 @@ export default function KanbanBoard() {
                     onSelect={() => {
                       setFilterUser(userName);
                       setOpen(false);
-                    }}>
+                    }}
+                  >
                     <Avatar className="mr-2 h-5 w-5">
                       <AvatarImage
                         src={
@@ -478,7 +485,8 @@ export default function KanbanBoard() {
                     setFilterUser(null);
                     setOpen(false);
                   }}
-                  className="justify-center text-center">
+                  className="justify-center text-center"
+                >
                   Clear Filters
                 </CommandItem>
               </CommandGroup>
@@ -594,7 +602,8 @@ export default function KanbanBoard() {
                     type="submit"
                     size="icon"
                     disabled={!newColumnTitle.trim()}
-                    onClick={() => addColumn(newColumnTitle.trim())}>
+                    onClick={() => addColumn(newColumnTitle.trim())}
+                  >
                     <CheckIcon />
                   </Button>
                 </div>
@@ -606,13 +615,15 @@ export default function KanbanBoard() {
           <Kanban.Root
             value={filteredColumns}
             onValueChange={setColumns}
-            getItemValue={(item) => item.id}>
+            getItemValue={(item) => item.id}
+          >
             <Kanban.Board className="flex w-full gap-4 overflow-x-auto pb-4">
               {Object.entries(filteredColumns).map(([columnValue, tasks]) => (
                 <Kanban.Column
                   key={columnValue}
                   value={columnValue}
-                  className="w-[340px] min-w-[340px]">
+                  className="w-[340px] min-w-[340px]"
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-semibold">{columnTitles[columnValue]}</span>
@@ -667,14 +678,16 @@ export default function KanbanBoard() {
                                     <svg
                                       className="size-full -rotate-90"
                                       viewBox="0 0 36 36"
-                                      xmlns="http://www.w3.org/2000/svg">
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
                                       <circle
                                         cx="18"
                                         cy="18"
                                         r="16"
                                         fill="none"
                                         className="stroke-current text-gray-200 dark:text-neutral-700"
-                                        strokeWidth="2"></circle>
+                                        strokeWidth="2"
+                                      ></circle>
                                       <circle
                                         cx="18"
                                         cy="18"
@@ -691,7 +704,8 @@ export default function KanbanBoard() {
                                           2 * Math.PI * 16 -
                                           (2 * Math.PI * 16 * task.progress) / 100
                                         }
-                                        strokeLinecap="round"></circle>
+                                        strokeLinecap="round"
+                                      ></circle>
                                     </svg>
                                   </div>
                                   {`${task.progress}%`}

@@ -4,10 +4,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 import { Table, TableCategory, useStore } from "../store";
-import {
-  EnumTableStatus,
-  EnumTableStatusColor
-} from "../enums";
+import { EnumTableStatus, EnumTableStatusColor } from "../enums";
 
 import {
   Dialog,
@@ -82,13 +79,15 @@ export default function AssignOrderToTable({
                           onClick={() => {
                             assignOrderToTable(table.id);
                             setOpen(false);
-                          }}>
+                          }}
+                        >
                           <span>{table.name}</span>
                           <span
                             className={cn(
                               "text-xs capitalize",
                               EnumTableStatusColor[table.status as EnumTableStatus].text
-                            )}>
+                            )}
+                          >
                             {table.status}
                           </span>
                         </Button>

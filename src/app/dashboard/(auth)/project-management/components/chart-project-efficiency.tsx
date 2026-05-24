@@ -120,7 +120,8 @@ export function ChartProjectEfficiency() {
         <ChartContainer
           id={id}
           config={chartConfig}
-          className="mx-auto aspect-square w-full max-w-[230px]">
+          className="mx-auto aspect-square w-full max-w-[230px]"
+        >
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
@@ -139,7 +140,8 @@ export function ChartProjectEfficiency() {
                     innerRadius={outerRadius + 12}
                   />
                 </g>
-              )}>
+              )}
+            >
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -148,17 +150,20 @@ export function ChartProjectEfficiency() {
                         x={viewBox.cx}
                         y={viewBox.cy}
                         textAnchor="middle"
-                        dominantBaseline="middle">
+                        dominantBaseline="middle"
+                      >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold">
+                          className="fill-foreground text-3xl font-bold"
+                        >
                           {desktopData[activeIndex].desktop.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground">
+                          className="fill-muted-foreground"
+                        >
                           Visitors
                         </tspan>
                       </text>

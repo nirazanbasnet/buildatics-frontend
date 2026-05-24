@@ -126,7 +126,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Booking ID
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -139,7 +140,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Guest Name
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -152,7 +154,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Room Type
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -162,7 +165,8 @@ const columns: ColumnDef<Booking>[] = [
         <span className="h-2 w-2 rounded-full bg-lime-400" />
         <Badge
           variant="outline"
-          className="border-lime-300 bg-lime-50 font-normal text-lime-700 dark:border-lime-900 dark:bg-lime-950 dark:text-lime-300">
+          className="border-lime-300 bg-lime-50 font-normal text-lime-700 dark:border-lime-900 dark:bg-lime-950 dark:text-lime-300"
+        >
           {row.getValue("roomType")}
         </Badge>
       </div>
@@ -174,7 +178,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Room Number
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -187,7 +192,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Duration
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -201,7 +207,8 @@ const columns: ColumnDef<Booking>[] = [
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+        className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+      >
         Check-In & Check-Out
         <ArrowUpDown className="ml-1 h-3 w-3" />
       </Button>
@@ -219,7 +226,8 @@ const columns: ColumnDef<Booking>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-muted-foreground px-0 font-normal hover:bg-transparent">
+          className="text-muted-foreground px-0 font-normal hover:bg-transparent"
+        >
           Status
           <ArrowUpDown className="ml-1 h-3 w-3" />
         </Button>
@@ -235,7 +243,8 @@ const columns: ColumnDef<Booking>[] = [
               status === "Checked-In"
                 ? "border-lime-300 bg-lime-50 font-normal text-lime-700 dark:border-lime-900 dark:bg-lime-950 dark:text-lime-300"
                 : "border-yellow-300 bg-yellow-50 font-normal text-yellow-700"
-            }>
+            }
+          >
             {status}
           </Badge>
         </div>
@@ -323,7 +332,8 @@ export function BookingList() {
                   {headerGroup.headers.map((header) => (
                     <TableHead
                       key={header.id}
-                      className="bg-muted py-2 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg">
+                      className="bg-muted py-2 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg"
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}
@@ -364,28 +374,32 @@ export function BookingList() {
                 variant="outline"
                 size="icon"
                 onClick={() => table.setPageIndex(0)}
-                disabled={!table.getCanPreviousPage()}>
+                disabled={!table.getCanPreviousPage()}
+              >
                 <ChevronsLeft />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}>
+                disabled={!table.getCanPreviousPage()}
+              >
                 <ChevronLeft />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}>
+                disabled={!table.getCanNextPage()}
+              >
                 <ChevronRight />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                disabled={!table.getCanNextPage()}>
+                disabled={!table.getCanNextPage()}
+              >
                 <ChevronsRight />
               </Button>
             </div>
