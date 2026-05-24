@@ -17,6 +17,7 @@ import {
   Building2Icon,
   ChevronRight,
   ComponentIcon,
+  HardHatIcon,
   LayoutDashboardIcon,
   type LucideIcon
 } from "lucide-react";
@@ -56,6 +57,11 @@ export const navItems: NavGroup[] = [
         title: "Display Center",
         href: "/dashboard/display-center",
         icon: Building2Icon
+      },
+      {
+        title: "Preconstruction",
+        href: "/dashboard/preconstruction-list",
+        icon: HardHatIcon
       }
     ]
   },
@@ -75,6 +81,10 @@ export const navItems: NavGroup[] = [
           {
             title: "Display Center Filter",
             href: "/dashboard/templates/display-center-filter/variant-1"
+          },
+          {
+            title: "Preconstruction List",
+            href: "/dashboard/templates/preconstruction-list/variant-1"
           }
         ]
       }
@@ -103,6 +113,7 @@ export function NavMain() {
   const useMinimal =
     pathname === "/dashboard" ||
     pathname === "/dashboard/display-center" ||
+    pathname === "/dashboard/preconstruction-list" ||
     pathname.startsWith("/dashboard/templates/") ||
     pathname.startsWith("/dashboard/components");
   const items: NavGroup[] = useMinimal ? navItems : referenceNavItems;

@@ -242,7 +242,7 @@ function PillToggleGroup({
       type="single"
       value={value}
       onValueChange={onValueChange}
-      className="flex flex-wrap gap-2"
+      className="flex-wrapb flex"
     >
       {options.map((opt) => (
         <ToggleGroupItem
