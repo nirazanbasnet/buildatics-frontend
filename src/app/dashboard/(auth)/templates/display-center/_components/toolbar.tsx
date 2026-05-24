@@ -89,12 +89,14 @@ export function Toolbar({ activeVariant, mode = "iteration" }: Props) {
               </Link>
             </Button>
           ))}
-          <div className="ms-auto">
-            <Button size="sm" className="h-7" onClick={() => applyVariant(activeVariant)}>
-              <Check className="size-4" />
-              Use this on Display Center
-            </Button>
-          </div>
+          {activeVariant !== 7 ? (
+            <div className="ms-auto">
+              <Button size="sm" className="h-7" onClick={() => applyVariant(activeVariant)}>
+                <Check className="size-4" />
+                Use this on Display Center
+              </Button>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>
