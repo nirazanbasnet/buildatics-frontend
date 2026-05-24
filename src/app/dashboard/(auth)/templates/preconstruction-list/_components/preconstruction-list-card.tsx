@@ -7,6 +7,7 @@ import { preconstructionListStatusLabels, type PreconstructionListProject } from
 type Props = {
   project: PreconstructionListProject;
   className?: string;
+  onClick?: () => void;
 };
 
 function Row({ icon: Icon, label, value }: { icon: typeof MapPin; label?: string; value: string }) {
@@ -27,10 +28,29 @@ function Row({ icon: Icon, label, value }: { icon: typeof MapPin; label?: string
   );
 }
 
-export function PreconstructionListCard({ project, className }: Props) {
+export function PreconstructionListCard({ project, className, onClick }: Props) {
+  const interactive = Boolean(onClick);
   return (
     <article
-      className={cn("bg-card flex flex-col gap-5 rounded-2xl border p-5 shadow-sm", className)}
+      onClick={onClick}
+      onKeyDown={
+        interactive
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick?.();
+              }
+            }
+          : undefined
+      }
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      className={cn(
+        "bg-card flex flex-col gap-5 rounded-2xl border p-5 shadow-sm",
+        interactive &&
+          "focus-visible:ring-ring hover:border-foreground/30 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:outline-none",
+        className
+      )}
     >
       <header className="flex items-start justify-between gap-3">
         <h3 className="text-foreground text-xl font-bold tracking-tight">{project.projectNo}</h3>

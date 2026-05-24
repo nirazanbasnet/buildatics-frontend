@@ -85,6 +85,10 @@ export const navItems: NavGroup[] = [
           {
             title: "Preconstruction List",
             href: "/dashboard/templates/preconstruction-list/variant-1"
+          },
+          {
+            title: "Preconstruction Detail",
+            href: "/dashboard/templates/preconstruction-detail/variant-1"
           }
         ]
       }

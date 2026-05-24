@@ -19,9 +19,10 @@ import { preconstructionListStatusLabels, type PreconstructionListProject } from
 type Props = {
   projects: PreconstructionListProject[];
   className?: string;
+  onProjectClick?: (project: PreconstructionListProject) => void;
 };
 
-export function PreconstructionListTable({ projects, className }: Props) {
+export function PreconstructionListTable({ projects, className, onProjectClick }: Props) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const allSelected = projects.length > 0 && selected.size === projects.length;
@@ -65,8 +66,12 @@ export function PreconstructionListTable({ projects, className }: Props) {
           {projects.map((project) => {
             const isChecked = selected.has(project.id);
             return (
-              <TableRow key={project.id}>
-                <TableCell className="py-3 pl-4">
+              <TableRow
+                key={project.id}
+                onClick={onProjectClick ? () => onProjectClick(project) : undefined}
+                className={onProjectClick ? "cursor-pointer" : undefined}
+              >
+                <TableCell className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
                   <Checkbox
                     checked={isChecked}
                     onCheckedChange={(v) => toggleOne(project.id, v === true)}

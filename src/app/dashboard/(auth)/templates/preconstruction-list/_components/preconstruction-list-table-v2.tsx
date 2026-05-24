@@ -7,6 +7,7 @@ import { preconstructionListStatusLabels, type PreconstructionListProject } from
 type Props = {
   projects: PreconstructionListProject[];
   className?: string;
+  onProjectClick?: (project: PreconstructionListProject) => void;
 };
 
 function ProgressRing({ value }: { value: number }) {
@@ -46,41 +47,61 @@ function MetaCell({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function PreconstructionListTableV2({ projects, className }: Props) {
+export function PreconstructionListTableV2({ projects, className, onProjectClick }: Props) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      {projects.map((project) => (
-        <article
-          key={project.id}
-          className="bg-card hover:bg-muted/30 flex items-stretch gap-4 rounded-lg border p-4 transition-colors"
-        >
-          <div className="flex min-w-fit flex-col items-start justify-between gap-2">
-            <span className="bg-muted text-foreground rounded-md px-2 py-1 font-mono text-sm font-bold tracking-tight">
-              {project.projectNo}
-            </span>
-            <span className="text-foreground inline-flex items-center gap-1.5 text-xs font-medium">
-              <span className="size-1.5 rounded-full bg-emerald-500" />
-              {preconstructionListStatusLabels[project.status]}
-            </span>
-          </div>
-
-          <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
-            <div className="flex items-center gap-1.5 text-sm">
-              <MapPin className="text-muted-foreground size-4 shrink-0" />
-              <span className="text-foreground truncate">{project.address}</span>
+      {projects.map((project) => {
+        const interactive = Boolean(onProjectClick);
+        return (
+          <article
+            key={project.id}
+            onClick={onProjectClick ? () => onProjectClick(project) : undefined}
+            onKeyDown={
+              interactive
+                ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onProjectClick?.(project);
+                    }
+                  }
+                : undefined
+            }
+            role={interactive ? "button" : undefined}
+            tabIndex={interactive ? 0 : undefined}
+            className={cn(
+              "bg-card hover:bg-muted/30 flex items-stretch gap-4 rounded-lg border p-4 transition-colors",
+              interactive &&
+                "focus-visible:ring-ring cursor-pointer focus-visible:ring-2 focus-visible:outline-none"
+            )}
+          >
+            <div className="flex min-w-fit flex-col items-start justify-between gap-2">
+              <span className="bg-muted text-foreground rounded-md px-2 py-1 font-mono text-sm font-bold tracking-tight">
+                {project.projectNo}
+              </span>
+              <span className="text-foreground inline-flex items-center gap-1.5 text-xs font-medium">
+                <span className="size-1.5 rounded-full bg-emerald-500" />
+                {preconstructionListStatusLabels[project.status]}
+              </span>
             </div>
-            <dl className="grid grid-cols-3 gap-x-4">
-              <MetaCell label="Stage" value={project.stage} />
-              <MetaCell label="Developer" value={project.developer} />
-              <MetaCell label="Client" value={project.council} />
-            </dl>
-          </div>
 
-          <div className="flex items-center">
-            <ProgressRing value={project.progress} />
-          </div>
-        </article>
-      ))}
+            <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
+              <div className="flex items-center gap-1.5 text-sm">
+                <MapPin className="text-muted-foreground size-4 shrink-0" />
+                <span className="text-foreground truncate">{project.address}</span>
+              </div>
+              <dl className="grid grid-cols-3 gap-x-4">
+                <MetaCell label="Stage" value={project.stage} />
+                <MetaCell label="Developer" value={project.developer} />
+                <MetaCell label="Client" value={project.council} />
+              </dl>
+            </div>
+
+            <div className="flex items-center">
+              <ProgressRing value={project.progress} />
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }

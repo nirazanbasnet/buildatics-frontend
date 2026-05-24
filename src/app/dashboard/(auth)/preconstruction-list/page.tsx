@@ -8,16 +8,26 @@ import { PreconstructionListLayout } from "../templates/preconstruction-list/_co
 import { PreconstructionListLayoutV2 } from "../templates/preconstruction-list/_components/preconstruction-list-layout-v2";
 // eslint-disable-next-line no-restricted-imports -- see note above
 import { parsePreconstructionListVariant } from "../templates/preconstruction-list/_components/variants";
+// eslint-disable-next-line no-restricted-imports -- see note above
+import { parsePreconstructionDetailVariant } from "../templates/preconstruction-detail/_components/variants";
 
 export default async function PreconstructionListPage() {
   const cookieStore = await cookies();
-  const variant = parsePreconstructionListVariant(
+  const listVariant = parsePreconstructionListVariant(
     cookieStore.get("preconstruction_list_variant")?.value
   );
+  const detailEnabled = cookieStore.get("preconstruction_detail_enabled")?.value === "true";
+  const detailVariant = parsePreconstructionDetailVariant(
+    cookieStore.get("preconstruction_detail_variant")?.value
+  );
 
-  return variant === "v2" ? (
-    <PreconstructionListLayoutV2 projects={preconstructionListProjects} />
-  ) : (
-    <PreconstructionListLayout projects={preconstructionListProjects} />
+  const Layout = listVariant === "v2" ? PreconstructionListLayoutV2 : PreconstructionListLayout;
+
+  return (
+    <Layout
+      projects={preconstructionListProjects}
+      detailEnabled={detailEnabled}
+      detailVariant={detailVariant}
+    />
   );
 }
