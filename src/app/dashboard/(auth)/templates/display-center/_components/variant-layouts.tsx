@@ -1,10 +1,15 @@
 import { properties, type PropertyView } from "../_data";
+import type { DetailVariantId } from "../../display-center-detail/_components/variants";
 import { PropertyCard } from "./property-card";
 import { PropertyCardV6 } from "./property-card-v6";
 import { PropertyCardV7 } from "./property-card-v7";
 import { PropertyListItem } from "./property-list-item";
 
-type Props = { view?: PropertyView };
+type Props = {
+  view?: PropertyView;
+  detailEnabled?: boolean;
+  detailVariant?: DetailVariantId;
+};
 
 export function Variant1Layout({ view }: Props) {
   return (
@@ -36,11 +41,18 @@ export function Variant6Layout({ view }: Props) {
   );
 }
 
-export function Variant7Layout({ view }: Props) {
+export function Variant7Layout({ view, detailEnabled, detailVariant }: Props) {
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {properties.map((property, index) => (
-        <PropertyCardV7 key={property.id} property={property} view={view} index={index} />
+        <PropertyCardV7
+          key={property.id}
+          property={property}
+          view={view}
+          index={index}
+          detailEnabled={detailEnabled}
+          detailVariant={detailVariant}
+        />
       ))}
     </div>
   );

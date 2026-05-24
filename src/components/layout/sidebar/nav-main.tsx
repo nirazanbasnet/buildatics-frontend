@@ -66,7 +66,17 @@ export const navItems: NavGroup[] = [
         title: "Templates",
         href: "/dashboard/sample",
         icon: LayoutDashboardIcon,
-        items: [{ title: "Display Center", href: "/dashboard/templates/display-center/variant-1" }]
+        items: [
+          { title: "Display Center", href: "/dashboard/templates/display-center/variant-1" },
+          {
+            title: "Display Center Detail",
+            href: "/dashboard/templates/display-center-detail/variant-1"
+          },
+          {
+            title: "Display Center Filter",
+            href: "/dashboard/templates/display-center-filter/variant-1"
+          }
+        ]
       }
     ]
   },

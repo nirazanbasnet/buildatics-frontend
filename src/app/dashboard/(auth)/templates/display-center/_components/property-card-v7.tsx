@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Bath, BedDouble, Car, Share2, Sofa, ZoomIn } from "lucide-react";
@@ -8,15 +9,31 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
+import { DetailSheet } from "../../display-center-detail/_components/detail-sheet";
+import type { DetailVariantId } from "../../display-center-detail/_components/variants";
+
 import type { Property, PropertyView } from "../_data";
 
 type Props = {
   property: Property;
   view?: PropertyView;
   index?: number;
+  detailEnabled?: boolean;
+  detailVariant?: DetailVariantId;
 };
 
-export function PropertyCardV7({ property, view = "facade", index = 0 }: Props) {
+function stop(e: React.MouseEvent) {
+  e.stopPropagation();
+}
+
+export function PropertyCardV7({
+  property,
+  view = "facade",
+  index = 0,
+  detailEnabled,
+  detailVariant
+}: Props) {
+  const [open, setOpen] = useState(false);
   const src = view === "floor" ? property.floorPlan : property.facade;
   const brandTag = property.brand.slice(0, 3).toUpperCase();
   return (
@@ -25,7 +42,25 @@ export function PropertyCardV7({ property, view = "facade", index = 0 }: Props) 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
     >
-      <Card className="group gap-0 overflow-hidden p-0 transition duration-300 hover:-translate-y-1.5 hover:shadow-lg">
+      <Card
+        onClick={detailEnabled ? () => setOpen(true) : undefined}
+        role={detailEnabled ? "button" : undefined}
+        tabIndex={detailEnabled ? 0 : undefined}
+        onKeyDown={
+          detailEnabled
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setOpen(true);
+                }
+              }
+            : undefined
+        }
+        className={cn(
+          "group gap-0 overflow-hidden p-0 transition duration-300 hover:-translate-y-1.5 hover:shadow-lg",
+          detailEnabled && "focus-visible:ring-ring cursor-pointer focus-visible:ring-2"
+        )}
+      >
         <div className="relative">
           <Image
             src={src}
@@ -47,6 +82,7 @@ export function PropertyCardV7({ property, view = "facade", index = 0 }: Props) 
             <Button
               size="icon"
               variant="secondary"
+              onClick={stop}
               className="size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
             >
               <ZoomIn className="size-4" />
@@ -54,6 +90,7 @@ export function PropertyCardV7({ property, view = "facade", index = 0 }: Props) 
             <Button
               size="icon"
               variant="secondary"
+              onClick={stop}
               className="size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
             >
               <Share2 className="size-4" />
@@ -83,6 +120,15 @@ export function PropertyCardV7({ property, view = "facade", index = 0 }: Props) 
           </div>
         </div>
       </Card>
+
+      {detailEnabled ? (
+        <DetailSheet
+          open={open}
+          onOpenChange={setOpen}
+          property={property}
+          variant={detailVariant}
+        />
+      ) : null}
     </motion.div>
   );
 }
