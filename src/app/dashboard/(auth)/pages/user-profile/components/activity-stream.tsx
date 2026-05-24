@@ -116,7 +116,8 @@ export function ActivityStream() {
                       <Link
                         href="#"
                         key={idx}
-                        className="bg-muted/30 hover:bg-muted flex items-center gap-3 rounded-lg border p-4">
+                        className="bg-muted/30 hover:bg-muted flex items-center gap-3 rounded-lg border p-4"
+                      >
                         <FileText className="text-muted-foreground size-5" />
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium">{file.name}</p>

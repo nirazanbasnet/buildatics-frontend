@@ -92,7 +92,8 @@ export function ConnectionsTeams() {
               {connection.status === "connected" ? (
                 <Button
                   size="icon-sm"
-                  className="shrink-0 rounded-full bg-blue-500 hover:bg-blue-600">
+                  className="shrink-0 rounded-full bg-blue-500 hover:bg-blue-600"
+                >
                   <UserCheck />
                 </Button>
               ) : (

@@ -17,7 +17,8 @@ export function LatestActivity() {
         <CardAction>
           <Link
             href="#"
-            className="text-muted-foreground hover:text-primary text-sm hover:underline">
+            className="text-muted-foreground hover:text-primary text-sm hover:underline"
+          >
             View All
           </Link>
         </CardAction>

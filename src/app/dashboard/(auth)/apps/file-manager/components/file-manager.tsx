@@ -315,7 +315,8 @@ export function FileManager() {
                     <BreadcrumbList>
                       <BreadcrumbItem
                         className="cursor-pointer"
-                        onClick={() => handleBreadcrumbClick(-1)}>
+                        onClick={() => handleBreadcrumbClick(-1)}
+                      >
                         <Home className="h-4 w-4" />
                       </BreadcrumbItem>
                       <BreadcrumbSeparator />
@@ -324,7 +325,8 @@ export function FileManager() {
                           <BreadcrumbItem
                             className="cursor-pointer"
                             key={i}
-                            onClick={() => handleBreadcrumbClick(i)}>
+                            onClick={() => handleBreadcrumbClick(i)}
+                          >
                             {segment}
                           </BreadcrumbItem>
                           {i < pathSegments.length - 1 && <BreadcrumbSeparator />}
@@ -421,7 +423,8 @@ export function FileManager() {
                   "hover:bg-muted flex cursor-pointer items-center justify-between border-b p-2 lg:p-4",
                   selectedItem?.id === item.id && "bg-muted"
                 )}
-                onClick={() => handleItemClick(item)}>
+                onClick={() => handleItemClick(item)}
+              >
                 <div className="flex min-w-0 items-center space-x-4">
                   <Checkbox
                     defaultChecked={selectedItem?.id === item.id}
@@ -494,7 +497,8 @@ export function FileManager() {
                 onClick={() => setSelectedItem(null)}
                 variant="ghost"
                 size="icon"
-                className="absolute top-2 right-0">
+                className="absolute top-2 right-0"
+              >
                 <XIcon />
               </Button>
               <FileDetailContent selectedItem={selectedItem} />

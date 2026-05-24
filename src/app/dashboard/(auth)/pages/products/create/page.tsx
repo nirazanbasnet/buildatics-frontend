@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <div className="space-y-4 max-w-5xl mx-auto">
+    <div className="mx-auto max-w-5xl space-y-4">
       <AddProductForm />
     </div>
   );

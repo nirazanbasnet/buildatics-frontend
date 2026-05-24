@@ -106,7 +106,8 @@ export function DraggableEvent({
         if (elementRef) elementRef.current = node;
       }}
       style={style}
-      className="touch-none">
+      className="touch-none"
+    >
       <EventItem
         event={event}
         view={view}

@@ -107,7 +107,8 @@ const StripePattern = () => (
     patternUnits="userSpaceOnUse"
     width="8"
     height="8"
-    patternTransform="rotate(-45)">
+    patternTransform="rotate(-45)"
+  >
     <rect width="8" height="8" fill="var(--muted)" />
     <rect width="4" height="8" fill="var(--background)" />
   </pattern>

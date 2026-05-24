@@ -121,7 +121,8 @@ export default function Page() {
                       type="button"
                       size="icon"
                       variant="destructive"
-                      onClick={() => removeFile(files[0]?.id)}>
+                      onClick={() => removeFile(files[0]?.id)}
+                    >
                       <Trash2Icon />
                     </Button>
                   )}
@@ -216,7 +217,8 @@ export default function Page() {
                 type="button"
                 variant="outline"
                 size="sm"
-                onClick={() => append({ value: "" })}>
+                onClick={() => append({ value: "" })}
+              >
                 Add URL
               </Button>
             </div>

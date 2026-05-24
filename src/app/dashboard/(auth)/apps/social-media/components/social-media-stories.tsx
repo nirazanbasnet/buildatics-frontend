@@ -52,7 +52,8 @@ export function SocialMediaStories() {
           align: "start",
           dragFree: true
         }}
-        className="w-full">
+        className="w-full"
+      >
         <CarouselContent className="ml-0 py-1.5 select-none">
           <div className="group flex cursor-pointer flex-col items-center gap-2 px-2">
             <Avatar className="ring-muted group-hover:ring-primary/10 size-10 ring-2 lg:size-14">
@@ -69,7 +70,8 @@ export function SocialMediaStories() {
                   className={cn("size-10 outline-2 outline-offset-3 lg:size-14", {
                     "outline-green-600": !reel.isRead,
                     "outline-black/20 dark:outline-white/20": reel.isRead
-                  })}>
+                  })}
+                >
                   <AvatarImage src={reel.avatar} />
                   <AvatarFallback>{reel.username[0]}</AvatarFallback>
                 </Avatar>

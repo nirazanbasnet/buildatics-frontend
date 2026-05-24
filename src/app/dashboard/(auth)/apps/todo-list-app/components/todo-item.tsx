@@ -56,7 +56,8 @@ const TodoItem: React.FC<TodoItemProps> = ({
             "flex h-full cursor-pointer flex-col transition-shadow hover:shadow-md",
             todo.status === "completed" ? "opacity-70" : ""
           )}
-          onClick={onClick}>
+          onClick={onClick}
+        >
           <CardContent className="flex h-full flex-col justify-between">
             <div className="flex flex-col gap-3">
               <div className="flex items-start space-x-3">
@@ -77,7 +78,8 @@ const TodoItem: React.FC<TodoItemProps> = ({
                   className={cn(
                     "text-md flex-1 leading-none font-medium",
                     todo.status === "completed" ? "text-muted-foreground line-through" : ""
-                  )}>
+                  )}
+                >
                   {todo.title}
                 </h3>
 
@@ -157,7 +159,8 @@ const TodoItem: React.FC<TodoItemProps> = ({
           "cursor-pointer transition-shadow hover:shadow-md",
           todo.status === "completed" ? "opacity-70" : ""
         )}
-        onClick={onClick}>
+        onClick={onClick}
+      >
         <CardContent className="flex items-start gap-3">
           <Checkbox
             checked={todo.status === "completed"}
@@ -176,7 +179,8 @@ const TodoItem: React.FC<TodoItemProps> = ({
                   className={cn(
                     "text-md leading-none font-medium",
                     todo.status === "completed" ? "text-muted-foreground line-through" : ""
-                  )}>
+                  )}
+                >
                   {todo.title}
                 </h3>
 

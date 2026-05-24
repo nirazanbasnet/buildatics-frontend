@@ -135,7 +135,8 @@ export function BookingFormSheet() {
                             className={cn(
                               "w-full pl-3 text-left font-normal",
                               !field.value && "text-muted-foreground"
-                            )}>
+                            )}
+                          >
                             {field.value ? (
                               format(new Date(field.value), "PPP")
                             ) : (

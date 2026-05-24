@@ -30,7 +30,8 @@ export function NavDesktop({ isCollapsed }: NavDesktopProps) {
         className={cn(
           "flex h-[52px] items-center justify-center",
           isCollapsed ? "h-[52px]" : "px-2"
-        )}>
+        )}
+      >
         <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
       </div>
 

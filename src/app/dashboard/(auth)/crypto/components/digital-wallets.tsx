@@ -20,7 +20,8 @@ export function DigitalWallets() {
       <CardContent className="space-y-4">
         <Link
           href="#"
-          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors">
+          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors"
+        >
           <div className="mb-2 flex items-center gap-2">
             <img
               className="size-6 object-contain"
@@ -33,7 +34,8 @@ export function DigitalWallets() {
         </Link>
         <Link
           href="#"
-          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors">
+          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors"
+        >
           <div className="mb-2 flex items-center gap-2">
             <img
               className="size-6 object-contain"
@@ -46,7 +48,8 @@ export function DigitalWallets() {
         </Link>
         <Link
           href="#"
-          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors">
+          className="hover:border-primary/30 hover:bg-muted block rounded-md border px-4 py-3 transition-colors"
+        >
           <div className="mb-2 flex items-center gap-2">
             <img
               className="size-6 object-contain"

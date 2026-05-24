@@ -23,7 +23,8 @@ export default function ThemeSwitch() {
       size="icon-sm"
       variant="ghost"
       className="relative"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+    >
       {theme === "light" ? <MoonIcon /> : <SunIcon />}
       <span className="sr-only">Toggle theme</span>
     </Button>

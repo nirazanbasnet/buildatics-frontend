@@ -40,17 +40,20 @@ export default function Page() {
                 <TabsList className="-mb-0.5 h-auto! gap-6 border-none bg-transparent p-0">
                   <TabsTrigger
                     value="profile"
-                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!">
+                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!"
+                  >
                     Profile
                   </TabsTrigger>
                   <TabsTrigger
                     value="teams"
-                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!">
+                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!"
+                  >
                     Teams
                   </TabsTrigger>
                   <TabsTrigger
                     value="projects"
-                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!">
+                    className="data-[state=active]:border-b-primary data-[state=active]:text-foreground text-muted-foreground rounded-none border-0 border-b-2 border-transparent bg-transparent! px-0 py-4 shadow-none!"
+                  >
                     Projects
                     <Badge variant="secondary" className="rounded-full">
                       3

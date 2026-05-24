@@ -16,7 +16,8 @@ export function ThemeScaleSelector() {
           className="w-full"
           value={theme.scale}
           type="single"
-          onValueChange={(value) => setTheme({ ...theme, scale: value as any })}>
+          onValueChange={(value) => setTheme({ ...theme, scale: value as any })}
+        >
           <ToggleGroupItem variant="outline" className="grow" value="none">
             <BanIcon />
           </ToggleGroupItem>

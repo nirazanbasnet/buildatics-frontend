@@ -77,7 +77,8 @@ export function FileUploadDialog() {
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
-          onDrop={handleDrop}>
+          onDrop={handleDrop}
+        >
           <div className="text-center">
             <Upload className="mx-auto size-10 opacity-25" aria-hidden="true" />
             <div className="mt-4 flex text-sm leading-none">
@@ -104,7 +105,8 @@ export function FileUploadDialog() {
               {files.map((file, index) => (
                 <li
                   key={index}
-                  className="flex items-center justify-between py-2 pr-2 pl-4 text-sm leading-6">
+                  className="flex items-center justify-between py-2 pr-2 pl-4 text-sm leading-6"
+                >
                   <div className="flex w-0 flex-1 items-center">
                     <div className="flex min-w-0 flex-1 gap-2">
                       <span className="truncate font-medium">{file.name}</span>

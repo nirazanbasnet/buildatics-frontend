@@ -211,7 +211,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
           <div
             key={day.toString()}
             className="data-today:text-foreground text-muted-foreground/70 py-2 text-center text-sm data-today:font-medium"
-            data-today={isToday(day) || undefined}>
+            data-today={isToday(day) || undefined}
+          >
             <span className="sm:hidden" aria-hidden="true">
               {format(day, "E")[0]} {format(day, "d")}
             </span>
@@ -243,7 +244,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
                 <div
                   key={day.toString()}
                   className="border-border/70 relative border-r p-1 last:border-r-0"
-                  data-today={isToday(day) || undefined}>
+                  data-today={isToday(day) || undefined}
+                >
                   {dayAllDayEvents.map((event) => {
                     const eventStart = new Date(event.start);
                     const eventEnd = new Date(event.end);
@@ -261,11 +263,13 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
                         event={event}
                         view="month"
                         isFirstDay={isFirstDay}
-                        isLastDay={isLastDay}>
+                        isLastDay={isLastDay}
+                      >
                         {/* Show title if it's the first day of the event or the first visible day in the week */}
                         <div
                           className={cn("truncate", !shouldShowTitle && "invisible")}
-                          aria-hidden={!shouldShowTitle}>
+                          aria-hidden={!shouldShowTitle}
+                        >
                           {event.title}
                         </div>
                       </EventItem>
@@ -283,7 +287,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
           {hours.map((hour, index) => (
             <div
               key={hour.toString()}
-              className="border-border/70 relative min-h-[var(--week-cells-height)] border-b last:border-b-0">
+              className="border-border/70 relative min-h-[var(--week-cells-height)] border-b last:border-b-0"
+            >
               {index > 0 && (
                 <span className="bg-background text-muted-foreground/70 absolute -top-3 left-0 flex h-6 w-16 max-w-full items-center justify-end pe-2 text-[10px] sm:pe-4 sm:text-xs">
                   {format(hour, "h a")}
@@ -297,7 +302,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
           <div
             key={day.toString()}
             className="border-border/70 relative grid auto-cols-fr border-r last:border-r-0"
-            data-today={isToday(day) || undefined}>
+            data-today={isToday(day) || undefined}
+          >
             {/* Positioned events */}
             {(processedDayEvents[dayIndex] ?? []).map((positionedEvent) => (
               <div
@@ -310,7 +316,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
                   width: `${positionedEvent.width * 100}%`,
                   zIndex: positionedEvent.zIndex
                 }}
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+              >
                 <div className="size-full">
                   <DraggableEvent
                     event={positionedEvent.event}
@@ -327,7 +334,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
             {currentTimeVisible && isToday(day) && (
               <div
                 className="pointer-events-none absolute right-0 left-0 z-20"
-                style={{ top: `${currentTimePosition}%` }}>
+                style={{ top: `${currentTimePosition}%` }}
+              >
                 <div className="relative flex items-center">
                   <div className="bg-primary absolute -left-1 h-2 w-2 rounded-full"></div>
                   <div className="bg-primary h-[2px] w-full"></div>
@@ -339,7 +347,8 @@ export function WeekView({ currentDate, events, onEventSelect, onEventCreate }: 
               return (
                 <div
                   key={hour.toString()}
-                  className="border-border/70 relative min-h-[var(--week-cells-height)] border-b last:border-b-0">
+                  className="border-border/70 relative min-h-[var(--week-cells-height)] border-b last:border-b-0"
+                >
                   {/* Quarter-hour intervals */}
                   {[0, 1, 2, 3].map((quarter) => {
                     const quarterHourTime = hourValue + quarter * 0.25;

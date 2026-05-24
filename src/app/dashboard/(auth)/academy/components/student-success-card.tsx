@@ -30,7 +30,8 @@ export function StudentSuccessCard({
         <div className="flex items-center justify-between">
           <span className="font-display text-3xl lg:text-4xl">{currentSuccessRate}%</span>
           <div
-            className={`flex items-center text-sm ${isPositiveChange ? "text-green-600" : "text-red-600"}`}>
+            className={`flex items-center text-sm ${isPositiveChange ? "text-green-600" : "text-red-600"}`}
+          >
             {isPositiveChange ? (
               <ArrowUpIcon className="mr-1 size-4" />
             ) : (

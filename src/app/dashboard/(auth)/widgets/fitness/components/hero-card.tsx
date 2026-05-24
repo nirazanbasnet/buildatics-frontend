@@ -18,7 +18,8 @@ export function HeroCard() {
       <Button
         size="icon"
         variant="outline"
-        className="text-primary absolute top-6 right-6 rounded-full">
+        className="text-primary absolute top-6 right-6 rounded-full"
+      >
         <Play className="h-5 w-5 fill-current" />
       </Button>
     </Card>

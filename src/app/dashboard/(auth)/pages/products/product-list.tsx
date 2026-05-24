@@ -102,7 +102,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Product Name
           <ArrowUpDown className="size-3" />
         </Button>
@@ -111,12 +112,7 @@ export const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
         <figure className="rounded-lg border">
-          <img
-            src={`/images${row.original.image}`}
-            width="48px"
-            height="48px"
-            alt="..."
-          />
+          <img src={`/images${row.original.image}`} width="48px" height="48px" alt="..." />
         </figure>
         <div className="capitalize">{row.getValue("name")}</div>
       </div>
@@ -129,7 +125,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Price
           <ArrowUpDown className="size-3" />
         </Button>
@@ -144,7 +141,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Category
           <ArrowUpDown className="size-3" />
         </Button>
@@ -159,7 +157,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Stock
           <ArrowUpDown className="size-3" />
         </Button>
@@ -188,7 +187,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Status
           <ArrowUpDown className="size-3" />
         </Button>
@@ -331,12 +331,14 @@ export default function ProductList({ data }: { data: Product[] }) {
                       onSelect={(currentValue) => {
                         // setValue(currentValue === value ? "" : currentValue);
                         // setOpen(false);
-                      }}>
+                      }}
+                    >
                       <div className="flex items-center space-x-3 py-1">
                         <Checkbox id={status.value} />
                         <label
                           htmlFor={status.value}
-                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
                           {status.label}
                         </label>
                       </div>
@@ -366,7 +368,8 @@ export default function ProductList({ data }: { data: Product[] }) {
                         <Checkbox id={category.value} />
                         <label
                           htmlFor={category.value}
-                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
                           {category.label}
                         </label>
                       </div>
@@ -439,7 +442,8 @@ export default function ProductList({ data }: { data: Product[] }) {
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onCheckedChange={(value) => column.toggleVisibility(value)}>
+                      onCheckedChange={(value) => column.toggleVisibility(value)}
+                    >
                       {column.id}
                     </DropdownMenuCheckboxItem>
                   );
@@ -497,14 +501,16 @@ export default function ProductList({ data }: { data: Product[] }) {
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}>
+            disabled={!table.getCanPreviousPage()}
+          >
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}>
+            disabled={!table.getCanNextPage()}
+          >
             Next
           </Button>
         </div>

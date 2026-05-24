@@ -56,7 +56,8 @@ export function AccountTypeStep() {
                 <RadioGroupItem value={type.id} id={type.id} className="peer sr-only" />
                 <Label
                   htmlFor={type.id}
-                  className="peer-data-[state=checked]:bg-primary/5 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-start space-y-2 rounded-md border px-4 py-6">
+                  className="peer-data-[state=checked]:bg-primary/5 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-start space-y-2 rounded-md border px-4 py-6"
+                >
                   <div className="text-3xl">{type.emoji}</div>
                   <h3 className="text-xl font-bold">{type.title}</h3>
                   <p className="text-muted-foreground">{type.description}</p>

@@ -220,7 +220,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
           onValueChange={(v) => {
             setLocation(v);
             setCurrentPage(1);
-          }}>
+          }}
+        >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select location" />
           </SelectTrigger>
@@ -242,7 +243,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
           onValueChange={(v) => {
             setPriceRange(v);
             setCurrentPage(1);
-          }}>
+          }}
+        >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="all" id="r0" />
             <Label htmlFor="r0" className="text-sm font-normal">
@@ -299,7 +301,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
             onClick={() => {
               setSelectedType("all");
               setCurrentPage(1);
-            }}>
+            }}
+          >
             All
           </Button>
           {propertyTypes.map((type) => {
@@ -316,7 +319,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                   isSelected
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card hover:border-primary"
-                }`}>
+                }`}
+              >
                 <Icon className="h-4 w-4" />
                 {type.label}
               </button>
@@ -333,7 +337,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
             onValueChange={(v) => {
               setBedroom(v);
               setCurrentPage(1);
-            }}>
+            }}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Any" />
             </SelectTrigger>
@@ -362,7 +367,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                 onClick={() => {
                   toggleAmenity(amenity);
                   setCurrentPage(1);
-                }}>
+                }}
+              >
                 {amenity}
               </Button>
             );
@@ -391,7 +397,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               variant="outline"
               size="icon"
               className="xl:hidden"
-              onClick={() => setFilterSheetOpen(true)}>
+              onClick={() => setFilterSheetOpen(true)}
+            >
               <SlidersHorizontal />
             </Button>
             <h2 className="text-2xl font-semibold">Property List</h2>
@@ -468,7 +475,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                         onClick={(e) => {
                           e.preventDefault();
                           setCurrentPage(page);
-                        }}>
+                        }}
+                      >
                         {page}
                       </PaginationLink>
                     </PaginationItem>
@@ -515,7 +523,8 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                     {
                       "text-destructive": favorites.includes(selectedProperty.id)
                     }
-                  )}>
+                  )}
+                >
                   <Heart fill={favorites.includes(selectedProperty.id) ? "currentColor" : "none"} />
                 </Button>
               </div>
@@ -555,19 +564,22 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                 <div className="mb-6 flex flex-wrap gap-2 sm:gap-3">
                   <Badge
                     variant="outline"
-                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm">
+                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm"
+                  >
                     <Home className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     {selectedProperty.rooms} Rooms
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm">
+                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm"
+                  >
                     <BedDouble className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     {selectedProperty.beds} Beds
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm">
+                    className="gap-1.5 px-2.5 py-1.5 text-xs font-normal sm:px-3 sm:py-2 sm:text-sm"
+                  >
                     <Bath className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     {selectedProperty.baths} Baths
                   </Badge>

@@ -37,7 +37,8 @@ export function NutritionCard() {
             startAngle={0}
             endAngle={300}
             innerRadius={80}
-            outerRadius={110}>
+            outerRadius={110}
+          >
             <PolarGrid
               gridType="circle"
               radialLines={false}
@@ -55,17 +56,20 @@ export function NutritionCard() {
                         x={viewBox.cx}
                         y={viewBox.cy}
                         textAnchor="middle"
-                        dominantBaseline="middle">
+                        dominantBaseline="middle"
+                      >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-4xl font-bold">
+                          className="fill-foreground text-4xl font-bold"
+                        >
                           {chartData[0].visitors.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground">
+                          className="fill-muted-foreground"
+                        >
                           kcal
                         </tspan>
                       </text>

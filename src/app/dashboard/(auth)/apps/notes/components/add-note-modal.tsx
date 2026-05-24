@@ -69,7 +69,7 @@ export function AddNoteModal() {
             <Input
               placeholder="Title"
               name="title"
-              className="mb-4 rounded-none border-0 px-0 text-2xl! shadow-none bg-transparent! focus-visible:ring-0"
+              className="mb-4 rounded-none border-0 bg-transparent! px-0 text-2xl! shadow-none focus-visible:ring-0"
             />
 
             <RichTextEditorDemo
@@ -139,13 +139,12 @@ export function AddNoteModal() {
                                             [...selectedTags, label].includes(u)
                                           )
                                         );
-                                      }}>
+                                      }}
+                                    >
                                       <div className="flex grow items-center gap-2">
                                         <span
-                                          className={cn(
-                                            "block size-3 rounded-full",
-                                            label.color
-                                          )}></span>
+                                          className={cn("block size-3 rounded-full", label.color)}
+                                        ></span>
                                         <span className="text-sm leading-none">{label.title}</span>
                                         {selectedTags.includes(label) ? (
                                           <Check className="text-primary ms-auto size-3" />

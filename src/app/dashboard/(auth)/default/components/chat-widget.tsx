@@ -102,7 +102,8 @@ export function ChatWidget() {
                   size="icon"
                   variant="outline"
                   className="ml-auto rounded-full"
-                  onClick={() => setOpen(true)}>
+                  onClick={() => setOpen(true)}
+                >
                   <Plus />
                   <span className="sr-only">New message</span>
                 </Button>
@@ -121,7 +122,8 @@ export function ChatWidget() {
                   message.role === "user"
                     ? "bg-primary text-primary-foreground ml-auto"
                     : "bg-muted"
-                )}>
+                )}
+              >
                 {message.content}
               </div>
             ))}
@@ -141,7 +143,8 @@ export function ChatWidget() {
               ]);
               setInput("");
             }}
-            className="flex w-full items-center space-x-2">
+            className="flex w-full items-center space-x-2"
+          >
             <Input
               id="message"
               placeholder="Type your message..."
@@ -184,7 +187,8 @@ export function ChatWidget() {
                       return setSelectedUsers(
                         [...users].filter((u) => [...selectedUsers, user].includes(u))
                       );
-                    }}>
+                    }}
+                  >
                     <Avatar>
                       <AvatarImage src={user.avatar} alt="Image" />
                       <AvatarFallback>{user.name[0]}</AvatarFallback>
@@ -218,7 +222,8 @@ export function ChatWidget() {
               disabled={selectedUsers.length < 2}
               onClick={() => {
                 setOpen(false);
-              }}>
+              }}
+            >
               Continue
             </Button>
           </DialogFooter>

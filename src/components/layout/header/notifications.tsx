@@ -41,7 +41,8 @@ const Notifications = () => {
           {notifications.map((item: Notification, key) => (
             <DropdownMenuItem
               key={key}
-              className="group flex cursor-pointer items-start gap-9 rounded-none border-b px-4 py-3">
+              className="group flex cursor-pointer items-start gap-9 rounded-none border-b px-4 py-3"
+            >
               <div className="flex flex-1 items-start gap-2">
                 <div className="flex-none">
                   <Avatar className="size-8">

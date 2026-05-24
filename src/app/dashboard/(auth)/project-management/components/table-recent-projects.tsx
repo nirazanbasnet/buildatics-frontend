@@ -368,7 +368,8 @@ export function TableRecentProjects() {
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
                       {column.id}
                     </DropdownMenuCheckboxItem>
                   );
@@ -424,14 +425,16 @@ export function TableRecentProjects() {
               variant="outline"
               size="icon"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               <ChevronLeft />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               <ChevronRight />
             </Button>
           </div>

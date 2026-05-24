@@ -73,7 +73,8 @@ export default function Page() {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex flex-col space-y-1">
+                      className="flex flex-col space-y-1"
+                    >
                       <FormItem className="flex items-center">
                         <FormControl>
                           <RadioGroupItem value="all" />

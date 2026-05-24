@@ -55,7 +55,8 @@ export function Notes() {
             <Link
               href="#"
               key={key}
-              className="group flex h-12 justify-between py-3 text-sm hover:opacity-70">
+              className="group flex h-12 justify-between py-3 text-sm hover:opacity-70"
+            >
               <span>{note.text}</span>
               <div className="flex items-center gap-3">
                 <span className="text-muted-foreground flex items-center gap-1.5 text-xs lg:group-hover:hidden">
@@ -64,7 +65,8 @@ export function Notes() {
                 <Button
                   variant="outline"
                   size="icon-xs"
-                  className="lg:hidden group-hover:inline-flex">
+                  className="group-hover:inline-flex lg:hidden"
+                >
                   <Trash2 />
                 </Button>
               </div>

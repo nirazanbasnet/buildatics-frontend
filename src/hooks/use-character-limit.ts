@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 
 export function useCharacterLimit({
   initialValue = "",
-  maxLength,
+  maxLength
 }: {
   initialValue: string;
   maxLength: number;
@@ -23,6 +23,6 @@ export function useCharacterLimit({
     value,
     characterCount,
     handleChange,
-    maxLength,
+    maxLength
   };
 }

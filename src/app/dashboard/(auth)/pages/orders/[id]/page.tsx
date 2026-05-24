@@ -181,7 +181,8 @@ export default function Page() {
               {Object.keys(statusSteps).map((step, index) => (
                 <div key={index} className="text-center">
                   <div
-                    className={`mx-auto flex size-10 items-center justify-center rounded-full text-lg lg:size-12 ${index <= currentStepIndex ? "bg-green-500 text-white dark:bg-green-900" : "bg-muted border"} `}>
+                    className={`mx-auto flex size-10 items-center justify-center rounded-full text-lg lg:size-12 ${index <= currentStepIndex ? "bg-green-500 text-white dark:bg-green-900" : "bg-muted border"} `}
+                  >
                     {index < currentStepIndex ? (
                       <CheckCircle className="size-4 lg:size-5" />
                     ) : (

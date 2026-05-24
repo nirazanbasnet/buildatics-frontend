@@ -108,7 +108,8 @@ export function AsideRight() {
               <Button
                 variant="link"
                 size="sm"
-                className={user.isFollowed ? "text-muted-foreground" : ""}>
+                className={user.isFollowed ? "text-muted-foreground" : ""}
+              >
                 {user.isFollowed ? "Followed" : "Follow"}
               </Button>
             </div>

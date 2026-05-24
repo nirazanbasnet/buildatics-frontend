@@ -70,7 +70,8 @@ export function SubscriptionsCard() {
               left: 0
             }}
             accessibilityLayer
-            data={chartData}>
+            data={chartData}
+          >
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Bar dataKey="subscription" fill="var(--color-desktop)" radius={5}>
               <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />

@@ -93,12 +93,14 @@ export function TransactionHistory() {
           <TabsList className="h-auto rounded-none bg-transparent p-0 ps-6">
             <TabsTrigger
               value="latest"
-              className="data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none">
+              className="data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            >
               Latest
             </TabsTrigger>
             <TabsTrigger
               value="upcoming"
-              className="data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none">
+              className="data-[state=active]:after:bg-primary relative rounded-none py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            >
               Upcoming
             </TabsTrigger>
           </TabsList>
@@ -124,7 +126,8 @@ export function TransactionHistory() {
                             className={cn({
                               "text-green-600": transaction.type === "payment",
                               "text-red-400": transaction.type === "withdrawal"
-                            })}>
+                            })}
+                          >
                             {transaction.amount}
                           </span>
                           <Button variant="outline" size="sm">

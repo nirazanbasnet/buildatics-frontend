@@ -89,7 +89,8 @@ const SidebarContent = () => {
                     className={cn(
                       "hover:bg-muted block w-full min-w-0 justify-start truncate rounded-lg p-2 px-3 text-start text-sm",
                       params.id === conversation.id && "bg-muted"
-                    )}>
+                    )}
+                  >
                     {conversation.title}
                   </Link>
 
@@ -98,7 +99,8 @@ const SidebarContent = () => {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="group-hover:opacity-100 md:opacity-0">
+                        className="group-hover:opacity-100 md:opacity-0"
+                      >
                         <Ellipsis />
                       </Button>
                     </DropdownMenuTrigger>
@@ -127,7 +129,8 @@ const SidebarContent = () => {
             <Button
               key={item.label}
               variant="ghost"
-              className={cn("hover:bg-muted w-full justify-start", item.isActive && "bg-muted")}>
+              className={cn("hover:bg-muted w-full justify-start", item.isActive && "bg-muted")}
+            >
               <item.icon />
               {item.label}
             </Button>

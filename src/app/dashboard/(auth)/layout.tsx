@@ -27,11 +27,12 @@ export default async function AuthLayout({
           "--content-full-height":
             "calc(100vh - var(--header-height) - (var(--content-padding) * 2) - (var(--content-margin) * 2))"
         } as React.CSSProperties
-      }>
+      }
+    >
       <AppSidebar />
       <SidebarInset>
         <SiteHeader />
-        <div className="bg-muted/40 group-data-[theme-sidebar-mode=floating]/layout:bg-transparent flex flex-1 flex-col">
+        <div className="bg-muted/40 flex flex-1 flex-col group-data-[theme-sidebar-mode=floating]/layout:bg-transparent">
           <div className="@container/main p-(--content-padding) xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto">
             {children}
           </div>

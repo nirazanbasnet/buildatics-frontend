@@ -124,7 +124,8 @@ export function SalesAnalyticsCard() {
               nameKey="label"
               innerRadius={64}
               outerRadius={108}
-              strokeWidth={4}>
+              strokeWidth={4}
+            >
               <Label
                 content={({ viewBox }) => {
                   if (!viewBox || !("cx" in viewBox) || !("cy" in viewBox)) return null;
@@ -133,11 +134,13 @@ export function SalesAnalyticsCard() {
                       x={viewBox.cx}
                       y={viewBox.cy}
                       textAnchor="middle"
-                      dominantBaseline="middle">
+                      dominantBaseline="middle"
+                    >
                       <tspan
                         x={viewBox.cx}
                         y={viewBox.cy}
-                        className="fill-foreground text-3xl font-bold">
+                        className="fill-foreground text-3xl font-bold"
+                      >
                         {currency.format(total)}
                       </tspan>
                     </text>
@@ -148,7 +151,7 @@ export function SalesAnalyticsCard() {
           </PieChart>
         </ChartContainer>
 
-        <div className="grid gap-4 grid-cols-2">
+        <div className="grid grid-cols-2 gap-4">
           {entries.map((entry) => (
             <div key={entry.label} className="space-y-1">
               <p className="text-muted-foreground flex items-center gap-2 text-sm">

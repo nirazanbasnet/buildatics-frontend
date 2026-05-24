@@ -61,7 +61,8 @@ export function Reminders() {
                       "bg-gray-400": reminder.level === "low",
                       "bg-orange-400": reminder.level === "medium",
                       "bg-red-600": reminder.level === "high"
-                    })}></span>{" "}
+                    })}
+                  ></span>{" "}
                   {reminder.level}{" "}
                   {reminder.isCompleted ? (
                     <CircleCheck className="ms-auto me-2 size-4 text-green-600" />

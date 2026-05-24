@@ -121,7 +121,8 @@ export default function Transactions() {
                   <Badge variant="outline">{transaction.type}</Badge>
                 </TableCell>
                 <TableCell
-                  className={`text-end ${transaction.amount > 0 ? "text-emerald-600" : "text-red-600"}`}>
+                  className={`text-end ${transaction.amount > 0 ? "text-emerald-600" : "text-red-600"}`}
+                >
                   {transaction.amount > 0 ? "" : "-"}${Math.abs(transaction.amount).toFixed(2)}
                 </TableCell>
               </TableRow>

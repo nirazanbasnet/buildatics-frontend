@@ -68,7 +68,8 @@ export default function Page() {
               controls
               poster={course.video.thumbnail}
               className="h-full w-full object-cover"
-              preload="metadata">
+              preload="metadata"
+            >
               <source src={course.video.src} type="video/mp4" />
               Your browser does not support the video tag.
             </video>

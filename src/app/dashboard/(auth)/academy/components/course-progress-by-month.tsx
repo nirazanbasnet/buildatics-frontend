@@ -48,7 +48,8 @@ export function CourseProgressByMonth() {
           margin={{
             left: 0,
             right: 0
-          }}>
+          }}
+        >
           <CartesianGrid vertical={false} />
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
           <defs>

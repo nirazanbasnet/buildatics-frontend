@@ -60,7 +60,8 @@ export function EcommerceVisitBySourceCard() {
               dataKey="visitors"
               nameKey="browser"
               innerRadius={60}
-              strokeWidth={5}>
+              strokeWidth={5}
+            >
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -69,17 +70,20 @@ export function EcommerceVisitBySourceCard() {
                         x={viewBox.cx}
                         y={viewBox.cy}
                         textAnchor="middle"
-                        dominantBaseline="middle">
+                        dominantBaseline="middle"
+                      >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold">
+                          className="fill-foreground text-3xl font-bold"
+                        >
                           {/* {totalVisitors.toLocaleString()} */} 10.2K
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground">
+                          className="fill-muted-foreground"
+                        >
                           Visitors
                         </tspan>
                       </text>

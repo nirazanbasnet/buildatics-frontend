@@ -14,5 +14,10 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
-  return <PosSystemTableRender tableCategories={tableCategoriesData as unknown as TableCategory[]} tables={tablesData as unknown as Table[]} />;
+  return (
+    <PosSystemTableRender
+      tableCategories={tableCategoriesData as unknown as TableCategory[]}
+      tables={tablesData as unknown as Table[]}
+    />
+  );
 }

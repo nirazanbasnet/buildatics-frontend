@@ -56,7 +56,8 @@ export function WorkoutsCard() {
         {workouts.map((workout) => (
           <div
             key={workout.title}
-            className="bg-muted/50 flex items-center justify-between rounded-xl p-4">
+            className="bg-muted/50 flex items-center justify-between rounded-xl p-4"
+          >
             <div className="flex items-center gap-3">
               <div className={`${workout.iconBg} rounded-xl p-3`}>
                 <workout.icon className="size-4" />

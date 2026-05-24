@@ -34,7 +34,8 @@ export function StatCard({ item }: StatCardProps) {
             className={cn(
               "mb-1 flex items-center gap-1 text-xs font-medium",
               isPositive ? "text-success" : "text-destructive"
-            )}>
+            )}
+          >
             {isPositive ? "+" : ""}
             {item.change}%
             {isPositive ? (

@@ -60,7 +60,8 @@ export function ChartMostActivity() {
                   className="block size-2 rounded-full"
                   style={{
                     backgroundColor: chartConfig[item.source as ChartConfigKeys]?.color
-                  }}></span>
+                  }}
+                ></span>
                 <div>{chartConfig[item.source as ChartConfigKeys]?.label}</div>
               </div>
               <div className="text-center text-xl font-semibold">{item.leads}%</div>

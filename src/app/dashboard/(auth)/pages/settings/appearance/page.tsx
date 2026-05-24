@@ -107,7 +107,8 @@ export default function Page() {
                       field.onChange();
                     }}
                     defaultValue={field.value}
-                    className="flex max-w-md gap-6 pt-2">
+                    className="flex max-w-md gap-6 pt-2"
+                  >
                     <FormItem>
                       <FormLabel className="[&:has([data-state=checked])>div]:border-primary flex-col">
                         <FormControl>

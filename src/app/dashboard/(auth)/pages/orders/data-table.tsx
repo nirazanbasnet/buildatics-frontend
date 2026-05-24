@@ -92,7 +92,8 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => (
       <Link
         href={`/dashboard/pages/orders/${row.getValue("id")}`}
-        className="text-muted-foreground hover:text-primary hover:underline">
+        className="text-muted-foreground hover:text-primary hover:underline"
+      >
         #{row.getValue("id")}
       </Link>
     )
@@ -118,7 +119,8 @@ export const columns: ColumnDef<Order>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Price
           <ArrowUpDown className="size-3" />
         </Button>
@@ -147,7 +149,8 @@ export const columns: ColumnDef<Order>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Date
           <ArrowUpDown className="size-3" />
         </Button>
@@ -167,7 +170,8 @@ export const columns: ColumnDef<Order>[] = [
         <Button
           className="-ml-3"
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Status
           <ArrowUpDown className="size-3" />
         </Button>
@@ -312,7 +316,8 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
                         <Checkbox id={status.value} />
                         <label
                           htmlFor={status.value}
-                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
                           {status.label}
                         </label>
                       </div>
@@ -342,7 +347,8 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
                         <Checkbox id={category.value} />
                         <label
                           htmlFor={category.value}
-                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
                           {category.label}
                         </label>
                       </div>
@@ -401,7 +407,8 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
                       {column.id}
                     </DropdownMenuCheckboxItem>
                   );
@@ -459,14 +466,16 @@ export default function OrdersDataTable({ data }: { data: Order[] }) {
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               Previous
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               Next
             </Button>
           </div>

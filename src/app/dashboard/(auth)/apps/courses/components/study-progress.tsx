@@ -54,7 +54,8 @@ export function StudyProgress({ progress }: StudyProgressProps) {
                   isReached
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground"
-                }`}>
+                }`}
+              >
                 {point.value}
               </div>
             );

@@ -70,7 +70,8 @@ function EventWrapper({
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
       {...dndListeners}
-      {...dndAttributes}>
+      {...dndAttributes}
+    >
       {children}
     </button>
   );
@@ -158,7 +159,8 @@ export function EventItem({
         dndListeners={dndListeners}
         dndAttributes={dndAttributes}
         onMouseDown={onMouseDown}
-        onTouchStart={onTouchStart}>
+        onTouchStart={onTouchStart}
+      >
         {children || (
           <span className="truncate">
             {!event.allDay && (
@@ -191,7 +193,8 @@ export function EventItem({
         dndListeners={dndListeners}
         dndAttributes={dndAttributes}
         onMouseDown={onMouseDown}
-        onTouchStart={onTouchStart}>
+        onTouchStart={onTouchStart}
+      >
         {durationMinutes < 45 ? (
           <div className="truncate">
             {event.title}{" "}
@@ -224,7 +227,8 @@ export function EventItem({
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
       {...dndListeners}
-      {...dndAttributes}>
+      {...dndAttributes}
+    >
       <div className="text-sm font-medium">{event.title}</div>
       <div className="text-xs opacity-70">
         {event.allDay ? (

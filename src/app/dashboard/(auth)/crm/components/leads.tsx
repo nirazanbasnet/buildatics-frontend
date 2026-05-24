@@ -112,7 +112,8 @@ export const columns: ColumnDef<Payment>[] = [
         <Button
           variant="ghost"
           className="p-0!"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
           Email
           <ChevronsUpDown className="size-3!" />
         </Button>
@@ -220,7 +221,8 @@ export function LeadsCard() {
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onCheckedChange={(value) => column.toggleVisibility(!!value)}>
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
                       {column.id}
                     </DropdownMenuCheckboxItem>
                   );
@@ -276,14 +278,16 @@ export function LeadsCard() {
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               Previous
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               Next
             </Button>
           </div>

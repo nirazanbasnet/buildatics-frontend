@@ -111,7 +111,8 @@ export function RevenueChart() {
                   key={chart}
                   data-active={activeChart === chart}
                   className="data-[active=true]:bg-muted relative flex flex-1 flex-col justify-center gap-1 px-6 py-4 text-left"
-                  onClick={() => setActiveChart(chart)}>
+                  onClick={() => setActiveChart(chart)}
+                >
                   <span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
                   <span className="font-display text-lg leading-none sm:text-2xl">
                     {total[key as keyof typeof total].toLocaleString()}
@@ -131,7 +132,8 @@ export function RevenueChart() {
               left: 0,
               right: 0,
               bottom: 0
-            }}>
+            }}
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"

@@ -115,11 +115,7 @@ export const columns: ColumnDef<Product>[] = [
     header: "Product",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
-        <img
-          className="size-8"
-          src={row.original.image}
-          alt="..."
-        />
+        <img className="size-8" src={row.original.image} alt="..." />
         <div className="capitalize">{row.getValue("name")}</div>
       </div>
     )
@@ -131,7 +127,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="p-0! hover:bg-transparent!">
+          className="p-0! hover:bg-transparent!"
+        >
           Sold
           <ArrowUpDown className="size-3" />
         </Button>
@@ -156,7 +153,8 @@ export const columns: ColumnDef<Product>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="p-0! hover:bg-transparent!">
+          className="p-0! hover:bg-transparent!"
+        >
           Sales
           <ArrowUpDown className="size-3" />
         </Button>
@@ -296,14 +294,16 @@ export function EcommerceBestSellingProductsCard() {
               variant="outline"
               size="icon"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               <ChevronLeft />
             </Button>
             <Button
               variant="outline"
               size="icon"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               <ChevronRight />
             </Button>
           </div>

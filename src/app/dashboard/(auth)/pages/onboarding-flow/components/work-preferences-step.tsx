@@ -32,7 +32,8 @@ export function WorkPreferencesStep() {
           <RadioGroup
             value={data.workPreferences.workStyle}
             onValueChange={(value) => updateWorkPreferences({ workStyle: value })}
-            className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            className="grid grid-cols-1 gap-4 md:grid-cols-3"
+          >
             {[
               { value: "remote", label: "Remote", desc: "Work from anywhere", icon: "🏠" },
               { value: "hybrid", label: "Hybrid", desc: "Mix of remote and office", icon: "🔄" },
@@ -47,7 +48,8 @@ export function WorkPreferencesStep() {
                 <RadioGroupItem value={option.value} id={option.value} className="peer sr-only" />
                 <Label
                   htmlFor={option.value}
-                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base">
+                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base"
+                >
                   <span className="text-2xl">{option.icon}</span>
                   <span className="font-semibold">{option.label}</span>
                   <span className="text-muted-foreground text-center text-sm">{option.desc}</span>
@@ -62,7 +64,8 @@ export function WorkPreferencesStep() {
           <RadioGroup
             value={data.workPreferences.experience}
             onValueChange={(value) => updateWorkPreferences({ experience: value })}
-            className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            className="grid grid-cols-1 gap-4 md:grid-cols-3"
+          >
             {[
               { value: "entry", label: "Entry Level", desc: "0-2 years experience", icon: "🌱" },
               { value: "mid", label: "Mid Level", desc: "3-5 years experience", icon: "🚀" },
@@ -72,7 +75,8 @@ export function WorkPreferencesStep() {
                 <RadioGroupItem value={option.value} id={option.value} className="peer sr-only" />
                 <Label
                   htmlFor={option.value}
-                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base">
+                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base"
+                >
                   <span className="text-2xl">{option.icon}</span>
                   <span className="font-semibold">{option.label}</span>
                   <span className="text-muted-foreground text-center text-sm">{option.desc}</span>
@@ -87,7 +91,8 @@ export function WorkPreferencesStep() {
           <RadioGroup
             value={data.workPreferences.availability}
             onValueChange={(value) => updateWorkPreferences({ availability: value })}
-            className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            className="grid grid-cols-1 gap-4 md:grid-cols-3"
+          >
             {[
               { value: "full-time", label: "Full-time", desc: "40+ hours per week", icon: "⏰" },
               {
@@ -102,7 +107,8 @@ export function WorkPreferencesStep() {
                 <RadioGroupItem value={option.value} id={option.value} className="peer sr-only" />
                 <Label
                   htmlFor={option.value}
-                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base">
+                  className="peer-data-[state=checked]:bg-primary/10 peer-data-[state=checked]:border-primary hover:border-primary flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 text-base"
+                >
                   <span className="text-2xl">{option.icon}</span>
                   <span className="font-semibold">{option.label}</span>
                   <span className="text-muted-foreground text-center text-sm">{option.desc}</span>

@@ -70,7 +70,8 @@ export function EcommerceTotalRevenueCard() {
               margin={{
                 left: -6,
                 right: -6
-              }}>
+              }}
+            >
               <XAxis
                 dataKey="month"
                 tickLine={false}

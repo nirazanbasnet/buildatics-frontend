@@ -219,7 +219,8 @@ export default function AddProductForm() {
                         onDrop={handleDrop}
                         data-dragging={isDragging || undefined}
                         data-files={files.length > 0 || undefined}
-                        className="border-input data-[dragging=true]:bg-accent/50 has-[input:focus]:border-ring has-[input:focus]:ring-ring/50 relative flex min-h-52 flex-col items-center overflow-hidden rounded-xl border border-dashed p-4 transition-colors not-data-[files]:justify-center has-[input:focus]:ring-[3px]">
+                        className="border-input data-[dragging=true]:bg-accent/50 has-[input:focus]:border-ring has-[input:focus]:ring-ring/50 relative flex min-h-52 flex-col items-center overflow-hidden rounded-xl border border-dashed p-4 transition-colors not-data-[files]:justify-center has-[input:focus]:ring-[3px]"
+                      >
                         <input
                           {...getInputProps()}
                           className="sr-only"
@@ -236,7 +237,8 @@ export default function AddProductForm() {
                                 variant="outline"
                                 size="sm"
                                 onClick={openFileDialog}
-                                disabled={files.length >= 5}>
+                                disabled={files.length >= 5}
+                              >
                                 <UploadIcon
                                   className="-ms-0.5 size-3.5 opacity-60"
                                   aria-hidden="true"
@@ -249,7 +251,8 @@ export default function AddProductForm() {
                               {files.map((file) => (
                                 <div
                                   key={file.id}
-                                  className="bg-accent relative aspect-square rounded-md border">
+                                  className="bg-accent relative aspect-square rounded-md border"
+                                >
                                   <img
                                     src={file.preview}
                                     alt={file.file.name}
@@ -259,7 +262,8 @@ export default function AddProductForm() {
                                     type="button"
                                     onClick={() => removeFile(file.id)}
                                     size="icon"
-                                    className="border-background focus-visible:border-background absolute -top-2 -right-2 size-6 rounded-full border-2 shadow-none">
+                                    className="border-background focus-visible:border-background absolute -top-2 -right-2 size-6 rounded-full border-2 shadow-none"
+                                  >
                                     <XIcon className="size-3.5" />
                                   </Button>
                                 </div>
@@ -270,7 +274,8 @@ export default function AddProductForm() {
                           <div className="flex flex-col items-center justify-center px-4 py-3 text-center">
                             <div
                               className="bg-background mb-2 flex size-11 shrink-0 items-center justify-center rounded-full border"
-                              aria-hidden="true">
+                              aria-hidden="true"
+                            >
                               <ImageIcon className="size-4 opacity-60" />
                             </div>
                             <p className="mb-1.5 text-sm font-medium">Drop your images here</p>
@@ -279,7 +284,8 @@ export default function AddProductForm() {
                               type="button"
                               variant="outline"
                               className="mt-4"
-                              onClick={openFileDialog}>
+                              onClick={openFileDialog}
+                            >
                               <UploadIcon className="-ms-1 opacity-60" aria-hidden="true" />
                               Select images
                             </Button>
@@ -290,7 +296,8 @@ export default function AddProductForm() {
                       {errors.length > 0 && (
                         <div
                           className="text-destructive flex items-center gap-1 text-xs"
-                          role="alert">
+                          role="alert"
+                        >
                           <AlertCircleIcon className="size-3 shrink-0" />
                           <span>{errors[0]}</span>
                         </div>
@@ -382,7 +389,8 @@ export default function AddProductForm() {
                 <Button
                   type="button"
                   variant="ghost"
-                  className="w-full rounded-tl-none rounded-tr-none">
+                  className="w-full rounded-tl-none rounded-tr-none"
+                >
                   <CirclePlusIcon /> Add Variant
                 </Button>
               </CardFooter>
@@ -425,7 +433,8 @@ export default function AddProductForm() {
                     <Checkbox id="terms" />
                     <label
                       htmlFor="terms"
-                      className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
                       Charge tax on this product
                     </label>
                   </div>

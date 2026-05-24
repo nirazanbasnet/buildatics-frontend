@@ -24,7 +24,8 @@ export function MailList({ items }: MailListProps) {
               "hover:bg-accent/70 flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all",
               selectedMail?.id === item.id && "bg-accent/70"
             )}
-            onClick={() => setSelectedMail(item)}>
+            onClick={() => setSelectedMail(item)}
+          >
             <div className="flex w-full flex-col gap-1">
               <div className="flex items-center">
                 <div className="flex items-center gap-2">
@@ -35,7 +36,8 @@ export function MailList({ items }: MailListProps) {
                   className={cn(
                     "ml-auto text-xs",
                     selectedMail?.id === item.id ? "text-foreground" : "text-muted-foreground"
-                  )}>
+                  )}
+                >
                   {formatDistanceToNow(new Date(item.date), {
                     addSuffix: true
                   })}

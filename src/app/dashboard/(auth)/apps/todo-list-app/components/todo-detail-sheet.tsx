@@ -175,7 +175,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
               {todo.subTasks.map((subTask) => (
                 <div
                   key={subTask.id}
-                  className="bg-muted flex items-center justify-between rounded-md p-2">
+                  className="bg-muted flex items-center justify-between rounded-md p-2"
+                >
                   <div className="flex items-center gap-2">
                     <Checkbox
                       checked={subTask.completed}
@@ -187,7 +188,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                       className={cn(
                         "text-sm",
                         subTask.completed && "text-muted-foreground line-through"
-                      )}>
+                      )}
+                    >
                       {subTask.title}
                     </span>
                   </div>
@@ -195,7 +197,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                     variant="ghost"
                     className="text-red-400!"
                     size="sm"
-                    onClick={() => handleRemoveSubTask(subTask.id)}>
+                    onClick={() => handleRemoveSubTask(subTask.id)}
+                  >
                     <Trash2 />
                   </Button>
                 </div>
@@ -240,7 +243,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                 onClick={() => {
                   setIsAddingSubTask(false);
                   setNewSubTask("");
-                }}>
+                }}
+              >
                 <X />
               </Button>
             </div>
@@ -276,7 +280,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
               {todo.files.map((file) => (
                 <div
                   key={file.id}
-                  className="bg-muted flex items-center justify-between rounded-md p-2">
+                  className="bg-muted flex items-center justify-between rounded-md p-2"
+                >
                   <div className="flex items-center gap-2 overflow-hidden">
                     <FileIcon className="h-4 w-4 shrink-0" />
                     <div className="overflow-hidden">
@@ -284,7 +289,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                         href={file.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block truncate text-sm hover:underline">
+                        className="block truncate text-sm hover:underline"
+                      >
                         {file.name}
                       </Link>
                       <span className="text-muted-foreground text-xs">
@@ -297,7 +303,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => removeFile(todo.id, file.id)}
-                    className="text-red-400!">
+                    className="text-red-400!"
+                  >
                     <Trash2 />
                   </Button>
                 </div>
@@ -334,7 +341,8 @@ const TodoDetailSheet: React.FC<TodoDetailSheetProps> = ({
                       variant="ghost"
                       onClick={() => deleteComment(todo.id, comment.id)}
                       className="text-red-400!"
-                      size="sm">
+                      size="sm"
+                    >
                       <Trash2 className="size-3" />
                     </Button>
                   </div>

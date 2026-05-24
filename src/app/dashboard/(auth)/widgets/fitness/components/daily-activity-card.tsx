@@ -101,7 +101,8 @@ export function DailyActivityCard() {
               key={day.date}
               className={`flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-3 transition-colors ${
                 day.active ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-secondary/80"
-              }`}>
+              }`}
+            >
               <span className="text-xs font-medium">{day.day}</span>
               <span className="text-sm font-semibold">{day.date}</span>
             </button>

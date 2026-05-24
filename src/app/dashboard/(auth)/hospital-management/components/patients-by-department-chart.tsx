@@ -49,7 +49,8 @@ export function PatientsByDepartmentChart() {
       <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square max-h-[400px] pb-0">
+          className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square max-h-[400px] pb-0"
+        >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <Pie data={chartData} dataKey="visitors" label nameKey="department" />

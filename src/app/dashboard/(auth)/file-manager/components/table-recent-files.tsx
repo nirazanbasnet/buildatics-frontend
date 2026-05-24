@@ -128,7 +128,8 @@ export function TableRecentFiles() {
                 <TableCell className="font-medium">
                   <Link
                     href="#"
-                    className="text-muted-foreground hover:text-primary flex items-center space-x-2 hover:underline">
+                    className="text-muted-foreground hover:text-primary flex items-center space-x-2 hover:underline"
+                  >
                     {getFileIcon(file.type)}
                     <span>{file.name}</span>
                   </Link>

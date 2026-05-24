@@ -107,11 +107,7 @@ export const columns: ColumnDef<Course>[] = [
     header: "Course name",
     cell: ({ row }) => (
       <div className="flex items-center gap-4">
-        <img
-          className="size-8"
-          src={row.original.image}
-          alt="shadcn/ui"
-        />
+        <img className="size-8" src={row.original.image} alt="shadcn/ui" />
         <div className="capitalize">{row.getValue("name")}</div>
       </div>
     )
@@ -252,13 +248,15 @@ export function CoursesListTable() {
             <Button
               variant="outline"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               <ChevronLeft />
             </Button>
             <Button
               variant="outline"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               <ChevronRight />
             </Button>
           </div>

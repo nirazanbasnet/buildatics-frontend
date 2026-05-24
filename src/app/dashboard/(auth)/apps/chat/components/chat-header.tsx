@@ -20,7 +20,8 @@ export function ChatHeader({ user }: { user: UserPropsTypes }) {
           size="sm"
           variant="outline"
           className="flex size-10 p-0 lg:hidden"
-          onClick={() => setSelectedChat(null)}>
+          onClick={() => setSelectedChat(null)}
+        >
           <ArrowLeft />
         </Button>
         <Avatar>

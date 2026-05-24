@@ -64,7 +64,8 @@ export function SocialMediaSidebar() {
                 item.active
                   ? "bg-accent text-foreground font-medium"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`}>
+              }`}
+            >
               <div className="flex items-center gap-3">
                 {item.icon}
                 <span>{item.label}</span>
@@ -72,7 +73,8 @@ export function SocialMediaSidebar() {
               {item.badge && (
                 <Badge
                   variant="secondary"
-                  className="h-5 min-w-5 justify-center rounded-full px-1.5 text-xs">
+                  className="h-5 min-w-5 justify-center rounded-full px-1.5 text-xs"
+                >
                   {item.badge}
                 </Badge>
               )}
@@ -155,7 +157,8 @@ const ProBanner = () => {
           onClick={() => setShowProBanner(false)}
           variant="ghost"
           size="sm"
-          className="text-muted-foreground hover:text-foreground absolute top-2 right-2">
+          className="text-muted-foreground hover:text-foreground absolute top-2 right-2"
+        >
           <X />
         </Button>
         <CardContent>

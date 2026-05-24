@@ -47,20 +47,23 @@ export function CreatePostDialog() {
             <Button
               variant={newPostType === "text" ? "default" : "outline"}
               size="sm"
-              onClick={() => setNewPostType("text")}>
+              onClick={() => setNewPostType("text")}
+            >
               Text
             </Button>
             <Button
               variant={newPostType === "image" ? "default" : "outline"}
               size="sm"
-              onClick={() => setNewPostType("image")}>
+              onClick={() => setNewPostType("image")}
+            >
               <ImageIcon />
               Photo
             </Button>
             <Button
               variant={newPostType === "video" ? "default" : "outline"}
               size="sm"
-              onClick={() => setNewPostType("video")}>
+              onClick={() => setNewPostType("video")}
+            >
               <Video />
               Video
             </Button>

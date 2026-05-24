@@ -35,7 +35,8 @@ export default function Page() {
                 <Label htmlFor="password">Password</Label>
                 <Link
                   href="/dashboard/forgot-password"
-                  className="ml-auto inline-block text-sm underline">
+                  className="ml-auto inline-block text-sm underline"
+                >
                   Forgot your password?
                 </Link>
               </div>

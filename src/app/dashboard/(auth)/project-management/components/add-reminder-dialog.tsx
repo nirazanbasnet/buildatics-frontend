@@ -137,7 +137,8 @@ export function AddReminderDialog() {
               onValueChange={(value) =>
                 setNewReminder({ ...newReminder, priority: value as Priority })
               }
-              className="flex space-x-4">
+              className="flex space-x-4"
+            >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="low" id="low" />
                 <Label htmlFor="low" className="cursor-pointer">
@@ -163,7 +164,8 @@ export function AddReminderDialog() {
             <Label htmlFor="category">Category</Label>
             <Select
               value={newReminder.category}
-              onValueChange={(value) => setNewReminder({ ...newReminder, category: value })}>
+              onValueChange={(value) => setNewReminder({ ...newReminder, category: value })}
+            >
               <SelectTrigger id="category" className="w-full">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>

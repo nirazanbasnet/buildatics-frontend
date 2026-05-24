@@ -85,7 +85,8 @@ export default function AddAssigne() {
                     return setSelectedUsers(
                       [...users].filter((u) => [...selectedUsers, user].includes(u))
                     );
-                  }}>
+                  }}
+                >
                   <Avatar>
                     <AvatarImage src={user.avatar} alt="Image" />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
@@ -119,7 +120,8 @@ export default function AddAssigne() {
             disabled={selectedUsers.length < 1}
             onClick={() => {
               setOpen(false);
-            }}>
+            }}
+          >
             Assign
           </Button>
         </DialogFooter>

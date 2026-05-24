@@ -51,7 +51,8 @@ export function ProfileCard() {
               <a
                 href="https://shadcnuikit.com"
                 className="hover:text-primary hover:underline"
-                target="_blank">
+                target="_blank"
+              >
                 https://shadcnuikit.com
               </a>
             </div>
@@ -60,7 +61,8 @@ export function ProfileCard() {
               <a
                 href="https://bundui.io/"
                 className="hover:text-primary hover:underline"
-                target="_blank">
+                target="_blank"
+              >
                 https://bundui.io/
               </a>
             </div>

@@ -25,7 +25,7 @@ export function ProfileSidebar() {
       <div className="space-y-4">
         <h3 className="font-semibold">About</h3>
 
-        <div className="space-y-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 lg:space-y-8">
+        <div className="grid grid-cols-2 space-y-4 md:grid-cols-3 lg:space-y-8 xl:grid-cols-1">
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <Users className="text-muted-foreground h-4 w-4" />

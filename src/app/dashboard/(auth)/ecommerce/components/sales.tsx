@@ -49,7 +49,8 @@ export function EcommerceSalesCard() {
                 left: 12,
                 right: 12,
                 top: 6
-              }}>
+              }}
+            >
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Line
                 dataKey="desktop"

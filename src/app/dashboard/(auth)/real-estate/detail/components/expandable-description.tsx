@@ -39,7 +39,8 @@ export function ExpandableDescription({ text, collapsedLines = 7 }: ExpandableDe
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden"
               }
-        }>
+        }
+      >
         {text}
       </p>
       {isOverflowing && (
@@ -47,7 +48,8 @@ export function ExpandableDescription({ text, collapsedLines = 7 }: ExpandableDe
           variant="link"
           size="sm"
           className="px-0"
-          onClick={() => setIsExpanded((prev) => !prev)}>
+          onClick={() => setIsExpanded((prev) => !prev)}
+        >
           {isExpanded ? "Read less" : "Read more"}
         </Button>
       )}

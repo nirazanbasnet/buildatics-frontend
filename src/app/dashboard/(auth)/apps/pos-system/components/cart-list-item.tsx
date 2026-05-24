@@ -21,7 +21,8 @@ export default function CartListItem({ product }: CartListItem) {
           size="icon"
           variant="destructive"
           className="absolute -start-1 -bottom-1 z-10 size-5 rounded-full p-0"
-          onClick={() => removeFromCart(product.product.id)}>
+          onClick={() => removeFromCart(product.product.id)}
+        >
           <X />
         </Button>
         <img
@@ -45,7 +46,8 @@ export default function CartListItem({ product }: CartListItem) {
               } else {
                 removeFromCart(product.product.id);
               }
-            }}>
+            }}
+          >
             <span className="sr-only">Decrease</span>
             <span>-</span>
           </Button>
@@ -53,7 +55,8 @@ export default function CartListItem({ product }: CartListItem) {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => updateQuantity(product.product.id, product.quantity + 1)}>
+            onClick={() => updateQuantity(product.product.id, product.quantity + 1)}
+          >
             <span className="sr-only">Increase</span>
             <span>+</span>
           </Button>

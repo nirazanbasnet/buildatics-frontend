@@ -24,7 +24,9 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
           <div className="my-4 flex flex-col items-center justify-end">
             <Avatar className="mb-4 size-28">
               {user.avatar && <AvatarImage src={user.avatar} alt="avatar image" />}
-              <AvatarFallback className="text-2xl">{generateAvatarFallback(user.name)}</AvatarFallback>
+              <AvatarFallback className="text-2xl">
+                {generateAvatarFallback(user.name)}
+              </AvatarFallback>
             </Avatar>
             <h4 className="mb-2 text-xl font-semibold">{user.name}</h4>
             <div className="text-xs">
@@ -76,7 +78,8 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
                             <div>
                               <Link
                                 href={item.path ?? "#"}
-                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-green-200">
+                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-green-200"
+                              >
                                 <SheetIcon className="h-8 w-8 text-green-500" />
                               </Link>
                             </div>
@@ -85,7 +88,8 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
                             <div>
                               <a
                                 href="#"
-                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-orange-200">
+                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-orange-200"
+                              >
                                 <FileText className="h-8 w-8 text-orange-500" />
                               </a>
                             </div>
@@ -94,7 +98,8 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
                             <div>
                               <a
                                 href="#"
-                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-orange-200">
+                                className="flex aspect-square w-20 items-center justify-center rounded-lg bg-orange-200"
+                              >
                                 <FileText className="h-8 w-8 text-orange-500" />
                               </a>
                             </div>
@@ -114,7 +119,8 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
                   <a
                     href={user.website}
                     target="_blank"
-                    className="text-muted-foreground hover:text-primary hover:underline">
+                    className="text-muted-foreground hover:text-primary hover:underline"
+                  >
                     {user.website}
                   </a>
                 </div>
@@ -130,11 +136,13 @@ export function UserDetailSheet({ user }: { user: UserPropsTypes }) {
                       variant="outline"
                       className="size-8 rounded-full"
                       size="icon"
-                      asChild>
+                      asChild
+                    >
                       <Link
                         href="#"
                         target="_blank"
-                        className="flex items-center justify-center rounded-full *:h-5 *:w-5">
+                        className="flex items-center justify-center rounded-full *:h-5 *:w-5"
+                      >
                         {item.name === "Facebook" && <Facebook />}
                         {item.name === "X" && <X />}
                         {item.name === "Dribbble" && <Dribbble />}

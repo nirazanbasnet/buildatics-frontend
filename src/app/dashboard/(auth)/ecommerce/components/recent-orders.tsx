@@ -282,7 +282,8 @@ const columns: ColumnDef<Order>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="p-0! hover:bg-transparent!">
+          className="p-0! hover:bg-transparent!"
+        >
           Amount
           <ArrowUpDown className="size-3" />
         </Button>
@@ -464,14 +465,16 @@ export function EcommerceRecentOrdersCard() {
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}>
+              disabled={!table.getCanPreviousPage()}
+            >
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}>
+              disabled={!table.getCanNextPage()}
+            >
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>

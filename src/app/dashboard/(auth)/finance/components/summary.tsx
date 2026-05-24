@@ -81,7 +81,8 @@ export default function Summary() {
         <div className="mb-6 flex flex-1 items-center justify-center">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square max-h-[250px] w-full">
+            className="mx-auto aspect-square max-h-[250px] w-full"
+          >
             <PieChart>
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Pie
@@ -89,7 +90,8 @@ export default function Summary() {
                 dataKey="visitors"
                 nameKey="browser"
                 innerRadius={60}
-                strokeWidth={5}>
+                strokeWidth={5}
+              >
                 <Label
                   content={({ viewBox }) => {
                     if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -98,11 +100,13 @@ export default function Summary() {
                           x={viewBox.cx}
                           y={viewBox.cy}
                           textAnchor="middle"
-                          dominantBaseline="middle">
+                          dominantBaseline="middle"
+                        >
                           <tspan
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="fill-foreground text-3xl font-bold">
+                            className="fill-foreground text-3xl font-bold"
+                          >
                             ${totalVisitors.toLocaleString()}
                           </tspan>
                         </text>

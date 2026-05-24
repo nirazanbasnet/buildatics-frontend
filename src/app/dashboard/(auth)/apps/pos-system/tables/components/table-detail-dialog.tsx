@@ -114,7 +114,8 @@ export default function TableDetailDialog({ table, order, open, setOpen }: Table
               onClick={() => {
                 // clearTable(selectedTable.id);
                 setOpen(false);
-              }}>
+              }}
+            >
               Clear Table
             </Button>
           )}

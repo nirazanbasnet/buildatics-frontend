@@ -87,7 +87,7 @@ function NavCard({ item }: { item: FlatItem }) {
   const isPlaceholder = !item.href || item.href === "#" || item.isComing;
 
   const inner = (
-    <Card className="group h-full transition-colors hover:bg-accent">
+    <Card className="group hover:bg-accent h-full transition-colors">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2">

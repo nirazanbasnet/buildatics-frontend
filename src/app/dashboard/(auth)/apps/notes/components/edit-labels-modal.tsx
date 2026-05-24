@@ -73,7 +73,8 @@ export function EditLabelsModal({ children }: Props) {
                       <Button
                         size="icon"
                         variant="ghost"
-                        onClick={() => setEditingLabelId(label.id)}>
+                        onClick={() => setEditingLabelId(label.id)}
+                      >
                         <Edit2 />
                       </Button>
                       <Button size="icon" variant="ghost">

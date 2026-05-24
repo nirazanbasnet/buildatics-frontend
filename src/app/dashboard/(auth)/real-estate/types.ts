@@ -44,4 +44,3 @@ export type FeaturedPropertyItem = {
 
 export type ListingData = typeof data.detail;
 export type ListingAgent = ListingData["agent"];
-

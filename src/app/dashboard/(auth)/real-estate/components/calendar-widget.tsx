@@ -135,7 +135,8 @@ export function CalendarWidget() {
       <div className="space-y-4 border-t px-4 pt-4 pb-0">
         <Tabs
           value={activeTab}
-          onValueChange={(value) => setActiveTab(value as "all" | "assigned" | "schedule")}>
+          onValueChange={(value) => setActiveTab(value as "all" | "assigned" | "schedule")}
+        >
           <TabsList className="w-full">
             <TabsTrigger value="all" className="flex-1">
               All
@@ -157,11 +158,12 @@ export function CalendarWidget() {
               <div className="space-y-1">
                 <p className="leading-none font-medium">{item.title}</p>
                 <p className="text-muted-foreground text-xs">{item.address}</p>
-                <p className="text-muted-foreground text-xs">
-                  {format(item.date, "MMM d, yyyy")}
-                </p>
+                <p className="text-muted-foreground text-xs">{format(item.date, "MMM d, yyyy")}</p>
               </div>
-              <Badge variant={item.type === "assigned" ? "warning" : "secondary"} className="ms-auto capitalize">
+              <Badge
+                variant={item.type === "assigned" ? "warning" : "secondary"}
+                className="ms-auto capitalize"
+              >
                 {item.type === "schedule" ? "my schedule" : item.type}
               </Badge>
             </div>
