@@ -79,6 +79,10 @@ export const navItems: NavGroup[] = [
             href: "/dashboard/templates/display-center-detail/variant-1"
           },
           {
+            title: "Display Center Facades",
+            href: "/dashboard/templates/display-center-facades/variant-1"
+          },
+          {
             title: "Display Center Filter",
             href: "/dashboard/templates/display-center-filter/variant-1"
           },

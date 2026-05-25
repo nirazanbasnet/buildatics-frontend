@@ -2,13 +2,20 @@ import { MoreVertical } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 import { detailDescription } from "../_data";
 import type { Property } from "../../display-center/_data";
 
-export function DetailHeader({ property }: { property: Property }) {
+export function DetailHeader({
+  property,
+  className
+}: {
+  property: Property;
+  className?: string;
+}) {
   return (
-    <Card className="gap-1 p-5">
+    <Card className={cn("gap-1 p-5", className)}>
       <div className="flex items-start justify-between gap-3">
         <div className="space-y-1">
           <h2 className="text-xl font-semibold tracking-tight">{property.title}</h2>

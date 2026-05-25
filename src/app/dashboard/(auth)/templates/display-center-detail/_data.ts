@@ -2,16 +2,16 @@ export type SpecRow = { label: string; value: string };
 export type RoomDimension = { name: string; size: string };
 export type FacadeOption = { id: string; label: string; image: string };
 
-export const detailTabs = ["Details", "Documents", "Projects", "Estimation", "Tasks"] as const;
+export const detailTabs = ["Details", "Facades", "Documents", "Tasks"] as const;
 export type DetailTab = (typeof detailTabs)[number];
 
 export const detailDescription =
   "Rear master retreat, open living, and alfresco for seamless outdoor flow.";
 
 export const detailSpecs: SpecRow[] = [
-  { label: "Min. Block Width", value: "#PR1000 m" },
-  { label: "Max. Block Width", value: "#PR1000 m" },
-  { label: "House Area", value: "#PR1000 m" }
+  { label: "Min. Block Width", value: "12.5 m" },
+  { label: "Min. Block Depth", value: "30 m" },
+  { label: "House Area", value: "25 sq (232 m²)" }
 ];
 
 export const detailRooms: RoomDimension[] = [

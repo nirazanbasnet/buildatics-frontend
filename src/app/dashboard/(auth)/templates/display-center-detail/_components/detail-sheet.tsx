@@ -13,7 +13,6 @@ import {
 import type { Property } from "../../display-center/_data";
 
 import { DetailLayout } from "./detail-layout";
-import { DetailLayoutV2 } from "./detail-layout-v2";
 import type { DetailVariantId } from "./variants";
 
 type Props = {
@@ -23,8 +22,7 @@ type Props = {
   variant?: DetailVariantId;
 };
 
-export function DetailSheet({ open, onOpenChange, property, variant = "v1" }: Props) {
-  const Layout = variant === "v2" ? DetailLayoutV2 : DetailLayout;
+export function DetailSheet({ open, onOpenChange, property, variant }: Props) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-4xl">
@@ -34,7 +32,7 @@ export function DetailSheet({ open, onOpenChange, property, variant = "v1" }: Pr
             <SheetDescription>Detail view for {property.title}</SheetDescription>
           </SheetHeader>
         </VisuallyHidden>
-        <Layout property={property} />
+        <DetailLayout property={property} variant={variant} />
       </SheetContent>
     </Sheet>
   );

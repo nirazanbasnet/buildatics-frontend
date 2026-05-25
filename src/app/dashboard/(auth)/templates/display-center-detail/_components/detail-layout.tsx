@@ -1,51 +1,27 @@
-"use client";
-
-import { motion } from "motion/react";
-
-import { cn } from "@/lib/utils";
-
 import type { Property } from "../../display-center/_data";
 
-import { AvailableFacades } from "./available-facades";
-import { DetailHeader } from "./detail-header";
-import { DetailTabs } from "./detail-tabs";
-import { FloorPlanPanel } from "./floor-plan-panel";
-import { RoomDimensionsTable } from "./room-dimensions-table";
-import { SpecificationsTable } from "./specifications-table";
+import { layoutComponents } from "./layouts/registry";
+import { detailThemes } from "./themes";
+import { detailVariantConfigs, type DetailVariantId } from "./variants";
 
-function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+export function DetailLayout({
+  property,
+  variant = "v1",
+  className
+}: {
+  property: Property;
+  variant?: DetailVariantId;
+  className?: string;
+}) {
+  const config = detailVariantConfigs[variant];
+  const Layout = layoutComponents[config.layout];
+  const theme = detailThemes[config.theme];
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.25, delay, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function DetailLayout({ property, className }: { property: Property; className?: string }) {
-  return (
-    <div className={cn("space-y-5", className)}>
-      <Section>
-        <DetailTabs />
-      </Section>
-      <Section delay={0.04}>
-        <DetailHeader property={property} />
-      </Section>
-      <Section delay={0.08}>
-        <div className="grid gap-4 lg:grid-cols-[5fr_4fr]">
-          <FloorPlanPanel property={property} />
-          <div className="space-y-3">
-            <SpecificationsTable />
-            <RoomDimensionsTable />
-          </div>
-        </div>
-      </Section>
-      <Section delay={0.12}>
-        <AvailableFacades property={property} />
-      </Section>
-    </div>
+    <Layout
+      property={property}
+      theme={theme}
+      tabVariant={config.tabVariant}
+      className={className}
+    />
   );
 }
