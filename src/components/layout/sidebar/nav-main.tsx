@@ -19,6 +19,7 @@ import {
   ComponentIcon,
   HardHatIcon,
   LayoutDashboardIcon,
+  UsersIcon,
   type LucideIcon
 } from "lucide-react";
 import Link from "next/link";
@@ -62,6 +63,11 @@ export const navItems: NavGroup[] = [
         title: "Preconstruction",
         href: "/dashboard/preconstruction-list",
         icon: HardHatIcon
+      },
+      {
+        title: "Leads",
+        href: "/dashboard/leads",
+        icon: UsersIcon
       }
     ]
   },
@@ -89,6 +95,10 @@ export const navItems: NavGroup[] = [
           {
             title: "Preconstruction Detail",
             href: "/dashboard/templates/preconstruction-detail/variant-1"
+          },
+          {
+            title: "Leads List",
+            href: "/dashboard/templates/leads/variant-1"
           }
         ]
       }
@@ -118,6 +128,7 @@ export function NavMain() {
     pathname === "/dashboard" ||
     pathname === "/dashboard/display-center" ||
     pathname === "/dashboard/preconstruction-list" ||
+    pathname === "/dashboard/leads" ||
     pathname.startsWith("/dashboard/templates/") ||
     pathname.startsWith("/dashboard/components");
   const items: NavGroup[] = useMinimal ? navItems : referenceNavItems;
