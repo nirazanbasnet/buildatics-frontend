@@ -2,6 +2,7 @@
 
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { DEFAULT_THEME, ThemeType } from "@/lib/themes";
+import { applyCustomTheme, loadCustomTheme } from "@/lib/custom-theme";
 
 function setThemeCookie(key: string, value: string | null) {
   if (typeof window === "undefined") return;
@@ -30,6 +31,11 @@ export function ActiveThemeProvider({
   const [theme, setTheme] = useState<ThemeType>(() =>
     initialTheme ? initialTheme : DEFAULT_THEME
   );
+
+  useEffect(() => {
+    const stored = loadCustomTheme();
+    if (stored) applyCustomTheme(stored);
+  }, []);
 
   useEffect(() => {
     const body = document.body;

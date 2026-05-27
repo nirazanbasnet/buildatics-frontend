@@ -1,5 +1,6 @@
 export * from "./color-mode-selector";
 export * from "./content-layout-selector";
+export * from "./custom-theme-dialog";
 export * from "./font-selector";
 export * from "./preset-selector";
 export * from "./radius-selector";

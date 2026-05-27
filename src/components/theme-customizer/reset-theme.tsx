@@ -2,6 +2,7 @@
 
 import { useThemeConfig } from "@src/components/active-theme";
 import { Button } from "@/components/ui/button";
+import { clearCustomTheme, removeCustomTheme } from "@/lib/custom-theme";
 import { DEFAULT_THEME } from "@/lib/themes";
 
 export function ResetThemeButton() {
@@ -9,6 +10,8 @@ export function ResetThemeButton() {
 
   const resetThemeHandle = () => {
     setTheme(DEFAULT_THEME);
+    removeCustomTheme();
+    clearCustomTheme();
   };
 
   return (
