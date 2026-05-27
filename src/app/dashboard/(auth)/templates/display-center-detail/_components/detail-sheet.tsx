@@ -27,7 +27,7 @@ export function DetailSheet({ open, onOpenChange, property, variant = "v1" }: Pr
   const Layout = variant === "v2" ? DetailLayoutV2 : DetailLayout;
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-4xl">
+      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-234">
         <VisuallyHidden>
           <SheetHeader>
             <SheetTitle>{property.title} details</SheetTitle>

@@ -258,7 +258,7 @@ type Props = {
 export function {Feature}Sheet({ open, onOpenChange, ...props }: Props) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-4xl">
+      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-234">
         <VisuallyHidden>
           <SheetHeader>
             <SheetTitle>{Feature} details</SheetTitle>

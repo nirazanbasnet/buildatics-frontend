@@ -77,7 +77,7 @@ export function AvailableFacades({
                 size="icon"
                 variant="secondary"
                 aria-label="Delete facade"
-                className="bg-background/80 hover:bg-background absolute top-3 left-3 size-8 rounded-full backdrop-blur"
+                className="absolute top-3 left-3 size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
               >
                 <Plus className="size-4 rotate-45" />
               </Button>
@@ -86,7 +86,7 @@ export function AvailableFacades({
                   size="icon"
                   variant="secondary"
                   aria-label="Zoom"
-                  className="bg-background/80 hover:bg-background size-8 rounded-full backdrop-blur"
+                  className="size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
                 >
                   <ZoomIn className="size-4" />
                 </Button>
@@ -101,13 +101,13 @@ export function AvailableFacades({
               </div>
               <Badge
                 variant="secondary"
-                className="bg-background text-foreground absolute bottom-3 left-3 rounded-full px-3 py-1 font-medium"
+                className="absolute bottom-3 left-3 bg-black/50 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur"
               >
                 {property.brand}
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-background text-foreground absolute right-3 bottom-3 gap-1 rounded-full px-3 py-1 font-medium"
+                className="absolute right-3 bottom-3 gap-1 bg-black/50 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur"
               >
                 <Clock className="size-3" />
                 Version {property.version}

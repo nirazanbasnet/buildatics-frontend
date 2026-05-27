@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
+import { FilterSheet } from "../../display-center/_components/filter-sheet";
+
 export type PreconstructionListView = "list" | "card";
 
 type Props = {
@@ -16,6 +18,7 @@ type Props = {
 
 export function PreconstructionListToolbar({ view, onViewChange }: Props) {
   const [statusActive, setStatusActive] = useState(true);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   function handleViewChange(next: string) {
     if (next === "list" || next === "card") onViewChange(next);
@@ -31,7 +34,7 @@ export function PreconstructionListToolbar({ view, onViewChange }: Props) {
             <Button
               variant="ghost"
               size="icon"
-              className="size-5 rounded-full hover:bg-white/20"
+              className="size-5 rounded-full hover:bg-white/20 hover:text-white"
               onClick={() => setStatusActive(false)}
               aria-label="Clear status filter"
             >
@@ -42,10 +45,11 @@ export function PreconstructionListToolbar({ view, onViewChange }: Props) {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm" className="h-9">
+        <Button variant="outline" size="sm" className="h-9" onClick={() => setFilterOpen(true)}>
           <ListFilter className="size-4" />
           Filter
         </Button>
+        <FilterSheet open={filterOpen} onOpenChange={setFilterOpen} />
 
         <ToggleGroup type="single" value={view} onValueChange={handleViewChange} className="h-9">
           <ToggleGroupItem variant="outline" value="list" className="h-9 px-3">

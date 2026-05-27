@@ -27,7 +27,11 @@ import {
   type PreconstructionDetailTab
 } from "../_data";
 
+import { DocumentsV2 } from "./documents-v2";
+import { ItiPreconstructionV2 } from "./iti-preconstruction-v2";
 import { PreconstructionDetailTabs } from "./preconstruction-detail-tabs";
+import { PreconstructionTasks } from "./preconstruction-tasks";
+import { PreconstructionTimeline } from "./preconstruction-timeline";
 
 function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
@@ -281,6 +285,14 @@ export function PreconstructionDetailLayoutV2({ project, className }: Props) {
       <Section delay={0.04}>
         {activeTab === "Overview" ? (
           <OverviewV2 project={project} />
+        ) : activeTab === "ITI Preconstruction" ? (
+          <ItiPreconstructionV2 project={project} />
+        ) : activeTab === "Tasks" ? (
+          <PreconstructionTasks project={project} />
+        ) : activeTab === "Documents" ? (
+          <DocumentsV2 project={project} />
+        ) : activeTab === "Timeline" ? (
+          <PreconstructionTimeline project={project} />
         ) : (
           <div className="text-muted-foreground rounded-md border border-dashed py-12 text-center text-sm">
             {activeTab} — to be designed
