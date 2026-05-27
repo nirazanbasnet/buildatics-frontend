@@ -19,6 +19,7 @@ import {
   ComponentIcon,
   HardHatIcon,
   LayoutDashboardIcon,
+  Share2Icon,
   UsersIcon,
   type LucideIcon
 } from "lucide-react";
@@ -68,6 +69,11 @@ export const navItems: NavGroup[] = [
         title: "Leads",
         href: "/dashboard/leads",
         icon: UsersIcon
+      },
+      {
+        title: "Share to Site",
+        href: "/dashboard/share-to-site",
+        icon: Share2Icon
       }
     ]
   },
@@ -99,6 +105,10 @@ export const navItems: NavGroup[] = [
           {
             title: "Leads List",
             href: "/dashboard/templates/leads/variant-1"
+          },
+          {
+            title: "Share to Site",
+            href: "/dashboard/templates/share-to-site/variant-1"
           }
         ]
       }
@@ -129,6 +139,7 @@ export function NavMain() {
     pathname === "/dashboard/display-center" ||
     pathname === "/dashboard/preconstruction-list" ||
     pathname === "/dashboard/leads" ||
+    pathname === "/dashboard/share-to-site" ||
     pathname.startsWith("/dashboard/templates/") ||
     pathname.startsWith("/dashboard/components");
   const items: NavGroup[] = useMinimal ? navItems : referenceNavItems;
