@@ -22,7 +22,7 @@ export function FloorPlanPanel({
           alt={`${property.title} floor plan`}
           width={900}
           height={900}
-          className="h-full w-full bg-slate-50 object-contain dark:bg-slate-800"
+          className="bg-muted h-full w-full object-contain dark:bg-stone-100"
         />
 
         <Button

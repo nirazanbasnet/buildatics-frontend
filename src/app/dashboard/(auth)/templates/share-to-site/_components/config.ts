@@ -30,7 +30,7 @@ export function buildEmbedSrc(config: ShareConfig): string {
     font: config.font,
     theme: config.color
   });
-  return `https://buildatics-frontend.vercel.app/dashboard/display-center?${params.toString()}`;
+  return `https://buildatics-frontend.vercel.app/embed/display-center?${params.toString()}`;
 }
 
 export function buildIframeCode(config: ShareConfig): string {

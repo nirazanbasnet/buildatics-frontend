@@ -14,11 +14,14 @@ import {
   useSidebar
 } from "@/components/ui/sidebar";
 import {
+  BookOpenIcon,
   Building2Icon,
   ChevronRight,
   ComponentIcon,
+  FileTextIcon,
   HardHatIcon,
   LayoutDashboardIcon,
+  SettingsIcon,
   Share2Icon,
   UsersIcon,
   type LucideIcon
@@ -74,6 +77,21 @@ export const navItems: NavGroup[] = [
         title: "Share to Site",
         href: "/dashboard/share-to-site",
         icon: Share2Icon
+      },
+      {
+        title: "Quotation",
+        href: "/dashboard/quotation",
+        icon: FileTextIcon
+      },
+      {
+        title: "Brochures",
+        href: "/dashboard/brochures",
+        icon: BookOpenIcon
+      },
+      {
+        title: "Settings",
+        href: "/dashboard/settings",
+        icon: SettingsIcon
       }
     ]
   },
@@ -109,6 +127,22 @@ export const navItems: NavGroup[] = [
           {
             title: "Share to Site",
             href: "/dashboard/templates/share-to-site/variant-1"
+          },
+          {
+            title: "Quotation List",
+            href: "/dashboard/templates/quotation/variant-1"
+          },
+          {
+            title: "Quotation Detail",
+            href: "/dashboard/templates/quotation-detail/variant-1"
+          },
+          {
+            title: "Brochure List",
+            href: "/dashboard/templates/brochures/variant-1"
+          },
+          {
+            title: "Settings",
+            href: "/dashboard/settings"
           }
         ]
       }
@@ -140,6 +174,9 @@ export function NavMain() {
     pathname === "/dashboard/preconstruction-list" ||
     pathname === "/dashboard/leads" ||
     pathname === "/dashboard/share-to-site" ||
+    pathname === "/dashboard/quotation" ||
+    pathname === "/dashboard/brochures" ||
+    pathname.startsWith("/dashboard/settings") ||
     pathname.startsWith("/dashboard/templates/") ||
     pathname.startsWith("/dashboard/components");
   const items: NavGroup[] = useMinimal ? navItems : referenceNavItems;

@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 import { DEFAULT_SHARE_CONFIG, type ShareConfig } from "./config";
 import { ShareToSiteControls } from "./share-to-site-controls";
-import { ShareToSiteFooter } from "./share-to-site-footer";
 import { ShareToSitePreview } from "./share-to-site-preview";
 
 type Props = {
@@ -24,7 +23,6 @@ export function ShareToSiteLayout({ className }: Props) {
           <ShareToSitePreview config={config} />
         </Suspense>
       </div>
-      <ShareToSiteFooter />
     </div>
   );
 }

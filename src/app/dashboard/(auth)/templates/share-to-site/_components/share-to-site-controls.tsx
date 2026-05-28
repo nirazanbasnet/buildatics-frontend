@@ -1,10 +1,12 @@
 "use client";
 
-import { Copy, LayoutGrid, Palette, Type } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Copy, LayoutGrid, Palette, Type } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -32,11 +34,18 @@ type Props = {
 
 export function ShareToSiteControls({ config, onChange }: Props) {
   const iframeCode = buildIframeCode(config);
+  const [copied, setCopied] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
 
   async function copyIframe() {
     try {
       await navigator.clipboard.writeText(iframeCode);
       toast.success("Iframe code copied to clipboard");
+      setCopied(true);
+      clearTimeout(resetTimer.current);
+      resetTimer.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Couldn't copy to clipboard");
     }
@@ -134,9 +143,31 @@ export function ShareToSiteControls({ config, onChange }: Props) {
       <div className="grid gap-2">
         <div className="flex items-center justify-between gap-2">
           <Label htmlFor="iframe-code">Iframe</Label>
-          <Button variant="outline" size="sm" className="h-7" onClick={copyIframe}>
-            <Copy className="size-3.5" />
-            Copy to Clipboard
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copyIframe}
+            aria-live="polite"
+            className={cn(
+              "h-7 transition-colors",
+              copied && "border-primary/40 bg-primary/10 text-primary"
+            )}
+          >
+            <span className="relative grid size-3.5 place-items-center">
+              <Copy
+                className={cn(
+                  "size-3.5 transition-all duration-200",
+                  copied ? "scale-50 opacity-0" : "scale-100 opacity-100"
+                )}
+              />
+              <Check
+                className={cn(
+                  "absolute size-3.5 transition-all duration-200",
+                  copied ? "scale-100 opacity-100" : "scale-50 opacity-0"
+                )}
+              />
+            </span>
+            {copied ? "Copied!" : "Copy to Clipboard"}
           </Button>
         </div>
         <Textarea
