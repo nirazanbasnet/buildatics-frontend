@@ -8,6 +8,7 @@ import { BrochuresActionsMenu } from "./brochures-actions-menu";
 type Props = {
   brochures: Brochure[];
   className?: string;
+  onBrochureClick?: (brochure: Brochure) => void;
 };
 
 function MetaCell({ label, value }: { label: string; value: string }) {
@@ -21,15 +22,33 @@ function MetaCell({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function BrochuresTableV2({ brochures, className }: Props) {
+export function BrochuresTableV2({ brochures, className, onBrochureClick }: Props) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       {brochures.map((brochure) => {
         const status = brochureStatusConfig[brochure.status];
+        const interactive = Boolean(onBrochureClick);
         return (
           <article
             key={brochure.id}
-            className="bg-card hover:bg-muted/30 relative flex items-stretch gap-4 overflow-hidden rounded-lg border py-4 pr-3 pl-5 transition-colors"
+            onClick={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
+            onKeyDown={
+              interactive
+                ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onBrochureClick?.(brochure);
+                    }
+                  }
+                : undefined
+            }
+            role={interactive ? "button" : undefined}
+            tabIndex={interactive ? 0 : undefined}
+            className={cn(
+              "bg-card hover:bg-muted/30 relative flex items-stretch gap-4 overflow-hidden rounded-lg border py-4 pr-3 pl-5 transition-colors",
+              interactive &&
+                "focus-visible:ring-ring cursor-pointer focus-visible:ring-2 focus-visible:outline-none"
+            )}
           >
             <span className={cn("absolute inset-y-0 left-0 w-1", status.stripe)} aria-hidden />
 
@@ -57,8 +76,11 @@ export function BrochuresTableV2({ brochures, className }: Props) {
               </dl>
             </div>
 
-            <div className="flex items-center pl-2">
-              <BrochuresActionsMenu brochureRef={brochure.ref} />
+            <div className="flex items-center pl-2" onClick={(e) => e.stopPropagation()}>
+              <BrochuresActionsMenu
+                brochureRef={brochure.ref}
+                onView={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
+              />
             </div>
           </article>
         );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, Download, Eye, MoreVertical, Pencil, Share2, Trash2 } from "lucide-react";
+import { Download, Eye, MoreVertical, Pencil, Share2, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,11 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 type Props = {
-  brochureRef?: string;
-  onView?: () => void;
+  fileName?: string;
 };
 
-export function BrochuresActionsMenu({ brochureRef, onView }: Props) {
+export function DocumentsActionsMenu({ fileName }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,32 +24,28 @@ export function BrochuresActionsMenu({ brochureRef, onView }: Props) {
           variant="ghost"
           size="icon"
           className="size-8"
-          aria-label={brochureRef ? `Actions for ${brochureRef}` : "Brochure actions"}
+          aria-label={fileName ? `Actions for ${fileName}` : "Document actions"}
         >
           <MoreVertical className="size-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-44">
+      <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuItem onSelect={onView}>
+        <DropdownMenuItem>
           <Eye className="size-4" />
-          View details
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Pencil className="size-4" />
-          Edit
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Copy className="size-4" />
-          Duplicate
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Share2 className="size-4" />
-          Share brochure
+          Preview
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Download className="size-4" />
-          Download PDF
+          Download
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Pencil className="size-4" />
+          Rename
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Share2 className="size-4" />
+          Share
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">

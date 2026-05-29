@@ -20,9 +20,10 @@ import { BrochuresActionsMenu } from "./brochures-actions-menu";
 type Props = {
   brochures: Brochure[];
   className?: string;
+  onBrochureClick?: (brochure: Brochure) => void;
 };
 
-export function BrochuresTable({ brochures, className }: Props) {
+export function BrochuresTable({ brochures, className, onBrochureClick }: Props) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const allSelected = brochures.length > 0 && selected.size === brochures.length;
@@ -67,8 +68,12 @@ export function BrochuresTable({ brochures, className }: Props) {
             const isChecked = selected.has(brochure.id);
             const status = brochureStatusConfig[brochure.status];
             return (
-              <TableRow key={brochure.id}>
-                <TableCell className="py-3 pl-4">
+              <TableRow
+                key={brochure.id}
+                onClick={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
+                className={onBrochureClick ? "cursor-pointer" : undefined}
+              >
+                <TableCell className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
                   <Checkbox
                     checked={isChecked}
                     onCheckedChange={(v) => toggleOne(brochure.id, v === true)}
@@ -97,8 +102,11 @@ export function BrochuresTable({ brochures, className }: Props) {
                     {status.label}
                   </span>
                 </TableCell>
-                <TableCell className="pr-4 text-right">
-                  <BrochuresActionsMenu brochureRef={brochure.ref} />
+                <TableCell className="pr-4 text-right" onClick={(e) => e.stopPropagation()}>
+                  <BrochuresActionsMenu
+                    brochureRef={brochure.ref}
+                    onView={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
+                  />
                 </TableCell>
               </TableRow>
             );

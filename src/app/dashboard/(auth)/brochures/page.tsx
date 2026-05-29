@@ -15,5 +15,5 @@ export default async function BrochuresPage() {
 
   const Layout = brochuresVariant === "v2" ? BrochuresLayoutV2 : BrochuresLayout;
 
-  return <Layout brochures={brochures} />;
+  return <Layout brochures={brochures} detailEnabled />;
 }

@@ -1,0 +1,36 @@
+"use client";
+
+import { useState } from "react";
+
+import { financeTabs, type FinanceTab } from "../_data";
+import { FinanceCashflow } from "./finance-cashflow";
+import { FinanceClaims } from "./finance-claims";
+import { FinanceOverview } from "./finance-overview";
+import { FinancePayables } from "./finance-payables";
+import { FinanceProjectPL } from "./finance-project-pl";
+import { FinanceStatCards } from "./finance-stat-cards";
+import { FinanceTabs } from "./finance-tabs";
+
+export function Finance() {
+  const [activeTab, setActiveTab] = useState<FinanceTab>(financeTabs[0]);
+
+  return (
+    <div className="space-y-4">
+      <FinanceStatCards />
+      <FinanceTabs activeTab={activeTab} onTabChange={setActiveTab} />
+      <div>
+        {activeTab === "Overview" ? (
+          <FinanceOverview />
+        ) : activeTab === "Claims" ? (
+          <FinanceClaims />
+        ) : activeTab === "Payables" ? (
+          <FinancePayables />
+        ) : activeTab === "Project P & L" ? (
+          <FinanceProjectPL />
+        ) : (
+          <FinanceCashflow />
+        )}
+      </div>
+    </div>
+  );
+}

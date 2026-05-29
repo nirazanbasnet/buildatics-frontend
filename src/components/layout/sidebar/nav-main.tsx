@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 import {
   BookOpenIcon,
+  BriefcaseIcon,
   Building2Icon,
   ChevronRight,
   ComponentIcon,
@@ -92,6 +93,15 @@ export const navItems: NavGroup[] = [
         title: "Settings",
         href: "/dashboard/settings",
         icon: SettingsIcon
+      },
+      {
+        title: "Business",
+        href: "/dashboard/business/documents",
+        icon: BriefcaseIcon,
+        items: [
+          { title: "Documents", href: "/dashboard/business/documents" },
+          { title: "Finance", href: "/dashboard/business/finance" }
+        ]
       }
     ]
   },
@@ -141,8 +151,16 @@ export const navItems: NavGroup[] = [
             href: "/dashboard/templates/brochures/variant-1"
           },
           {
+            title: "Brochure Detail",
+            href: "/dashboard/templates/brochure-detail/variant-1"
+          },
+          {
             title: "Settings",
             href: "/dashboard/settings"
+          },
+          {
+            title: "Business",
+            href: "/dashboard/business/documents"
           }
         ]
       }
@@ -177,6 +195,7 @@ export function NavMain() {
     pathname === "/dashboard/quotation" ||
     pathname === "/dashboard/brochures" ||
     pathname.startsWith("/dashboard/settings") ||
+    pathname.startsWith("/dashboard/business") ||
     pathname.startsWith("/dashboard/templates/") ||
     pathname.startsWith("/dashboard/components");
   const items: NavGroup[] = useMinimal ? navItems : referenceNavItems;
