@@ -65,7 +65,7 @@ export function AppSidebar({
               asChild
               className="hover:text-foreground h-10 group-data-[collapsible=icon]:px-0!"
             >
-              <Link href="/dashboard">
+              <Link href="/dashboard/display-center">
                 <Logo />
                 <span className="text-foreground text-xl font-semibold">Buildatics.</span>
               </Link>
