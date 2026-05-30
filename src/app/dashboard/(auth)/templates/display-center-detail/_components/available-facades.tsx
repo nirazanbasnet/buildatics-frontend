@@ -2,9 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Clock, Plus, Share2, ZoomIn } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus, Share2, Trash2, ZoomIn } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -13,12 +12,15 @@ import type { Property } from "../../display-center/_data";
 
 export function AvailableFacades({
   property,
-  className
+  className,
+  cardClassName
 }: {
   property: Property;
   className?: string;
+  cardClassName?: string;
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const brandTag = property.brand.slice(0, 3).toUpperCase();
 
   function scrollBy(delta: number) {
     scrollerRef.current?.scrollBy({ left: delta, behavior: "smooth" });
@@ -63,7 +65,10 @@ export function AvailableFacades({
         {availableFacades.map((facade) => (
           <div
             key={facade.id}
-            className="group bg-card relative w-72 shrink-0 snap-start overflow-hidden rounded-xl border transition-shadow hover:shadow-md"
+            className={cn(
+              "group bg-card relative w-72 shrink-0 snap-start overflow-hidden rounded-xl border transition-shadow hover:shadow-md",
+              cardClassName
+            )}
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
@@ -73,14 +78,14 @@ export function AvailableFacades({
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
-              <Button
-                size="icon"
-                variant="secondary"
-                aria-label="Delete facade"
-                className="absolute top-3 left-3 size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
+
+              <span
+                data-slot="brand-tag"
+                className="absolute top-3 left-3 rounded-lg bg-black/50 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur"
               >
-                <Plus className="size-4 rotate-45" />
-              </Button>
+                {brandTag} · V{property.version}
+              </span>
+
               <div className="absolute top-3 right-3 flex flex-col gap-2">
                 <Button
                   size="icon"
@@ -94,24 +99,20 @@ export function AvailableFacades({
                   size="icon"
                   variant="secondary"
                   aria-label="Share"
-                  className="bg-background/80 hover:bg-background size-8 rounded-full backdrop-blur"
+                  className="size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
                 >
                   <Share2 className="size-4" />
                 </Button>
               </div>
-              <Badge
+
+              <Button
+                size="icon"
                 variant="secondary"
-                className="absolute bottom-3 left-3 bg-black/50 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur"
+                aria-label="Delete facade"
+                className="absolute right-3 bottom-3 size-8 rounded-full bg-black/50 text-white backdrop-blur hover:bg-black/70"
               >
-                {property.brand}
-              </Badge>
-              <Badge
-                variant="secondary"
-                className="absolute right-3 bottom-3 gap-1 bg-black/50 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur"
-              >
-                <Clock className="size-3" />
-                Version {property.version}
-              </Badge>
+                <Trash2 className="size-4" />
+              </Button>
             </div>
           </div>
         ))}

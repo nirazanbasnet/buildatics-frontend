@@ -1,3 +1,5 @@
+import { Eye, History, LayoutTemplate, type LucideIcon } from "lucide-react";
+
 export type BrochureDetailStatus = "draft" | "sent";
 
 export const brochureDetailStatusConfig: Record<
@@ -20,6 +22,17 @@ export const brochureDetailStatusOrder: BrochureDetailStatus[] = ["draft", "sent
 
 export const brochureDetailTabs = ["Brochure Builder", "Preview", "History"] as const;
 export type BrochureDetailTab = (typeof brochureDetailTabs)[number];
+
+const brochureDetailTabIcons: Record<BrochureDetailTab, LucideIcon> = {
+  "Brochure Builder": LayoutTemplate,
+  Preview: Eye,
+  History: History
+};
+
+export const brochureDetailTabItems = brochureDetailTabs.map((value) => ({
+  value,
+  icon: brochureDetailTabIcons[value]
+}));
 
 export type BrochureOwner = {
   id: string;

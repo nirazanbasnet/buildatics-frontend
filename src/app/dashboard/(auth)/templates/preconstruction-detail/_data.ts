@@ -1,3 +1,12 @@
+import {
+  Calendar,
+  FileText,
+  HardHat,
+  LayoutDashboard,
+  ListChecks,
+  type LucideIcon
+} from "lucide-react";
+
 export type PreconstructionCategoryStatus = "done" | "in-progress" | "pending";
 
 export type PreconstructionCategory = {
@@ -92,6 +101,19 @@ export const preconstructionDetailTabs = [
 ] as const;
 
 export type PreconstructionDetailTab = (typeof preconstructionDetailTabs)[number];
+
+const preconstructionDetailTabIcons: Record<PreconstructionDetailTab, LucideIcon> = {
+  Overview: LayoutDashboard,
+  "ITI Preconstruction": HardHat,
+  Tasks: ListChecks,
+  Documents: FileText,
+  Timeline: Calendar
+};
+
+export const preconstructionDetailTabItems = preconstructionDetailTabs.map((value) => ({
+  value,
+  icon: preconstructionDetailTabIcons[value]
+}));
 
 const dummyOwner = {
   name: "client_name",

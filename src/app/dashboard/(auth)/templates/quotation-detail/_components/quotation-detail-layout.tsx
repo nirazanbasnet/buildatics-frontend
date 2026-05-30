@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { arrayMove } from "@dnd-kit/sortable";
 
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import {
+  quotationDetailTabItems,
   quotationDetailTabs,
   type QuotationBuilderHandlers,
   type QuotationCategory,
@@ -19,7 +21,6 @@ import {
 import { QuotationBuilder } from "./quotation-builder";
 import { QuotationDetailActions } from "./quotation-detail-actions";
 import { QuotationDetailInfoCard } from "./quotation-detail-info-card";
-import { QuotationDetailTabs } from "./quotation-detail-tabs";
 import { QuotationEditableSection } from "./quotation-editable-section";
 import { QuotationMarginCard } from "./quotation-margin-card";
 import { QuotationMetaCard } from "./quotation-meta-card";
@@ -185,7 +186,12 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
       data-slot="quotation-detail"
     >
       <Section className="pr-3">
-        <QuotationDetailTabs activeTab={activeTab} onTabChange={setActiveTab} />
+        <SegmentedNav
+          items={quotationDetailTabItems}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          ariaLabel="Quotation views"
+        />
       </Section>
 
       {activeTab === "Quote Builder" ? (

@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import {
+  brochureDetailTabItems,
   brochureDetailTabs,
   type BrochureDetail,
   type BrochureDetailStatus,
@@ -17,7 +19,6 @@ import {
 import { BrochureAttachedDesigns } from "./brochure-attached-designs";
 import { BrochureDetailActions } from "./brochure-detail-actions";
 import { BrochureDetailInfoCard } from "./brochure-detail-info-card";
-import { BrochureDetailTabs } from "./brochure-detail-tabs";
 import { BrochureHistory } from "./brochure-history";
 import { BrochureMetaCard } from "./brochure-meta-card";
 import { BrochureOwners } from "./brochure-owners";
@@ -82,7 +83,12 @@ export function BrochureDetailLayout({ detail: initialDetail, className }: Props
       <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         <div className="flex min-w-0 flex-col gap-4">
           <Section>
-            <BrochureDetailTabs activeTab={activeTab} onTabChange={setActiveTab} />
+            <SegmentedNav
+              items={brochureDetailTabItems}
+              value={activeTab}
+              onValueChange={setActiveTab}
+              ariaLabel="Brochure views"
+            />
           </Section>
 
           {activeTab === "Brochure Builder" ? (

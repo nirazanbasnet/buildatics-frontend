@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import {
+  preconstructionDetailTabItems,
   preconstructionDetailTabs,
   type PreconstructionDetailProject,
   type PreconstructionDetailTab
@@ -14,7 +16,6 @@ import {
 import { DocumentsV1 } from "./documents-v1";
 import { ItiPreconstructionV1 } from "./iti-preconstruction-v1";
 import { PreconstructionDetailOverview } from "./preconstruction-detail-overview";
-import { PreconstructionDetailTabs } from "./preconstruction-detail-tabs";
 import { PreconstructionTasks } from "./preconstruction-tasks";
 import { PreconstructionTimeline } from "./preconstruction-timeline";
 
@@ -43,7 +44,12 @@ export function PreconstructionDetailLayout({ project, className }: Props) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       <Section>
-        <PreconstructionDetailTabs activeTab={activeTab} onTabChange={setActiveTab} />
+        <SegmentedNav
+          items={preconstructionDetailTabItems}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          ariaLabel="Preconstruction views"
+        />
       </Section>
       <Section delay={0.04}>
         {activeTab === "Overview" ? (
