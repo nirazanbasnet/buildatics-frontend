@@ -1,5 +1,8 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { AnimatePresence, motion } from "motion/react";
 import { Slot } from "radix-ui";
 
 import { cn } from "@/lib/utils";
@@ -41,27 +44,82 @@ const buttonVariants = cva(
   }
 );
 
+type Ripple = { id: number; x: number; y: number; size: number };
+
 function Button({
   className,
   variant = "default",
   size = "default",
   asChild = false,
+  onPointerDown,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   }) {
-  const Comp = asChild ? Slot.Root : "button";
+  const [ripples, setRipples] = React.useState<Ripple[]>([]);
+  const nextId = React.useRef(0);
+
+  // asChild delegates to a single child via Slot, which can't hold the extra
+  // ripple nodes — render it untouched (no ripple) to preserve that contract.
+  if (asChild) {
+    return (
+      <Slot.Root
+        suppressHydrationWarning
+        data-slot="button"
+        data-variant={variant}
+        data-size={size}
+        className={cn(buttonVariants({ variant, size, className }))}
+        {...props}
+      >
+        {children}
+      </Slot.Root>
+    );
+  }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLButtonElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    // Diameter that reaches the farthest corner from the press point.
+    const radius = Math.hypot(Math.max(x, rect.width - x), Math.max(y, rect.height - y));
+    setRipples((prev) => [
+      ...prev,
+      { id: nextId.current++, x: x - radius, y: y - radius, size: radius * 2 }
+    ]);
+    onPointerDown?.(event);
+  }
 
   return (
-    <Comp
+    <button
       suppressHydrationWarning
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), "relative overflow-hidden", className)}
+      onPointerDown={handlePointerDown}
       {...props}
-    />
+    >
+      {children}
+      <AnimatePresence>
+        {ripples.map((ripple) => (
+          <motion.span
+            key={ripple.id}
+            aria-hidden
+            className="bg-current pointer-events-none absolute rounded-full"
+            style={{ left: ripple.x, top: ripple.y, width: ripple.size, height: ripple.size }}
+            initial={{ scale: 0, opacity: 0.3 }}
+            animate={{ scale: 1, opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            onAnimationComplete={() =>
+              setRipples((prev) => prev.filter((r) => r.id !== ripple.id))
+            }
+          />
+        ))}
+      </AnimatePresence>
+    </button>
   );
 }
 

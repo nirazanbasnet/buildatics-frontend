@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
@@ -40,6 +40,25 @@ export function PreconstructionDetailLayout({ project, className }: Props) {
   const [activeTab, setActiveTab] = useState<PreconstructionDetailTab>(
     preconstructionDetailTabs[0]
   );
+  const reduceMotion = useReducedMotion();
+  const offset = reduceMotion ? 0 : 8;
+
+  const tabContent =
+    activeTab === "Overview" ? (
+      <PreconstructionDetailOverview project={project} />
+    ) : activeTab === "ITI Preconstruction" ? (
+      <ItiPreconstructionV1 project={project} />
+    ) : activeTab === "Tasks" ? (
+      <PreconstructionTasks project={project} />
+    ) : activeTab === "Documents" ? (
+      <DocumentsV1 project={project} />
+    ) : activeTab === "Timeline" ? (
+      <PreconstructionTimeline project={project} />
+    ) : (
+      <div className="text-muted-foreground rounded-md border border-dashed py-12 text-center text-sm">
+        {activeTab} — to be designed
+      </div>
+    );
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
@@ -51,23 +70,17 @@ export function PreconstructionDetailLayout({ project, className }: Props) {
           ariaLabel="Preconstruction views"
         />
       </Section>
-      <Section delay={0.04}>
-        {activeTab === "Overview" ? (
-          <PreconstructionDetailOverview project={project} />
-        ) : activeTab === "ITI Preconstruction" ? (
-          <ItiPreconstructionV1 project={project} />
-        ) : activeTab === "Tasks" ? (
-          <PreconstructionTasks project={project} />
-        ) : activeTab === "Documents" ? (
-          <DocumentsV1 project={project} />
-        ) : activeTab === "Timeline" ? (
-          <PreconstructionTimeline project={project} />
-        ) : (
-          <div className="text-muted-foreground rounded-md border border-dashed py-12 text-center text-sm">
-            {activeTab} — to be designed
-          </div>
-        )}
-      </Section>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: offset }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -offset }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
+          {tabContent}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

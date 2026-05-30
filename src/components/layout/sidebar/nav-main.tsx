@@ -30,6 +30,7 @@ import {
 import Link from "next/link";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { usePathname } from "next/navigation";
+import { motion, useReducedMotion } from "motion/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -184,6 +185,7 @@ export const navItems: NavGroup[] = [
 
 export function NavMain() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion() ?? false;
   const { isMobile } = useSidebar();
 
   const useMinimal =
@@ -273,12 +275,31 @@ export function NavMain() {
                     </>
                   ) : (
                     <SidebarMenuButton
-                      className="hover:text-foreground active:text-foreground hover:bg-[var(--primary)]/10 active:bg-[var(--primary)]/10"
+                      className="hover:text-foreground active:text-foreground relative isolate overflow-visible hover:bg-[var(--primary)]/10 active:bg-[var(--primary)]/10 data-[active=true]:bg-transparent"
                       isActive={pathname === item.href}
                       tooltip={item.title}
                       asChild
                     >
                       <Link href={item.href} target={item.newTab ? "_blank" : ""}>
+                        {pathname === item.href ? (
+                          reduceMotion ? (
+                            <span
+                              aria-hidden
+                              className="bg-sidebar-accent absolute inset-0 -z-10 rounded-md"
+                            />
+                          ) : (
+                            <motion.span
+                              aria-hidden
+                              layoutId="sidebar-active-pill"
+                              transition={{
+                                type: "tween",
+                                duration: 0.35,
+                                ease: [0.22, 1, 0.36, 1]
+                              }}
+                              className="bg-sidebar-accent absolute inset-0 -z-10 rounded-md"
+                            />
+                          )
+                        ) : null}
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>
                       </Link>

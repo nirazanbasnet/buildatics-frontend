@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import { ChevronDown, MapPin, Settings, User, UserCog } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -8,6 +11,7 @@ type Props = {
   project: PreconstructionListProject;
   className?: string;
   onClick?: () => void;
+  index?: number;
 };
 
 function Row({ icon: Icon, label, value }: { icon: typeof MapPin; label?: string; value: string }) {
@@ -28,10 +32,14 @@ function Row({ icon: Icon, label, value }: { icon: typeof MapPin; label?: string
   );
 }
 
-export function PreconstructionListCard({ project, className, onClick }: Props) {
+export function PreconstructionListCard({ project, className, onClick, index = 0 }: Props) {
   const interactive = Boolean(onClick);
+  const reduceMotion = useReducedMotion() ?? false;
   return (
-    <article
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
       onClick={onClick}
       onKeyDown={
         interactive
@@ -48,7 +56,7 @@ export function PreconstructionListCard({ project, className, onClick }: Props) 
       className={cn(
         "bg-card flex flex-col gap-5 rounded-2xl border p-5 shadow-sm",
         interactive &&
-          "focus-visible:ring-ring hover:border-foreground/30 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:outline-none",
+          "focus-visible:ring-ring cursor-pointer transition duration-300 hover:-translate-y-1.5 hover:shadow-lg focus-visible:ring-2 focus-visible:outline-none",
         className
       )}
     >
@@ -71,11 +79,13 @@ export function PreconstructionListCard({ project, className, onClick }: Props) 
       </ul>
 
       <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
-        <div
-          className="bg-foreground h-full rounded-full"
-          style={{ width: `${project.progress}%` }}
+        <motion.div
+          className="bg-primary h-full rounded-full"
+          initial={reduceMotion ? false : { width: 0 }}
+          animate={{ width: `${project.progress}%` }}
+          transition={{ duration: 0.5, delay: index * 0.06 + 0.15, ease: "easeOut" }}
         />
       </div>
-    </article>
+    </motion.article>
   );
 }

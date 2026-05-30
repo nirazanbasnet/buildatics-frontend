@@ -52,7 +52,7 @@ export function SegmentedNav<T extends string>({
             onClick={() => onValueChange(item.value)}
             whileTap={{ scale: 0.97 }}
             className={cn(
-              "focus-visible:ring-ring border-border relative flex flex-1 items-center justify-center gap-2 border-r px-4 py-2 text-sm font-medium transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:outline-none",
+              "focus-visible:ring-ring border-border relative flex flex-1 items-center justify-center gap-2 border-r px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:outline-none",
               isActive
                 ? "text-primary-foreground"
                 : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -62,7 +62,7 @@ export function SegmentedNav<T extends string>({
               <motion.span
                 layoutId={layoutId}
                 className="bg-primary absolute inset-0 z-0"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                transition={{ type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 aria-hidden
               />
             ) : null}

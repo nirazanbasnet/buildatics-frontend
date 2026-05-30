@@ -7,12 +7,18 @@ import { Home, LayoutGrid, ListFilter, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import { FilterSheet } from "./filter-sheet";
 import type { FilterVariantId } from "../../display-center-filter/_components/variants";
+import type { PropertyView } from "../_data";
 import type { VariantId } from "./variant-layouts";
+
+const VIEW_ITEMS = [
+  { value: "facade" as const, label: "Facade View", icon: Home },
+  { value: "floor" as const, label: "Floor Plan View", icon: LayoutGrid }
+];
 
 type Props = {
   activeVariant?: VariantId;
@@ -38,13 +44,12 @@ export function Toolbar({
 }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const view = searchParams.get("view") === "floor" ? "floor" : "facade";
+  const view: PropertyView = searchParams.get("view") === "floor" ? "floor" : "facade";
   const [filterOpen, setFilterOpen] = useState(false);
 
   const showFilter = mode === "iteration" || filterEnabled;
 
-  function setView(next: string) {
-    if (!next) return;
+  function setView(next: PropertyView) {
     const params = new URLSearchParams(searchParams.toString());
     if (next === "facade") params.delete("view");
     else params.set("view", next);
@@ -79,16 +84,13 @@ export function Toolbar({
               <FilterSheet open={filterOpen} onOpenChange={setFilterOpen} variant={filterVariant} />
             </>
           ) : null}
-          <ToggleGroup type="single" value={view} onValueChange={setView} className="h-9">
-            <ToggleGroupItem variant="outline" value="facade" className="h-9 px-3">
-              <Home className="size-4" />
-              Facade View
-            </ToggleGroupItem>
-            <ToggleGroupItem variant="outline" value="floor" className="h-9 px-3">
-              <LayoutGrid className="size-4" />
-              Floor Plan View
-            </ToggleGroupItem>
-          </ToggleGroup>
+          <SegmentedNav<PropertyView>
+            items={VIEW_ITEMS}
+            value={view}
+            onValueChange={setView}
+            ariaLabel="View"
+            className="h-9 w-auto"
+          />
         </div>
       </div>
 

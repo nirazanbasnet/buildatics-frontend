@@ -13,7 +13,7 @@ type Props = {
 
 export function Variant1Layout({ view }: Props) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div key={view ?? "facade"} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {properties.map((property, index) => (
         <PropertyCard key={property.id} property={property} view={view} index={index} />
       ))}
@@ -33,7 +33,7 @@ export function Variant5Layout({ view }: Props) {
 
 export function Variant6Layout({ view }: Props) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div key={view ?? "facade"} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {properties.map((property, index) => (
         <PropertyCardV6 key={property.id} property={property} view={view} index={index} />
       ))}
@@ -43,7 +43,7 @@ export function Variant6Layout({ view }: Props) {
 
 export function Variant7Layout({ view, detailEnabled, detailVariant }: Props) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div key={view ?? "facade"} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {properties.map((property, index) => (
         <PropertyCardV7
           key={property.id}

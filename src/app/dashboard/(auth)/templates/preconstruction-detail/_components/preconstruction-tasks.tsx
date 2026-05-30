@@ -20,6 +20,7 @@ import {
   type LucideIcon,
   Timer
 } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -167,6 +168,7 @@ const columns: ColumnDef<PreconstructionTaskRow>[] = [
 function TasksTable({ data }: { data: PreconstructionTaskRow[] }) {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
+  const reduceMotion = useReducedMotion() ?? false;
 
   const table = useReactTable({
     data,
@@ -197,14 +199,26 @@ function TasksTable({ data }: { data: PreconstructionTaskRow[] }) {
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} data-state={row.getIsSelected() ? "selected" : undefined}>
+            table.getRowModel().rows.map((row, index) => (
+              <motion.tr
+                key={row.id}
+                data-slot="table-row"
+                data-state={row.getIsSelected() ? "selected" : undefined}
+                {...(reduceMotion
+                  ? {}
+                  : {
+                      initial: { opacity: 0, y: 4 },
+                      animate: { opacity: 1, y: 0 },
+                      transition: { duration: 0.25, delay: index * 0.03, ease: "easeOut" as const }
+                    })}
+                className="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
+              >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-              </TableRow>
+              </motion.tr>
             ))
           ) : (
             <TableRow>

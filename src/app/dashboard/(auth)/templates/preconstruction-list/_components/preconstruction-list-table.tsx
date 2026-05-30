@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { MapPin } from "lucide-react";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -63,13 +64,20 @@ export function PreconstructionListTable({ projects, className, onProjectClick }
           </TableRow>
         </TableHeader>
         <TableBody>
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const isChecked = selected.has(project.id);
             return (
-              <TableRow
+              <motion.tr
                 key={project.id}
+                data-slot="table-row"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: index * 0.03, ease: "easeOut" }}
                 onClick={onProjectClick ? () => onProjectClick(project) : undefined}
-                className={onProjectClick ? "cursor-pointer" : undefined}
+                className={cn(
+                  "group hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+                  onProjectClick && "cursor-pointer"
+                )}
               >
                 <TableCell className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
                   <Checkbox
@@ -78,10 +86,14 @@ export function PreconstructionListTable({ projects, className, onProjectClick }
                     aria-label={`Select ${project.projectNo}`}
                   />
                 </TableCell>
-                <TableCell className="text-foreground font-medium">{project.projectNo}</TableCell>
+                <TableCell className="text-foreground font-medium">
+                  <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                    {project.projectNo}
+                  </span>
+                </TableCell>
                 <TableCell className="text-muted-foreground">
-                  <span className="inline-flex items-center gap-1.5">
-                    <MapPin className="text-muted-foreground size-4 shrink-0" />
+                  <span className="group-hover:text-foreground inline-flex items-center gap-1.5 transition-all motion-safe:group-hover:translate-x-0.5">
+                    <MapPin className="size-4 shrink-0" />
                     {project.address}
                   </span>
                 </TableCell>
@@ -96,15 +108,21 @@ export function PreconstructionListTable({ projects, className, onProjectClick }
                 <TableCell className="pr-4">
                   <div className="flex items-center gap-3">
                     <div className="bg-muted h-1 w-32 overflow-hidden rounded-full">
-                      <div
-                        className="bg-foreground h-full rounded-full"
-                        style={{ width: `${project.progress}%` }}
+                      <motion.div
+                        className="bg-primary h-full rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${project.progress}%` }}
+                        transition={{
+                          duration: 0.5,
+                          delay: index * 0.03 + 0.15,
+                          ease: "easeOut"
+                        }}
                       />
                     </div>
                     <span className="text-muted-foreground w-10 text-sm">{project.progress}%</span>
                   </div>
                 </TableCell>
-              </TableRow>
+              </motion.tr>
             );
           })}
         </TableBody>

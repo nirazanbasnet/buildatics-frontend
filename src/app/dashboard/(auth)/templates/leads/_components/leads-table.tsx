@@ -97,7 +97,7 @@ export function LeadsTable({ leads, className, onLeadClick }: Props) {
                   <div className="flex items-center gap-3">
                     <div className="bg-muted h-1 w-32 overflow-hidden rounded-full">
                       <div
-                        className="bg-foreground h-full rounded-full"
+                        className="bg-primary h-full rounded-full"
                         style={{ width: `${lead.progress}%` }}
                       />
                     </div>
