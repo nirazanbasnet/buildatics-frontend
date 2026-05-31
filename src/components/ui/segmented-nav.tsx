@@ -36,7 +36,7 @@ export function SegmentedNav<T extends string>({
       aria-orientation="horizontal"
       data-slot="segmented-nav"
       className={cn(
-        "border-border inline-flex w-full items-center overflow-hidden rounded-md border",
+        "border-border inline-flex w-full shrink-0 items-center overflow-hidden rounded-md border",
         className
       )}
     >
@@ -49,10 +49,11 @@ export function SegmentedNav<T extends string>({
             type="button"
             role="tab"
             aria-selected={isActive}
+            aria-label={item.value}
             onClick={() => onValueChange(item.value)}
             whileTap={{ scale: 0.97 }}
             className={cn(
-              "focus-visible:ring-ring border-border relative flex flex-1 items-center justify-center gap-2 border-r px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:outline-none",
+              "focus-visible:ring-ring border-border relative flex flex-1 items-center justify-center gap-2 border-r px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:outline-none",
               isActive
                 ? "text-primary-foreground"
                 : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -68,7 +69,9 @@ export function SegmentedNav<T extends string>({
             ) : null}
             <span className="relative z-10 flex items-center gap-2">
               {Icon ? <Icon className="size-4" /> : null}
-              {item.label ?? item.value}
+              <span className={cn(Icon && "hidden min-[30rem]:inline")}>
+                {item.label ?? item.value}
+              </span>
             </span>
           </motion.button>
         );

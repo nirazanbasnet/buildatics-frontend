@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronLeft, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -86,14 +87,14 @@ export function FilterContent({ onCancel, onApply, hideHeader, className }: Filt
   }
 
   return (
-    <div className={cn("flex h-full flex-col", className)}>
+    <div className={cn("flex h-full flex-col overflow-hidden", className)}>
       {!hideHeader ? (
         <div className="border-b px-6 py-4">
           <h2 className="text-lg font-semibold">Filter</h2>
         </div>
       ) : null}
 
-      <div className="flex-1 space-y-6 overflow-y-auto px-6 py-5">
+      <div className="h-full flex-1 space-y-6 overflow-y-auto px-4 py-5 md:px-6">
         <Section label="House Area">
           <div className="relative pt-8">
             <SliderTooltip value={draft.houseArea[1]} min={AREA_MIN} max={AREA_MAX} />
@@ -166,7 +167,7 @@ export function FilterContent({ onCancel, onApply, hideHeader, className }: Filt
         </Section>
       </div>
 
-      <div className="bg-background flex items-center justify-between gap-2 border-t px-6 py-4">
+      <div className="bg-background sticky bottom-0 z-10 flex items-center justify-between gap-2 border-t px-4 py-4 md:px-6">
         <Button variant="ghost" size="sm" onClick={reset}>
           Reset
         </Button>
@@ -191,17 +192,31 @@ type FilterSheetProps = {
 
 export function FilterSheet({ open, onOpenChange, variant = "v1" }: FilterSheetProps) {
   const Content = variant === "v2" ? FilterContentV2 : FilterContent;
+  const close = () => onOpenChange(false);
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="flex w-full flex-col gap-0 p-0 sm:max-w-md">
-        <SheetHeader className="border-b px-6 py-4">
-          <SheetTitle>Filter</SheetTitle>
+      <SheetContent
+        side="right"
+        showCloseButton={false}
+        className="flex w-full flex-col gap-0 p-0 sm:max-w-md"
+      >
+        <SheetHeader className="flex flex-row items-center justify-between gap-2 border-b px-4 py-3 md:px-6 md:py-4">
+          <Button variant="ghost" size="sm" onClick={close} className="-ml-2 gap-1 p-0! md:hidden">
+            <ChevronLeft className="size-5" />
+            Back
+          </Button>
+          <SheetTitle className="text-base font-semibold">Filter</SheetTitle>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={close}
+            aria-label="Close"
+            className="p-0! md:hidden"
+          >
+            <X className="size-5" />
+          </Button>
         </SheetHeader>
-        <Content
-          hideHeader
-          onCancel={() => onOpenChange(false)}
-          onApply={() => onOpenChange(false)}
-        />
+        <Content hideHeader onCancel={close} onApply={close} />
       </SheetContent>
     </Sheet>
   );

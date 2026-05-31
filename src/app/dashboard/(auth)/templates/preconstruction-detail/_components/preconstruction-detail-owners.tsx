@@ -86,11 +86,13 @@ export function PreconstructionDetailOwners({ owners }: Props) {
         </Button>
       </header>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.ul
           key={active.id}
-          exit={reduceMotion ? undefined : { opacity: 0 }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
+          initial={reduceMotion ? undefined : { opacity: 0, x: 24 }}
+          animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+          exit={reduceMotion ? undefined : { opacity: 0, x: -24 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           className="mt-5 flex flex-col gap-3"
         >
           <OwnerRow

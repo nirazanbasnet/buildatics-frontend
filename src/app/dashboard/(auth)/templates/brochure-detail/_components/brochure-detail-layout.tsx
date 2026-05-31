@@ -25,9 +25,18 @@ import { BrochureOwners } from "./brochure-owners";
 import { BrochurePreview } from "./brochure-preview";
 import { BrochurePropertyInfo } from "./brochure-property-info";
 
-function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Section({
+  children,
+  delay = 0,
+  className
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
     <motion.div
+      className={cn("", className)}
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay, ease: "easeOut" }}
@@ -79,9 +88,12 @@ export function BrochureDetailLayout({ detail: initialDetail, className }: Props
   }
 
   return (
-    <div className={cn("flex flex-col gap-4", className)} data-slot="brochure-detail">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-        <div className="flex min-w-0 flex-col gap-4">
+    <div
+      className={cn("flex flex-col gap-4 overflow-hidden", className)}
+      data-slot="brochure-detail"
+    >
+      <div className="grid h-full gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <div className="flex min-w-0 flex-col gap-4 overflow-hidden">
           <Section>
             <SegmentedNav
               items={brochureDetailTabItems}
@@ -92,8 +104,8 @@ export function BrochureDetailLayout({ detail: initialDetail, className }: Props
           </Section>
 
           {activeTab === "Brochure Builder" ? (
-            <Section delay={0.04}>
-              <div className="flex flex-col gap-4">
+            <Section delay={0.04} className="h-full overflow-auto">
+              <div className="flex h-full flex-col gap-4 overflow-auto">
                 <BrochureDetailInfoCard detail={detail} onTemplateChange={setTemplate} />
                 <BrochureOwners
                   owners={detail.owners}

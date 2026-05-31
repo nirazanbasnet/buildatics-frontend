@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { MapPin } from "lucide-react";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,6 +12,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
+import { SortableTableHead, sortBy, useSortState } from "@src/components/ui/sortable-table-head";
 import { cn } from "@/lib/utils";
 
 import { brochureStatusConfig, type Brochure } from "../_data";
@@ -23,14 +25,27 @@ type Props = {
   onBrochureClick?: (brochure: Brochure) => void;
 };
 
+type SortField = "ref" | "client" | "siteAddress" | "design" | "createdDate" | "status";
+
+const ACCESSORS: Record<SortField, (b: Brochure) => string | number> = {
+  ref: (b) => b.ref,
+  client: (b) => b.client,
+  siteAddress: (b) => b.siteAddress,
+  design: (b) => b.design,
+  createdDate: (b) => b.createdDate,
+  status: (b) => b.status
+};
+
 export function BrochuresTable({ brochures, className, onBrochureClick }: Props) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [sort, setSort] = useSortState<SortField>({ field: "ref", direction: "asc" });
+  const sortedBrochures = useMemo(() => sortBy(brochures, sort, ACCESSORS), [brochures, sort]);
 
-  const allSelected = brochures.length > 0 && selected.size === brochures.length;
-  const someSelected = selected.size > 0 && selected.size < brochures.length;
+  const allSelected = sortedBrochures.length > 0 && selected.size === sortedBrochures.length;
+  const someSelected = selected.size > 0 && selected.size < sortedBrochures.length;
 
   function toggleAll(value: boolean) {
-    setSelected(value ? new Set(brochures.map((b) => b.id)) : new Set());
+    setSelected(value ? new Set(sortedBrochures.map((b) => b.id)) : new Set());
   }
 
   function toggleOne(id: string, value: boolean) {
@@ -43,7 +58,7 @@ export function BrochuresTable({ brochures, className, onBrochureClick }: Props)
   }
 
   return (
-    <div className={cn("bg-card overflow-hidden rounded-lg border", className)}>
+    <div className={cn("bg-card h-full overflow-auto rounded-lg border", className)}>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -54,22 +69,35 @@ export function BrochuresTable({ brochures, className, onBrochureClick }: Props)
                 aria-label="Select all brochures"
               />
             </TableHead>
-            <TableHead className="font-semibold">Ref#</TableHead>
-            <TableHead className="font-semibold">Client Name</TableHead>
-            <TableHead className="font-semibold">Site Address</TableHead>
-            <TableHead className="font-semibold">Design</TableHead>
-            <TableHead className="font-semibold">Created Date</TableHead>
-            <TableHead className="font-semibold">Status</TableHead>
+            <SortableTableHead field="ref" sort={sort} onSort={setSort}>
+              Ref#
+            </SortableTableHead>
+            <SortableTableHead field="client" sort={sort} onSort={setSort}>
+              Client Name
+            </SortableTableHead>
+            <SortableTableHead field="siteAddress" sort={sort} onSort={setSort}>
+              Site Address
+            </SortableTableHead>
+            <SortableTableHead field="design" sort={sort} onSort={setSort}>
+              Design
+            </SortableTableHead>
+            <SortableTableHead field="createdDate" sort={sort} onSort={setSort}>
+              Created Date
+            </SortableTableHead>
+            <SortableTableHead field="status" sort={sort} onSort={setSort}>
+              Status
+            </SortableTableHead>
             <TableHead className="pr-4 text-right font-semibold">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {brochures.map((brochure) => {
+          {sortedBrochures.map((brochure, index) => {
             const isChecked = selected.has(brochure.id);
             const status = brochureStatusConfig[brochure.status];
             return (
-              <TableRow
+              <MotionTableRow
                 key={brochure.id}
+                index={index}
                 onClick={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
                 className={onBrochureClick ? "cursor-pointer" : undefined}
               >
@@ -80,11 +108,15 @@ export function BrochuresTable({ brochures, className, onBrochureClick }: Props)
                     aria-label={`Select ${brochure.ref}`}
                   />
                 </TableCell>
-                <TableCell className="text-foreground font-medium">{brochure.ref}</TableCell>
+                <TableCell className="text-foreground font-medium">
+                  <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                    {brochure.ref}
+                  </span>
+                </TableCell>
                 <TableCell className="text-muted-foreground">{brochure.client}</TableCell>
                 <TableCell className="text-muted-foreground">
-                  <span className="inline-flex items-center gap-1.5">
-                    <MapPin className="text-muted-foreground size-4 shrink-0" />
+                  <span className="group-hover:text-foreground inline-flex items-center gap-1.5 transition-all motion-safe:group-hover:translate-x-0.5">
+                    <MapPin className="size-4 shrink-0" />
                     {brochure.siteAddress}
                   </span>
                 </TableCell>
@@ -95,7 +127,7 @@ export function BrochuresTable({ brochures, className, onBrochureClick }: Props)
                 <TableCell>
                   <span
                     className={cn(
-                      "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+                      "inline-flex min-w-24 items-center justify-center rounded-full px-2.5 py-0.5 text-xs font-medium",
                       status.solid
                     )}
                   >
@@ -108,7 +140,7 @@ export function BrochuresTable({ brochures, className, onBrochureClick }: Props)
                     onView={onBrochureClick ? () => onBrochureClick(brochure) : undefined}
                   />
                 </TableCell>
-              </TableRow>
+              </MotionTableRow>
             );
           })}
         </TableBody>

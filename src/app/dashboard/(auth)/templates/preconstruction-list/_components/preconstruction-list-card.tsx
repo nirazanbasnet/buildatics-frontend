@@ -64,7 +64,7 @@ export function PreconstructionListCard({ project, className, onClick, index = 0
         <h3 className="text-foreground text-xl font-bold tracking-tight">{project.projectNo}</h3>
         <button
           type="button"
-          className="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+          className="inline-flex min-w-28 items-center justify-center gap-1 rounded-full bg-emerald-500 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
         >
           {preconstructionListStatusLabels[project.status]}
           <ChevronDown className="size-3.5" />

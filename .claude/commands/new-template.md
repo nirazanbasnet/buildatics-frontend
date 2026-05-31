@@ -222,6 +222,27 @@ When V2's design is provided, swap `{Feature}Layout` for a real `{Feature}Layout
 - Lucide icons from `lucide-react`.
 - Subtle animations via `motion/react`: wrap each rendered section in a `Section` helper that does `initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay, ease: "easeOut" }}` — stagger sections 40ms apart.
 
+**App-wide UX conventions (must follow — these are not optional):**
+
+The reference implementation for all of these is `templates/preconstruction-list/` and `templates/preconstruction-detail/`. When in doubt, mirror those.
+
+1. **List table rows** — use the shared `<MotionTableRow>` from `@src/components/ui/motion-table-row`. It bakes in:
+   - Stagger-in animation (`initial={{ opacity: 0, y: 4 }}`, delay `index * 0.03`, `ease: "easeOut"`).
+   - The canonical hover effect (`group hover:bg-muted/50 transition-colors`).
+   - `data-slot="table-row"` and border. Pass `key`, `index`, `onClick`, `className`. **Do NOT** roll your own `<motion.tr>` or use raw `<TableRow>` for body rows.
+
+2. **Progress bars** — use the shared `<MotionProgress value={n} index={i} />` from `@src/components/ui/motion-progress`. **Primary color fill** (`bg-primary`), `bg-muted` track. Default track size `h-1 w-32`; override via `trackClassName`. Width is the same across rows (`w-32` default); only `value` changes. Never reach for `bg-foreground`, `bg-emerald-*`, or inline `style={{ width }}` without motion — the motion + token color is the standard.
+
+3. **Card hover effect** — every clickable/interactive card (row-card V2 tables, plan cards, stat cards, preconstruction list cards) uses `transition duration-300 hover:-translate-y-1 hover:shadow-lg`. Non-interactive cards may use `transition-all hover:shadow-lg` (no translate). **Do NOT** use `hover:bg-muted/30` as the only hover affordance on cards.
+
+4. **List View / Card View toggle** — when a list page supports both, mirror `preconstruction-list-toolbar.tsx` exactly: the `SegmentedNav` from `@src/components/ui/segmented-nav` with `{ value: "list", icon: List, label: "List View" }` / `{ value: "card", icon: LayoutGrid, label: "Card View" }`. The view state is lifted into the layout. The Card view renders a `<motion.article>` with stagger (`delay: index * 0.06`), the same card hover effect, and `useReducedMotion()` respect.
+
+5. **Detail sheet header (mobile)** — every detail Sheet must use `<SheetContent showCloseButton={false}>` and render `<SheetMobileBar onClose={close} title="…" />` from `@src/components/ui/sheet-mobile-bar`. That helper auto-hides on `md` and above (Radix default close + overlay click handle it there) and shows a Back ← and ✕ icon on smaller screens. Wrap the layout in a `<div className="p-4 sm:p-6">`. **Do NOT** ship a Sheet that shows the default top-right ✕ on desktop or that has no mobile back button — use the helper or the Filter sheet's inline pattern.
+
+6. **Tab-switching content inside a detail** — when a sub-tab swaps content (e.g. owners 1/2/3, line items per category), wrap the swapping body in `<AnimatePresence mode="wait" initial={false}>` with `motion.* key={activeId}` using a **horizontal slide**: `initial={{ opacity: 0, x: 24 }}`, `animate={{ opacity: 1, x: 0 }}`, `exit={{ opacity: 0, x: -24 }}`, duration `0.22`, ease `[0.22, 1, 0.36, 1]`. Always honor `useReducedMotion()`.
+
+7. **Wide tables inside a constrained container** (e.g. detail sheets with a sidebar) — push the side-by-side breakpoint to `xl:` (not `lg:`). Wrap the main column in `<div className="min-w-0">…</div>` so the shadcn `<Table>` (which already has `overflow-x-auto`) can scroll horizontally instead of squashing siblings. Pattern: `xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]`.
+
 **Toolbar consistency (filter chips + view toggle):**
 The Display Center toolbar at `src/app/dashboard/(auth)/templates/display-center/_components/toolbar.tsx` is the canonical pattern — mirror it whenever your feature needs a filter chip row + view switcher so the whole app looks like one system. Specifically:
 - **Active filter chips:** `<Badge variant="default" className="h-7 gap-1 rounded-full py-1 pr-1 pl-3">` containing the label + a `<Button variant="ghost" size="icon" className="size-5 rounded-full hover:bg-white/20">` with `<X className="size-3" />`. The chip is preceded by a `<span className="text-muted-foreground text-sm">` label (e.g. `Status`, `Beds`).
@@ -239,13 +260,14 @@ The layout then does `const [view, setView] = useState<{Feature}View>("list")` a
 
 Read the Display Center toolbar before writing yours — copy the structure exactly unless you have a concrete reason to diverge.
 
-**Sheet wrapper template** (only if trigger=Sheet):
+**Sheet wrapper template** (only if trigger=Sheet) — uses the shared `SheetMobileBar` so the close ✕ is hidden on md+ and a Back/Close pair shows on small screens (see App-wide UX convention #5):
 ```tsx
 "use client";
 
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { SheetMobileBar } from "@src/components/ui/sheet-mobile-bar";
 
 import { {Feature}Layout } from "./{feature}-layout";
 
@@ -256,16 +278,24 @@ type Props = {
 };
 
 export function {Feature}Sheet({ open, onOpenChange, ...props }: Props) {
+  const close = () => onOpenChange(false);
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-3xl lg:max-w-234">
+      <SheetContent
+        side="right"
+        showCloseButton={false}
+        className="w-full overflow-y-auto p-0 sm:max-w-3xl lg:max-w-5xl"
+      >
         <VisuallyHidden>
           <SheetHeader>
             <SheetTitle>{Feature} details</SheetTitle>
             <SheetDescription>Detail view</SheetDescription>
           </SheetHeader>
         </VisuallyHidden>
-        <{Feature}Layout {...props} />
+        <SheetMobileBar onClose={close} title="{Feature}" />
+        <div className="p-4 sm:p-6">
+          <{Feature}Layout {...props} />
+        </div>
       </SheetContent>
     </Sheet>
   );

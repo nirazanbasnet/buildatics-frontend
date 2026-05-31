@@ -96,7 +96,7 @@ function KpiStrip({ project }: { project: PreconstructionDetailProject }) {
         <p className="text-foreground text-xl font-bold tracking-tight">{project.progress}%</p>
         <div className="bg-muted h-1 w-full overflow-hidden rounded-full">
           <div
-            className="h-full rounded-full bg-blue-500 dark:bg-blue-400"
+            className="bg-primary h-full rounded-full"
             style={{ width: `${project.progress}%` }}
           />
         </div>

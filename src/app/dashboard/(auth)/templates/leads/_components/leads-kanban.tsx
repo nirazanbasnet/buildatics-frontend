@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { ChevronRight, MapPin, Phone, Plus, Settings, User } from "lucide-react";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -42,12 +43,18 @@ function InfoRow({
   );
 }
 
-function LeadKanbanCard({ lead }: { lead: Lead }) {
+function LeadKanbanCard({ lead, index = 0 }: { lead: Lead; index?: number }) {
+  const reduceMotion = useReducedMotion() ?? false;
   return (
-    <article className="bg-card flex flex-col gap-4 rounded-2xl border p-4 shadow-sm">
+    <motion.article
+      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: index * 0.05, ease: "easeOut" }}
+      className="bg-card flex flex-col gap-4 rounded-2xl border p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
       <header className="flex items-start justify-between gap-3">
         <h3 className="text-foreground text-lg font-bold tracking-tight">{lead.leadNo}</h3>
-        <span className="inline-flex items-center rounded-full bg-emerald-500 px-2.5 py-1 text-xs font-medium text-white dark:bg-emerald-600">
+        <span className="inline-flex min-w-24 items-center justify-center rounded-full bg-emerald-500 px-2.5 py-1 text-xs font-medium text-white dark:bg-emerald-600">
           {leadStatusLabels[lead.status]}
         </span>
       </header>
@@ -60,7 +67,7 @@ function LeadKanbanCard({ lead }: { lead: Lead }) {
       </ul>
 
       <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
-        <div className="bg-foreground h-full rounded-full" style={{ width: `${lead.progress}%` }} />
+        <div className="bg-primary h-full rounded-full" style={{ width: `${lead.progress}%` }} />
       </div>
 
       <footer className="flex items-center justify-between gap-3 pt-1">
@@ -81,7 +88,7 @@ function LeadKanbanCard({ lead }: { lead: Lead }) {
           <ChevronRight className="size-4" />
         </button>
       </footer>
-    </article>
+    </motion.article>
   );
 }
 
@@ -116,10 +123,10 @@ export function LeadsKanban({ leads, className }: Props) {
                 </Button>
               </div>
               <div className="flex flex-col gap-3">
-                {items.map((lead) => (
+                {items.map((lead, index) => (
                   <Kanban.Item key={lead.id} value={lead.id} asHandle asChild>
                     <div>
-                      <LeadKanbanCard lead={lead} />
+                      <LeadKanbanCard lead={lead} index={index} />
                     </div>
                   </Kanban.Item>
                 ))}

@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious
-} from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
 
 import type { PropertyView } from "../_data";
+import { DisplayCenterPagination } from "./display-center-pagination";
 import { Toolbar } from "./toolbar";
 import { VARIANT_LAYOUTS, type VariantId } from "./variant-layouts";
 
@@ -29,28 +22,14 @@ export function DisplayCenterShowcase({ style, font, theme, view = "facade", cla
     <div
       data-theme-preset={theme && theme !== "default" ? theme : undefined}
       data-theme-font={font && font !== "default" ? font : undefined}
-      className={cn("bg-background min-w-0 font-sans", className)}
+      className={cn("bg-background min-w-0 rounded p-4 font-sans", className)}
       data-slot="share-preview"
     >
       <Toolbar mode="production" filterEnabled filterVariant="v1" />
-      <Layout view={view} />
-      <Pagination className="justify-end pt-6">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          {[1, 2, 3, 4].map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink href="#" isActive={page === 1}>
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <Layout view={view} gridClassName="min-[100rem]:grid-cols-3" />
+      <DisplayCenterPagination />
     </div>
   );
 }
+
+// 1600px to rem

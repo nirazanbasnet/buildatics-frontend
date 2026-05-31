@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { VariantHeader } from "../../_shared/variant-header";
 import { leads } from "../_data";
 import { LeadsLayout } from "../_components/leads-layout";
-import { UseThisButton } from "../_components/use-this-button";
 import { leadsVariantLinks, parseLeadsVariant } from "../_components/variants";
 
 export default async function LeadsVariant1Page() {
@@ -19,7 +18,6 @@ export default async function LeadsVariant1Page() {
         variants={leadsVariantLinks}
         activeVariant="v1"
         promotedVariant={promoted}
-        action={<UseThisButton variant="v1" />}
       />
       <LeadsLayout leads={leads} />
     </div>

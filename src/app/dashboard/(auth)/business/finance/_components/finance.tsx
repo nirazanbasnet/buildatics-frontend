@@ -16,7 +16,7 @@ export function Finance() {
   const [activeTab, setActiveTab] = useState<FinanceTab>(financeTabs[0]);
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col space-y-4 overflow-hidden">
       <FinanceStatCards />
       <SegmentedNav
         items={financeTabItems}
@@ -24,7 +24,7 @@ export function Finance() {
         onValueChange={setActiveTab}
         ariaLabel="Finance views"
       />
-      <div>
+      <div className="flex-1 overflow-auto">
         {activeTab === "Overview" ? (
           <FinanceOverview />
         ) : activeTab === "Claims" ? (

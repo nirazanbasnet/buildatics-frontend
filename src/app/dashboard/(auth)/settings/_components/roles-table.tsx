@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 import { cn } from "@/lib/utils";
 
 import type { Role, SettingsStatus } from "../_data";
@@ -30,7 +31,7 @@ export function RolesTable({ roles, className }: Props) {
   }
 
   return (
-    <div className={cn("bg-card overflow-hidden rounded-lg border", className)}>
+    <div className={cn("bg-card h-full overflow-auto rounded-lg border", className)}>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -41,9 +42,13 @@ export function RolesTable({ roles, className }: Props) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rows.map((role) => (
-            <TableRow key={role.id}>
-              <TableCell className="text-foreground py-3 pl-4 font-medium">{role.name}</TableCell>
+          {rows.map((role, index) => (
+            <MotionTableRow key={role.id} index={index}>
+              <TableCell className="text-foreground py-3 pl-4 font-medium">
+                <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                  {role.name}
+                </span>
+              </TableCell>
               <TableCell>
                 <PermissionBadges permissions={role.permissions} max={3} />
               </TableCell>
@@ -56,7 +61,7 @@ export function RolesTable({ roles, className }: Props) {
               <TableCell className="pr-4 text-right">
                 <SettingsActionsMenu label={role.name} />
               </TableCell>
-            </TableRow>
+            </MotionTableRow>
           ))}
         </TableBody>
       </Table>

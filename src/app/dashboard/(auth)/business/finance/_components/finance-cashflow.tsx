@@ -23,7 +23,7 @@ export function FinanceCashflow({ className }: { className?: string }) {
       <h3 className="text-foreground text-xl font-bold tracking-tight">Revenue vs Trade Cost</h3>
       <p className="text-muted-foreground text-sm">January - December 2024</p>
 
-      <ChartContainer config={chartConfig} className="mt-6 h-72 w-full">
+      <ChartContainer config={chartConfig} className="bg-card mt-6 h-72 w-full">
         <BarChart accessibilityLayer data={cashflowData} barGap={4}>
           <CartesianGrid vertical={false} />
           <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />

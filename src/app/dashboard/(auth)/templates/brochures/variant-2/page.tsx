@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { VariantHeader } from "../../_shared/variant-header";
 import { brochures } from "../_data";
 import { BrochuresLayoutV2 } from "../_components/brochures-layout-v2";
-import { UseThisButton } from "../_components/use-this-button";
 import { brochuresVariantLinks, parseBrochuresVariant } from "../_components/variants";
 
 export default async function BrochuresVariant2Page() {
@@ -19,7 +18,6 @@ export default async function BrochuresVariant2Page() {
         variants={brochuresVariantLinks}
         activeVariant="v2"
         promotedVariant={promoted}
-        action={<UseThisButton variant="v2" />}
       />
       <BrochuresLayoutV2 brochures={brochures} />
     </div>

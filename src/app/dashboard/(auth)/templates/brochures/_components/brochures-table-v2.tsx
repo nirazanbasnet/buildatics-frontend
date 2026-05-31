@@ -45,9 +45,9 @@ export function BrochuresTableV2({ brochures, className, onBrochureClick }: Prop
             role={interactive ? "button" : undefined}
             tabIndex={interactive ? 0 : undefined}
             className={cn(
-              "bg-card hover:bg-muted/30 relative flex items-stretch gap-4 overflow-hidden rounded-lg border py-4 pr-3 pl-5 transition-colors",
+              "bg-card relative flex items-stretch gap-4 overflow-hidden rounded-lg border py-4 pr-3 pl-5 transition duration-300",
               interactive &&
-                "focus-visible:ring-ring cursor-pointer focus-visible:ring-2 focus-visible:outline-none"
+                "focus-visible:ring-ring cursor-pointer hover:-translate-y-1 hover:shadow-lg focus-visible:ring-2 focus-visible:outline-none"
             )}
           >
             <span className={cn("absolute inset-y-0 left-0 w-1", status.stripe)} aria-hidden />

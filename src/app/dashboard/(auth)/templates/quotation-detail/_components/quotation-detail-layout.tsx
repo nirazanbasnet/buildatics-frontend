@@ -185,7 +185,7 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
       className={cn("flex flex-col gap-4 overflow-hidden", className)}
       data-slot="quotation-detail"
     >
-      <Section className="pr-3">
+      <Section>
         <SegmentedNav
           items={quotationDetailTabItems}
           value={activeTab}
@@ -196,8 +196,8 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
 
       {activeTab === "Quote Builder" ? (
         <Section className="overflow-auto" delay={0.04}>
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-            <div className="flex min-w-0 flex-col gap-4">
+          <div className="grid flex-1 gap-4 overflow-hidden lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className="flex min-w-0 flex-col gap-4 overflow-auto">
               <QuotationDetailInfoCard detail={detail} />
               <QuotationBuilder detail={detail} handlers={handlers} />
               <QuotationEditableSection
@@ -220,7 +220,7 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
               />
             </div>
 
-            <aside className="flex flex-col gap-3 pr-3">
+            <aside className="flex flex-col gap-3">
               <QuotationSummaryCard detail={detail} />
               <QuotationMarginCard detail={detail} />
               <QuotationMetaCard

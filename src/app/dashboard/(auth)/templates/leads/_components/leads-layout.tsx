@@ -12,9 +12,18 @@ import { LeadsPagination } from "./leads-pagination";
 import { LeadsTable } from "./leads-table";
 import { LeadsToolbar, type LeadsView } from "./leads-toolbar";
 
-function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Section({
+  children,
+  delay = 0,
+  className
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
     <motion.div
+      className={cn("", className)}
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay, ease: "easeOut" }}
@@ -33,11 +42,11 @@ export function LeadsLayout({ leads, className }: Props) {
   const [view, setView] = useState<LeadsView>("list");
 
   return (
-    <div className={cn("space-y-1", className)}>
+    <div className={cn("flex flex-col space-y-1 overflow-hidden", className)}>
       <Section>
         <LeadsToolbar view={view} onViewChange={setView} />
       </Section>
-      <Section delay={0.04}>
+      <Section delay={0.04} className="flex-1 overflow-auto">
         {view === "list" ? <LeadsTable leads={leads} /> : <LeadsKanban leads={leads} />}
       </Section>
       {view === "list" ? (

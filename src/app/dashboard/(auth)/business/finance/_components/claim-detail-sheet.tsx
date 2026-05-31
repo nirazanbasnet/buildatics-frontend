@@ -11,6 +11,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet";
+import { SheetMobileBar } from "@src/components/ui/sheet-mobile-bar";
 import { cn } from "@/lib/utils";
 
 import type { ClaimDetail } from "../_data";
@@ -31,17 +32,23 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 export function ClaimDetailSheet({ open, onOpenChange, detail }: Props) {
+  const close = () => onOpenChange(false);
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full overflow-y-auto p-6 sm:max-w-md lg:max-w-lg">
+      <SheetContent
+        side="right"
+        showCloseButton={false}
+        className="w-full overflow-y-auto p-0 sm:max-w-md lg:max-w-lg"
+      >
         <VisuallyHidden>
           <SheetHeader>
             <SheetTitle>Claim {detail.claimId}</SheetTitle>
             <SheetDescription>Claim invoice detail</SheetDescription>
           </SheetHeader>
         </VisuallyHidden>
+        <SheetMobileBar onClose={close} title={`Claim ${detail.claimId}`} />
 
-        <div className="flex flex-col gap-6" data-slot="claim-detail">
+        <div className="flex flex-col gap-6 p-4 sm:p-6" data-slot="claim-detail">
           <div className="flex items-start">
             {detail.steps.map((step, i) => (
               <div key={step.label} className="flex flex-1 flex-col items-center text-center">

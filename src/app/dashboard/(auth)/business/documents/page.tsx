@@ -5,7 +5,7 @@ import { DocumentsToolbar } from "./_components/documents-toolbar";
 
 export default function BusinessDocumentsPage() {
   return (
-    <div>
+    <div className="flex h-full flex-col overflow-hidden">
       <DocumentsToolbar />
       <DocumentsTable documents={businessDocuments} />
       <DocumentsPagination />

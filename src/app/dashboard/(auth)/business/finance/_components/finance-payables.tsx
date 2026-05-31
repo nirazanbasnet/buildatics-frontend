@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 
 import { payables } from "../_data";
 import { FinanceActionsMenu } from "./finance-actions-menu";
@@ -60,8 +61,8 @@ export function FinancePayables() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {payables.map((payable) => (
-              <TableRow key={payable.id}>
+            {payables.map((payable, index) => (
+              <MotionTableRow key={payable.id} index={index}>
                 <TableCell className="py-3 pl-4">
                   <Checkbox
                     checked={selected.has(payable.id)}
@@ -69,12 +70,16 @@ export function FinancePayables() {
                     aria-label={`Select ${payable.invoice}`}
                   />
                 </TableCell>
-                <TableCell className="text-foreground font-medium">{payable.invoice}</TableCell>
+                <TableCell className="text-foreground font-medium">
+                  <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                    {payable.invoice}
+                  </span>
+                </TableCell>
                 <TableCell className="text-muted-foreground">{payable.vendor}</TableCell>
                 <TableCell className="text-muted-foreground">{payable.project}</TableCell>
                 <TableCell className="text-foreground font-medium">{payable.stage}</TableCell>
                 <TableCell>
-                  <span className="inline-flex items-center rounded-md bg-green-600 px-2.5 py-1 text-xs font-medium text-white dark:bg-green-600">
+                  <span className="inline-flex min-w-24 items-center justify-center rounded-md bg-green-600 px-2.5 py-1 text-xs font-medium text-white dark:bg-green-600">
                     Sent
                   </span>
                 </TableCell>
@@ -84,7 +89,7 @@ export function FinancePayables() {
                 <TableCell className="pr-4 text-right">
                   <FinanceActionsMenu label={payable.invoice} />
                 </TableCell>
-              </TableRow>
+              </MotionTableRow>
             ))}
           </TableBody>
         </Table>

@@ -12,7 +12,11 @@
       "Bash(curl -s -o /tmp/d.html -w \"%{http_code}\" \"http://localhost:3000/dashboard/business/documents\")",
       "Bash(echo \"[documents] $\\(curl -s -o /tmp/d.html -w \"%{http_code}\" \"http://localhost:3000/dashboard/business/documents\"\\)\")",
       "Bash(curl -s -o /tmp/f.html -w \"%{http_code}\" \"http://localhost:3000/dashboard/business/finance\")",
-      "Bash(echo \"[finance] $\\(curl -s -o /tmp/f.html -w \"%{http_code}\" \"http://localhost:3000/dashboard/business/finance\"\\)\")"
+      "Bash(echo \"[finance] $\\(curl -s -o /tmp/f.html -w \"%{http_code}\" \"http://localhost:3000/dashboard/business/finance\"\\)\")",
+      "Bash(curl -s -o /tmp/dc.html -w \"%{http_code}\\\\n\" \"http://localhost:3000/dashboard/display-center\")",
+      "Bash(curl -s -o /tmp/sts.html -w \"%{http_code}\\\\n\" \"http://localhost:3000/dashboard/share-to-site\")",
+      "Bash(curl -s -o /tmp/p.html -w '%{http_code}' http://localhost:3000/__TRACKED_VAR__)",
+      "Bash(grep -rln \"bg-foreground h-full\\\\|width: \\\\`\\\\${.*}%\\\\`\" src/app)"
     ]
   },
   "enabledPlugins": {
