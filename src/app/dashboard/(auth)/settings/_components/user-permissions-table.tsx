@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 import { cn } from "@/lib/utils";
 
 import type { SettingsStatus, SettingsUser } from "../_data";
@@ -30,7 +31,7 @@ export function UserPermissionsTable({ users, className }: Props) {
   }
 
   return (
-    <div className={cn("bg-card overflow-hidden rounded-lg border", className)}>
+    <div className={cn("bg-card h-full overflow-auto rounded-lg border", className)}>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -43,9 +44,13 @@ export function UserPermissionsTable({ users, className }: Props) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rows.map((user) => (
-            <TableRow key={user.id}>
-              <TableCell className="text-foreground py-3 pl-4 font-medium">{user.name}</TableCell>
+          {rows.map((user, index) => (
+            <MotionTableRow key={user.id} index={index}>
+              <TableCell className="text-foreground py-3 pl-4 font-medium">
+                <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                  {user.name}
+                </span>
+              </TableCell>
               <TableCell className="text-muted-foreground">{user.email}</TableCell>
               <TableCell className="text-muted-foreground">{user.role}</TableCell>
               <TableCell>
@@ -60,7 +65,7 @@ export function UserPermissionsTable({ users, className }: Props) {
               <TableCell className="pr-4 text-right">
                 <SettingsActionsMenu label={user.name} />
               </TableCell>
-            </TableRow>
+            </MotionTableRow>
           ))}
         </TableBody>
       </Table>

@@ -8,6 +8,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionProgress } from "@src/components/ui/motion-progress";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 
 import { projectPL } from "../_data";
 import { FinancePagination } from "./finance-pagination";
@@ -32,25 +34,25 @@ export function FinanceProjectPL() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {projectPL.map((project) => (
-              <TableRow key={project.id}>
+            {projectPL.map((project, index) => (
+              <MotionTableRow key={project.id} index={index}>
                 <TableCell className="py-3 pl-4">
-                  <p className="text-foreground text-sm font-semibold">{project.project}</p>
-                  <p className="text-muted-foreground text-xs">{project.clientAddress}</p>
+                  <div className="transition-transform motion-safe:group-hover:translate-x-0.5">
+                    <p className="text-foreground text-sm font-semibold">{project.project}</p>
+                    <p className="text-muted-foreground group-hover:text-foreground text-xs transition-colors">
+                      {project.clientAddress}
+                    </p>
+                  </div>
                 </TableCell>
                 <TableCell className="text-foreground text-right font-medium whitespace-nowrap">
                   {project.profit}
                 </TableCell>
                 <TableCell>
-                  <div className="flex items-center gap-2">
-                    <div className="bg-muted h-1.5 w-24 overflow-hidden rounded-full">
-                      <div
-                        className="bg-foreground h-full rounded-full"
-                        style={{ width: `${project.margin}%` }}
-                      />
-                    </div>
-                    <span className="text-muted-foreground w-9 text-sm">{project.margin}%</span>
-                  </div>
+                  <MotionProgress
+                    value={project.margin}
+                    index={index}
+                    trackClassName="h-1.5 w-24"
+                  />
                 </TableCell>
                 <TableCell className="text-muted-foreground">{project.stage}</TableCell>
                 <TableCell className="text-foreground font-semibold whitespace-nowrap">
@@ -65,7 +67,7 @@ export function FinanceProjectPL() {
                 <TableCell className="pr-4 font-semibold whitespace-nowrap text-red-600">
                   {project.outstanding}
                 </TableCell>
-              </TableRow>
+              </MotionTableRow>
             ))}
           </TableBody>
         </Table>

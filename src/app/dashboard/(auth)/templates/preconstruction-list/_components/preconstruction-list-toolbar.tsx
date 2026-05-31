@@ -5,7 +5,7 @@ import { LayoutGrid, List, ListFilter, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 
 import { FilterSheet } from "../../display-center/_components/filter-sheet";
 
@@ -16,13 +16,14 @@ type Props = {
   onViewChange: (view: PreconstructionListView) => void;
 };
 
+const VIEW_ITEMS = [
+  { value: "list" as const, label: "List View", icon: List },
+  { value: "card" as const, label: "Card View", icon: LayoutGrid }
+];
+
 export function PreconstructionListToolbar({ view, onViewChange }: Props) {
   const [statusActive, setStatusActive] = useState(true);
   const [filterOpen, setFilterOpen] = useState(false);
-
-  function handleViewChange(next: string) {
-    if (next === "list" || next === "card") onViewChange(next);
-  }
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 pb-4">
@@ -51,16 +52,13 @@ export function PreconstructionListToolbar({ view, onViewChange }: Props) {
         </Button>
         <FilterSheet open={filterOpen} onOpenChange={setFilterOpen} />
 
-        <ToggleGroup type="single" value={view} onValueChange={handleViewChange} className="h-9">
-          <ToggleGroupItem variant="outline" value="list" className="h-9 px-3">
-            <List className="size-4" />
-            List View
-          </ToggleGroupItem>
-          <ToggleGroupItem variant="outline" value="card" className="h-9 px-3">
-            <LayoutGrid className="size-4" />
-            Card View
-          </ToggleGroupItem>
-        </ToggleGroup>
+        <SegmentedNav<PreconstructionListView>
+          items={VIEW_ITEMS}
+          value={view}
+          onValueChange={onViewChange}
+          ariaLabel="View"
+          className="h-9 w-auto"
+        />
       </div>
     </div>
   );

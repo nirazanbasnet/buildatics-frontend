@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -77,6 +77,7 @@ type StageCardProps = {
 
 function StageCard({ stage, defaultOpen, isLast, onStatusChange }: StageCardProps) {
   const [open, setOpen] = useState(defaultOpen);
+  const reduceMotion = useReducedMotion() ?? false;
   const completed = stage.tasks.filter((task) => task.status === "completed").length;
   const total = stage.tasks.length;
   const tone = stageTone(completed, total);
@@ -116,26 +117,55 @@ function StageCard({ stage, defaultOpen, isLast, onStatusChange }: StageCardProp
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <ul className="bg-muted/40 divide-border border-border divide-y border-t">
+            <motion.ul
+              className="bg-muted/40 divide-border border-border divide-y border-t"
+              initial={reduceMotion ? false : "hidden"}
+              animate={reduceMotion ? undefined : "show"}
+              variants={
+                reduceMotion
+                  ? undefined
+                  : {
+                      hidden: {},
+                      show: { transition: { staggerChildren: 0.04, delayChildren: 0.08 } }
+                    }
+              }
+            >
               {stage.tasks.map((task) => (
-                <li key={task.id} className="flex items-center gap-4 px-5 py-3">
-                  <span className="text-foreground w-20 shrink-0 text-sm font-medium">
-                    {task.label}
-                  </span>
-                  <span className="text-muted-foreground flex-1 truncate text-sm">
-                    {task.staff}
-                  </span>
-                  <TaskStatusDropdown
-                    status={task.status}
-                    onStatusChange={(status) => onStatusChange(stage.id, task.id, status)}
-                  />
-                  <span className="text-muted-foreground hidden w-28 shrink-0 text-right text-sm tabular-nums sm:block">
-                    {task.date}
-                  </span>
-                  <TaskActionsMenu />
-                </li>
+                <motion.li
+                  key={task.id}
+                  variants={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          hidden: { opacity: 0, y: 6 },
+                          show: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.25, ease: "easeOut" }
+                          }
+                        }
+                  }
+                  className="group hover:bg-background px-5 py-3 transition-colors"
+                >
+                  <div className="flex items-center gap-4 transition-transform motion-safe:group-hover:-translate-x-0.5">
+                    <span className="text-foreground w-20 shrink-0 text-sm font-medium">
+                      {task.label}
+                    </span>
+                    <span className="text-muted-foreground group-hover:text-foreground flex-1 truncate text-sm transition-colors">
+                      {task.staff}
+                    </span>
+                    <TaskStatusDropdown
+                      status={task.status}
+                      onStatusChange={(status) => onStatusChange(stage.id, task.id, status)}
+                    />
+                    <span className="text-muted-foreground group-hover:text-foreground hidden w-28 shrink-0 text-right text-sm tabular-nums transition-colors sm:block">
+                      {task.date}
+                    </span>
+                    <TaskActionsMenu />
+                  </div>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
         ) : null}
       </AnimatePresence>

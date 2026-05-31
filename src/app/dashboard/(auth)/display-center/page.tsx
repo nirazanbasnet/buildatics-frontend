@@ -2,6 +2,8 @@
 import { Toolbar } from "../templates/display-center/_components/toolbar";
 // eslint-disable-next-line no-restricted-imports -- see note above
 import { Variant7Layout } from "../templates/display-center/_components/variant-layouts";
+// eslint-disable-next-line no-restricted-imports -- see note above
+import { DisplayCenterPagination } from "../templates/display-center/_components/display-center-pagination";
 
 export default async function DisplayCenterPage({
   searchParams
@@ -11,9 +13,10 @@ export default async function DisplayCenterPage({
   const view = (await searchParams).view === "floor" ? "floor" : "facade";
 
   return (
-    <div>
+    <div className="flex flex-col overflow-hidden">
       <Toolbar mode="production" filterEnabled filterVariant="v1" />
       <Variant7Layout view={view} detailEnabled detailVariant="v1" />
+      <DisplayCenterPagination />
     </div>
   );
 }

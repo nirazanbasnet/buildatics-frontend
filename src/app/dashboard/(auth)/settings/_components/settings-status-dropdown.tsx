@@ -26,7 +26,7 @@ export function SettingsStatusDropdown({ status, onStatusChange, className }: Pr
       <DropdownMenuTrigger
         data-slot="settings-status-trigger"
         className={cn(
-          "focus-visible:ring-ring inline-flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1 text-xs font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-1",
+          "focus-visible:ring-ring inline-flex min-w-24 shrink-0 items-center justify-center gap-1.5 rounded-md px-3 py-1 text-xs font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-1",
           active.trigger,
           className
         )}

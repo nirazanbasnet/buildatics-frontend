@@ -1,14 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import type { Property } from "../../display-center/_data";
+import { detailTabItems, detailTabs, type DetailTab } from "../_data";
 
 import { AvailableFacades } from "./available-facades";
 import { DetailHeader } from "./detail-header";
-import { DetailTabs } from "./detail-tabs";
 import { FloorPlanPanel } from "./floor-plan-panel";
 import { RoomDimensionsTable } from "./room-dimensions-table";
 import { SpecificationsTable } from "./specifications-table";
@@ -26,10 +28,17 @@ function Section({ children, delay = 0 }: { children: React.ReactNode; delay?: n
 }
 
 export function DetailLayout({ property, className }: { property: Property; className?: string }) {
+  const [activeTab, setActiveTab] = useState<DetailTab>(detailTabs[0]);
+
   return (
     <div className={cn("space-y-5", className)}>
       <Section>
-        <DetailTabs />
+        <SegmentedNav
+          items={detailTabItems}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          ariaLabel="Detail views"
+        />
       </Section>
       <Section delay={0.04}>
         <DetailHeader property={property} />

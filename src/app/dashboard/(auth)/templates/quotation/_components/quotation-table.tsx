@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { MapPin } from "lucide-react";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,6 +12,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
+import { SortableTableHead, sortBy, useSortState } from "@src/components/ui/sortable-table-head";
 import { cn } from "@/lib/utils";
 
 import { quotationStatusConfig, type Quotation } from "../_data";
@@ -23,14 +25,37 @@ type Props = {
   onQuotationClick?: (quotation: Quotation) => void;
 };
 
+type SortField =
+  | "ref"
+  | "client"
+  | "siteAddress"
+  | "attachedDesign"
+  | "amount"
+  | "quoteDate"
+  | "expiryDate"
+  | "status";
+
+const ACCESSORS: Record<SortField, (q: Quotation) => string | number> = {
+  ref: (q) => q.ref,
+  client: (q) => q.client,
+  siteAddress: (q) => q.siteAddress,
+  attachedDesign: (q) => q.attachedDesign,
+  amount: (q) => q.amount,
+  quoteDate: (q) => q.quoteDate,
+  expiryDate: (q) => q.expiryDate,
+  status: (q) => q.status
+};
+
 export function QuotationTable({ quotations, className, onQuotationClick }: Props) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [sort, setSort] = useSortState<SortField>({ field: "ref", direction: "asc" });
+  const sortedQuotations = useMemo(() => sortBy(quotations, sort, ACCESSORS), [quotations, sort]);
 
-  const allSelected = quotations.length > 0 && selected.size === quotations.length;
-  const someSelected = selected.size > 0 && selected.size < quotations.length;
+  const allSelected = sortedQuotations.length > 0 && selected.size === sortedQuotations.length;
+  const someSelected = selected.size > 0 && selected.size < sortedQuotations.length;
 
   function toggleAll(value: boolean) {
-    setSelected(value ? new Set(quotations.map((q) => q.id)) : new Set());
+    setSelected(value ? new Set(sortedQuotations.map((q) => q.id)) : new Set());
   }
 
   function toggleOne(id: string, value: boolean) {
@@ -43,7 +68,7 @@ export function QuotationTable({ quotations, className, onQuotationClick }: Prop
   }
 
   return (
-    <div className={cn("bg-card overflow-hidden rounded-lg border", className)}>
+    <div className={cn("bg-card h-full overflow-auto rounded-lg border", className)}>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -54,24 +79,41 @@ export function QuotationTable({ quotations, className, onQuotationClick }: Prop
                 aria-label="Select all quotations"
               />
             </TableHead>
-            <TableHead className="font-semibold">Ref#</TableHead>
-            <TableHead className="font-semibold">Client Name</TableHead>
-            <TableHead className="font-semibold">Site Address</TableHead>
-            <TableHead className="font-semibold">Attached Design</TableHead>
-            <TableHead className="font-semibold">Amount</TableHead>
-            <TableHead className="font-semibold">Quote Date</TableHead>
-            <TableHead className="font-semibold">Expiry Date</TableHead>
-            <TableHead className="font-semibold">Status</TableHead>
+            <SortableTableHead field="ref" sort={sort} onSort={setSort}>
+              Ref#
+            </SortableTableHead>
+            <SortableTableHead field="client" sort={sort} onSort={setSort}>
+              Client Name
+            </SortableTableHead>
+            <SortableTableHead field="siteAddress" sort={sort} onSort={setSort}>
+              Site Address
+            </SortableTableHead>
+            <SortableTableHead field="attachedDesign" sort={sort} onSort={setSort}>
+              Attached Design
+            </SortableTableHead>
+            <SortableTableHead field="amount" sort={sort} onSort={setSort}>
+              Amount
+            </SortableTableHead>
+            <SortableTableHead field="quoteDate" sort={sort} onSort={setSort}>
+              Quote Date
+            </SortableTableHead>
+            <SortableTableHead field="expiryDate" sort={sort} onSort={setSort}>
+              Expiry Date
+            </SortableTableHead>
+            <SortableTableHead field="status" sort={sort} onSort={setSort}>
+              Status
+            </SortableTableHead>
             <TableHead className="pr-4 text-right font-semibold">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {quotations.map((quotation) => {
+          {sortedQuotations.map((quotation, index) => {
             const isChecked = selected.has(quotation.id);
             const status = quotationStatusConfig[quotation.status];
             return (
-              <TableRow
+              <MotionTableRow
                 key={quotation.id}
+                index={index}
                 onClick={onQuotationClick ? () => onQuotationClick(quotation) : undefined}
                 className={onQuotationClick ? "cursor-pointer" : undefined}
               >
@@ -82,11 +124,15 @@ export function QuotationTable({ quotations, className, onQuotationClick }: Prop
                     aria-label={`Select ${quotation.ref}`}
                   />
                 </TableCell>
-                <TableCell className="text-foreground font-medium">{quotation.ref}</TableCell>
+                <TableCell className="text-foreground font-medium">
+                  <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                    {quotation.ref}
+                  </span>
+                </TableCell>
                 <TableCell className="text-muted-foreground">{quotation.client}</TableCell>
                 <TableCell className="text-muted-foreground">
-                  <span className="inline-flex items-center gap-1.5">
-                    <MapPin className="text-muted-foreground size-4 shrink-0" />
+                  <span className="group-hover:text-foreground inline-flex items-center gap-1.5 transition-all motion-safe:group-hover:translate-x-0.5">
+                    <MapPin className="size-4 shrink-0" />
                     {quotation.siteAddress}
                   </span>
                 </TableCell>
@@ -105,7 +151,7 @@ export function QuotationTable({ quotations, className, onQuotationClick }: Prop
                 <TableCell>
                   <span
                     className={cn(
-                      "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+                      "inline-flex min-w-24 items-center justify-center rounded-full px-2.5 py-0.5 text-xs font-medium",
                       status.solid
                     )}
                   >
@@ -118,7 +164,7 @@ export function QuotationTable({ quotations, className, onQuotationClick }: Prop
                     onView={onQuotationClick ? () => onQuotationClick(quotation) : undefined}
                   />
                 </TableCell>
-              </TableRow>
+              </MotionTableRow>
             );
           })}
         </TableBody>

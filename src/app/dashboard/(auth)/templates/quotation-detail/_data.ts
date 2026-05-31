@@ -1,3 +1,5 @@
+import { Calculator, Eye, History, type LucideIcon } from "lucide-react";
+
 export type QuotationDetailStatus = "draft" | "sent" | "signed" | "declined";
 
 export type QuotationLineItem = {
@@ -34,6 +36,17 @@ export type QuotationDetail = {
 
 export const quotationDetailTabs = ["Quote Builder", "Preview", "History"] as const;
 export type QuotationDetailTab = (typeof quotationDetailTabs)[number];
+
+const quotationDetailTabIcons: Record<QuotationDetailTab, LucideIcon> = {
+  "Quote Builder": Calculator,
+  Preview: Eye,
+  History: History
+};
+
+export const quotationDetailTabItems = quotationDetailTabs.map((value) => ({
+  value,
+  icon: quotationDetailTabIcons[value]
+}));
 
 export const quotationDetailStatusLabels: Record<QuotationDetailStatus, string> = {
   draft: "Draft",

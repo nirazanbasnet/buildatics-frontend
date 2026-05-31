@@ -16,8 +16,8 @@ export function ShareToSiteLayout({ className }: Props) {
   const [config, setConfig] = useState<ShareConfig>(DEFAULT_SHARE_CONFIG);
 
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
-      <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+    <div className={cn("flex h-full flex-col gap-6", className)}>
+      <div className="grid h-full gap-2 overflow-auto xl:grid-cols-[256px_minmax(0,1fr)]">
         <ShareToSiteControls config={config} onChange={setConfig} />
         <Suspense fallback={<div className="bg-card min-h-96 rounded-2xl border" />}>
           <ShareToSitePreview config={config} />

@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 import { cn } from "@/lib/utils";
 
 import type { DataSetupRow, SettingsStatus } from "../_data";
@@ -34,7 +35,7 @@ export function DataSetupTable({ columnLabel, rows, className }: Props) {
   }
 
   return (
-    <div className={cn("bg-card overflow-hidden rounded-lg border", className)}>
+    <div className={cn("bg-card h-full overflow-auto rounded-lg border", className)}>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -44,9 +45,13 @@ export function DataSetupTable({ columnLabel, rows, className }: Props) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className="text-foreground py-3 pl-4 font-medium">{row.name}</TableCell>
+          {data.map((row, index) => (
+            <MotionTableRow key={row.id} index={index}>
+              <TableCell className="text-foreground py-3 pl-4 font-medium">
+                <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                  {row.name}
+                </span>
+              </TableCell>
               <TableCell>
                 <SettingsStatusDropdown
                   status={row.status}
@@ -56,7 +61,7 @@ export function DataSetupTable({ columnLabel, rows, className }: Props) {
               <TableCell className="pr-4 text-right">
                 <SettingsActionsMenu label={row.name} />
               </TableCell>
-            </TableRow>
+            </MotionTableRow>
           ))}
         </TableBody>
       </Table>

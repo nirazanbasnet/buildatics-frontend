@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { VariantHeader } from "../../_shared/variant-header";
 import { quotations } from "../_data";
 import { QuotationLayout } from "../_components/quotation-layout";
-import { UseThisButton } from "../_components/use-this-button";
 import { quotationVariantLinks, parseQuotationVariant } from "../_components/variants";
 
 export default async function QuotationVariant1Page() {
@@ -19,7 +18,6 @@ export default async function QuotationVariant1Page() {
         variants={quotationVariantLinks}
         activeVariant="v1"
         promotedVariant={promoted}
-        action={<UseThisButton variant="v1" />}
       />
       <QuotationLayout quotations={quotations} />
     </div>

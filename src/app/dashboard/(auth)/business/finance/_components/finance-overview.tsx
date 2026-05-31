@@ -5,7 +5,7 @@ import { outstandingClaims } from "../_data";
 export function FinanceOverview({ className }: { className?: string }) {
   return (
     <section
-      className={cn("bg-card overflow-hidden rounded-lg border", className)}
+      className={cn("bg-card h-full overflow-auto rounded-lg border", className)}
       data-slot="finance-overview"
     >
       <header className="bg-muted/50 border-b px-5 py-3">

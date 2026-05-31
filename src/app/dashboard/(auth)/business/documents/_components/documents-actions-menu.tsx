@@ -14,9 +14,10 @@ import {
 
 type Props = {
   fileName?: string;
+  onView?: () => void;
 };
 
-export function DocumentsActionsMenu({ fileName }: Props) {
+export function DocumentsActionsMenu({ fileName, onView }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -31,7 +32,7 @@ export function DocumentsActionsMenu({ fileName }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuItem>
+        <DropdownMenuItem onSelect={onView}>
           <Eye className="size-4" />
           Preview
         </DropdownMenuItem>

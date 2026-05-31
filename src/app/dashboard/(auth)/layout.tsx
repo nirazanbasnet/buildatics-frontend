@@ -33,8 +33,8 @@ export default async function AuthLayout({
       <AppSidebar />
       <SidebarInset>
         <SiteHeader />
-        <div className="bg-muted/40 flex flex-1 flex-col group-data-[theme-sidebar-mode=floating]/layout:bg-transparent">
-          <div className="@container/main flex-1 p-(--content-padding) xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto">
+        <div className="bg-muted/40 flex flex-1 flex-col overflow-hidden group-data-[theme-sidebar-mode=floating]/layout:bg-transparent">
+          <div className="@container/main flex flex-1 flex-col overflow-hidden p-(--content-padding) xl:group-data-[theme-content-layout=centered]/layout:container xl:group-data-[theme-content-layout=centered]/layout:mx-auto">
             {children}
           </div>
           <SiteFooter />

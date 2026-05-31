@@ -74,7 +74,7 @@ export function PreconstructionListCardsV2({ projects, className, onProjectClick
               </div>
               <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
                 <div
-                  className="bg-foreground h-full rounded-full"
+                  className="bg-primary h-full rounded-full"
                   style={{ width: `${project.progress}%` }}
                 />
               </div>

@@ -1,5 +1,27 @@
+import {
+  ArrowLeftRight,
+  LayoutDashboard,
+  Receipt,
+  TrendingUp,
+  Wallet,
+  type LucideIcon
+} from "lucide-react";
+
 export const financeTabs = ["Overview", "Claims", "Payables", "Project P & L", "Cashflow"] as const;
 export type FinanceTab = (typeof financeTabs)[number];
+
+const financeTabIcons: Record<FinanceTab, LucideIcon> = {
+  Overview: LayoutDashboard,
+  Claims: Receipt,
+  Payables: Wallet,
+  "Project P & L": TrendingUp,
+  Cashflow: ArrowLeftRight
+};
+
+export const financeTabItems = financeTabs.map((value) => ({
+  value,
+  icon: financeTabIcons[value]
+}));
 
 export type FinanceStat = {
   id: string;

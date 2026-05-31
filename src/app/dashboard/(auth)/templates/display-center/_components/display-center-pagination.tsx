@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -10,16 +9,19 @@ import { cn } from "@/lib/utils";
 type Props = {
   totalPages?: number;
   defaultPage?: number;
+  className?: string;
 };
 
-export function PreconstructionListPagination({ totalPages = 4, defaultPage = 3 }: Props) {
+export function DisplayCenterPagination({ totalPages = 4, defaultPage = 3, className }: Props) {
   const [page, setPage] = useState(defaultPage);
-  const reduceMotion = useReducedMotion() ?? false;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <nav aria-label="Pagination" className="mt-4 flex items-center justify-end gap-1">
+    <nav
+      aria-label="Pagination"
+      className={cn("mt-4 flex items-center justify-end gap-1", className)}
+    >
       <Button
         variant="ghost"
         size="sm"
@@ -33,33 +35,22 @@ export function PreconstructionListPagination({ totalPages = 4, defaultPage = 3 
       {pages.map((p) => {
         const isActive = p === page;
         return (
-          <motion.button
+          <Button
             key={p}
             type="button"
+            variant={isActive ? "default" : "ghost"}
+            size="sm"
             onClick={() => setPage(p)}
             aria-current={isActive ? "page" : undefined}
-            whileTap={{ scale: 0.9 }}
             className={cn(
-              "focus-visible:ring-ring relative flex size-8 items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none",
+              "size-8 rounded-full p-0 text-sm",
               isActive
-                ? "text-primary-foreground z-10"
+                ? "bg-foreground text-background hover:bg-foreground/90"
                 : "bg-muted text-foreground hover:bg-muted/80"
             )}
           >
-            {isActive ? (
-              reduceMotion ? (
-                <span aria-hidden className="bg-primary absolute inset-0 z-0 rounded-full" />
-              ) : (
-                <motion.span
-                  aria-hidden
-                  layoutId="pagination-active-pill"
-                  transition={{ type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-primary absolute inset-0 z-0 rounded-full"
-                />
-              )
-            ) : null}
-            <span className="relative z-10">{p}</span>
-          </motion.button>
+            {p}
+          </Button>
         );
       })}
       <Button

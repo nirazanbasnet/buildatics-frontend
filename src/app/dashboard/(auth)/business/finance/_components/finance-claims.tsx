@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { MotionTableRow } from "@src/components/ui/motion-table-row";
 import { cn } from "@/lib/utils";
 
 import { claimDetailMock, claimStatusConfig, claims, type Claim } from "../_data";
@@ -39,16 +40,19 @@ export function FinanceClaims() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {claims.map((claim) => {
+            {claims.map((claim, index) => {
               const status = claimStatusConfig[claim.status];
               return (
-                <TableRow
+                <MotionTableRow
                   key={claim.id}
+                  index={index}
                   onClick={() => setSelected(claim)}
                   className="cursor-pointer"
                 >
                   <TableCell className="text-foreground py-3 pl-4 font-medium">
-                    {claim.ref}
+                    <span className="inline-block transition-transform motion-safe:group-hover:translate-x-0.5">
+                      {claim.ref}
+                    </span>
                   </TableCell>
                   <TableCell>
                     <div className="min-w-0">
@@ -60,7 +64,7 @@ export function FinanceClaims() {
                   <TableCell>
                     <span
                       className={cn(
-                        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+                        "inline-flex min-w-24 items-center justify-center rounded-full px-2.5 py-0.5 text-xs font-medium",
                         status.badge
                       )}
                     >
@@ -75,7 +79,7 @@ export function FinanceClaims() {
                   <TableCell className="pr-4 text-right" onClick={(e) => e.stopPropagation()}>
                     <FinanceActionsMenu label={claim.ref} onView={() => setSelected(claim)} />
                   </TableCell>
-                </TableRow>
+                </MotionTableRow>
               );
             })}
           </TableBody>

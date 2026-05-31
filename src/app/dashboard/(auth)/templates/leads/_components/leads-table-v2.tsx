@@ -69,9 +69,9 @@ export function LeadsTableV2({ leads, className, onLeadClick }: Props) {
             role={interactive ? "button" : undefined}
             tabIndex={interactive ? 0 : undefined}
             className={cn(
-              "bg-card hover:bg-muted/30 flex items-stretch gap-4 rounded-lg border p-4 transition-colors",
+              "bg-card flex items-stretch gap-4 rounded-lg border p-4 transition duration-300",
               interactive &&
-                "focus-visible:ring-ring cursor-pointer focus-visible:ring-2 focus-visible:outline-none"
+                "focus-visible:ring-ring cursor-pointer hover:-translate-y-1 hover:shadow-lg focus-visible:ring-2 focus-visible:outline-none"
             )}
           >
             <div className="flex min-w-fit flex-col items-start justify-between gap-2">

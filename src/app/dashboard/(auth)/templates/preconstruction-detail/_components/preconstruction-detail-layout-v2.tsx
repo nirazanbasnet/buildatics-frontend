@@ -14,10 +14,12 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 import {
+  preconstructionDetailTabItems,
   preconstructionDetailTabs,
   type PreconstructionCategory,
   type PreconstructionCategoryStatus,
@@ -29,7 +31,6 @@ import {
 
 import { DocumentsV2 } from "./documents-v2";
 import { ItiPreconstructionV2 } from "./iti-preconstruction-v2";
-import { PreconstructionDetailTabs } from "./preconstruction-detail-tabs";
 import { PreconstructionTasks } from "./preconstruction-tasks";
 import { PreconstructionTimeline } from "./preconstruction-timeline";
 
@@ -95,7 +96,7 @@ function KpiStrip({ project }: { project: PreconstructionDetailProject }) {
         <p className="text-foreground text-xl font-bold tracking-tight">{project.progress}%</p>
         <div className="bg-muted h-1 w-full overflow-hidden rounded-full">
           <div
-            className="h-full rounded-full bg-blue-500 dark:bg-blue-400"
+            className="bg-primary h-full rounded-full"
             style={{ width: `${project.progress}%` }}
           />
         </div>
@@ -280,7 +281,12 @@ export function PreconstructionDetailLayoutV2({ project, className }: Props) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       <Section>
-        <PreconstructionDetailTabs activeTab={activeTab} onTabChange={setActiveTab} />
+        <SegmentedNav
+          items={preconstructionDetailTabItems}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          ariaLabel="Preconstruction views"
+        />
       </Section>
       <Section delay={0.04}>
         {activeTab === "Overview" ? (

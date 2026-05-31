@@ -31,7 +31,7 @@ export function SubscriptionPlans({ plans, className }: Props) {
           <section
             key={plan.id}
             className={cn(
-              "bg-card flex flex-col rounded-xl border p-5",
+              "bg-card flex flex-col rounded-xl border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg",
               isCurrent && "border-foreground/20 ring-foreground/5 ring-1"
             )}
           >

@@ -23,7 +23,10 @@ function Row({ label, value, muted }: { label: string; value: string; muted?: bo
 export function QuotationSummaryCard({ detail, className }: Props) {
   return (
     <section
-      className={cn("bg-card rounded-2xl border p-5 transition-all hover:shadow-lg", className)}
+      className={cn(
+        "bg-card rounded-2xl border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg",
+        className
+      )}
       data-slot="quotation-summary"
     >
       <h3 className="text-foreground text-base font-semibold">Quotation Summary</h3>

@@ -5,7 +5,7 @@ import { LayoutGrid, List, ListFilter, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 
 export type LeadsView = "list" | "card";
 
@@ -14,12 +14,13 @@ type Props = {
   onViewChange: (view: LeadsView) => void;
 };
 
+const VIEW_ITEMS = [
+  { value: "list" as const, label: "List View", icon: List },
+  { value: "card" as const, label: "Kanban View", icon: LayoutGrid }
+];
+
 export function LeadsToolbar({ view, onViewChange }: Props) {
   const [statusActive, setStatusActive] = useState(true);
-
-  function handleViewChange(next: string) {
-    if (next === "list" || next === "card") onViewChange(next);
-  }
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 pb-4">
@@ -47,16 +48,13 @@ export function LeadsToolbar({ view, onViewChange }: Props) {
           Filter
         </Button>
 
-        <ToggleGroup type="single" value={view} onValueChange={handleViewChange} className="h-9">
-          <ToggleGroupItem variant="outline" value="list" className="h-9 px-3">
-            <List className="size-4" />
-            List View
-          </ToggleGroupItem>
-          <ToggleGroupItem variant="outline" value="card" className="h-9 px-3">
-            <LayoutGrid className="size-4" />
-            Kanban View
-          </ToggleGroupItem>
-        </ToggleGroup>
+        <SegmentedNav<LeadsView>
+          items={VIEW_ITEMS}
+          value={view}
+          onValueChange={onViewChange}
+          ariaLabel="View"
+          className="h-9 w-auto"
+        />
       </div>
     </div>
   );

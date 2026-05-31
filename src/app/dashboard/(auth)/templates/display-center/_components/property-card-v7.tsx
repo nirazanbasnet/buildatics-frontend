@@ -57,7 +57,7 @@ export function PropertyCardV7({
             : undefined
         }
         className={cn(
-          "group gap-0 overflow-hidden p-0 transition duration-300 hover:-translate-y-1.5 hover:shadow-lg",
+          "group h-full gap-0 overflow-hidden p-0 transition duration-300 hover:-translate-y-1.5 hover:shadow-lg",
           detailEnabled && "focus-visible:ring-ring cursor-pointer focus-visible:ring-2"
         )}
       >
@@ -98,8 +98,8 @@ export function PropertyCardV7({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 p-4">
-          <div className="flex flex-col justify-between gap-3">
+        <div className="gap-4 p-4 sm:grid sm:grid-cols-5">
+          <div className="col-span-2 mb-4 flex justify-between gap-3 sm:mb-0 sm:flex-col">
             <div>
               <h3 className="text-base font-semibold">{property.title}</h3>
               <p className="text-muted-foreground mt-1 text-sm tabular-nums">
@@ -112,7 +112,7 @@ export function PropertyCardV7({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="col-span-3 grid grid-cols-2 gap-2">
             <SpecTile icon={BedDouble} value={property.beds} label="beds" />
             <SpecTile icon={Bath} value={property.baths} label="baths" />
             <SpecTile icon={Sofa} value={property.living} label="living" />
@@ -143,7 +143,7 @@ function SpecTile({
   label: string;
 }) {
   return (
-    <div className="bg-muted flex items-center gap-2 rounded-md p-2">
+    <div className="bg-muted flex shrink-0 items-center gap-2 rounded-md p-2">
       <Icon className="text-muted-foreground size-4 shrink-0" />
       <div className="flex flex-col leading-tight">
         <span className="font-bold tabular-nums">{value}</span>

@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { arrayMove } from "@dnd-kit/sortable";
 
+import { SegmentedNav } from "@src/components/ui/segmented-nav";
 import { cn } from "@/lib/utils";
 
 import {
+  quotationDetailTabItems,
   quotationDetailTabs,
   type QuotationBuilderHandlers,
   type QuotationCategory,
@@ -19,7 +21,6 @@ import {
 import { QuotationBuilder } from "./quotation-builder";
 import { QuotationDetailActions } from "./quotation-detail-actions";
 import { QuotationDetailInfoCard } from "./quotation-detail-info-card";
-import { QuotationDetailTabs } from "./quotation-detail-tabs";
 import { QuotationEditableSection } from "./quotation-editable-section";
 import { QuotationMarginCard } from "./quotation-margin-card";
 import { QuotationMetaCard } from "./quotation-meta-card";
@@ -184,14 +185,19 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
       className={cn("flex flex-col gap-4 overflow-hidden", className)}
       data-slot="quotation-detail"
     >
-      <Section className="pr-3">
-        <QuotationDetailTabs activeTab={activeTab} onTabChange={setActiveTab} />
+      <Section>
+        <SegmentedNav
+          items={quotationDetailTabItems}
+          value={activeTab}
+          onValueChange={setActiveTab}
+          ariaLabel="Quotation views"
+        />
       </Section>
 
       {activeTab === "Quote Builder" ? (
         <Section className="overflow-auto" delay={0.04}>
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-            <div className="flex min-w-0 flex-col gap-4">
+          <div className="grid flex-1 gap-4 overflow-hidden lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className="flex min-w-0 flex-col gap-4 overflow-auto">
               <QuotationDetailInfoCard detail={detail} />
               <QuotationBuilder detail={detail} handlers={handlers} />
               <QuotationEditableSection
@@ -214,7 +220,7 @@ export function QuotationDetailLayout({ detail: initialDetail, className }: Prop
               />
             </div>
 
-            <aside className="flex flex-col gap-3 pr-3">
+            <aside className="flex flex-col gap-3">
               <QuotationSummaryCard detail={detail} />
               <QuotationMarginCard detail={detail} />
               <QuotationMetaCard
